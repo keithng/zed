@@ -1,0 +1,681 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<script src="./lib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./lib/raphael-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./lib/zed.js" type="text/javascript" charset="utf-8"></script>
+<title>BudgetTreeMap: HotTree Visualisation</title>
+<script src="./data/HotTree.data" type="text/javascript" charset="utf-8"></script>
+<script src="./data/HotTree-Strip.data" type="text/javascript" charset="utf-8"></script>
+<style type="text/css" charset="utf-8">
+	#menubar {
+		background:#222;
+		font:0.8em sans-serif;
+		margin:-12px 0 -12px 0;
+	}
+	#menubar ul {
+		padding:6px 0;
+	}
+	#menubar li {
+		border-right:1px solid #666;
+		display:inline;
+		padding-left:12px;
+		padding-right:12px;
+	}
+	#menubar input {
+		padding-right:25px;
+		padding-left:8px;
+	}
+	#menubar a {
+		color:#FFFFFF;
+		text-decoration:none;
+	}
+	#menubar #credit {
+		font-size:0.8em;
+		float:right;
+		padding:6px 6px;
+	}
+	#menubar a:hover,
+	#menubar .active {
+		text-decoration:underline;
+	}
+
+	.ui-state-focus,
+	.ui-widget-content .ui-state-focus,
+	.ui-widget-header .ui-state-focus {
+		border:1px solid #b8b8bf;
+		background:#e8e8ef;
+ 		color:#000;
+	}
+
+	.sideBarDescription {
+		font:0.8em sans-serif;
+	}
+
+	#narrator {
+		font:sans-serif;
+		position:relative;
+	}
+	#narrator #nav {
+		font-weight:bold;
+	}
+	#narrator #nav a {
+		color:#336;
+		text-decoration:none;
+	}
+	#narrator #nav a:hover {
+		text-decoration:underline;
+	}
+	#narrator #nav #prev {
+		margin-top:0.5em;
+		float:left;
+	}
+	#narrator #nav #next {
+		margin-top:0.5em;
+		float:right;
+	}
+	#narrator #nav #middle {
+		text-align:center;
+	}
+</style>
+<script type="text/javascript" charset="utf-8">
+window.onload = function () {
+	logger("BudgetTreeMap(): Initialising.");
+	var L = zt.getMaxLayout(1024, 768, 32);
+	PAPER = zt.makePaper(L);
+
+	with (L) {
+		L.sideBar = new zLayout({
+			x:5, y:5,
+			width:400, height:height - 10,
+			margin:30
+		});
+		with (L.sideBar) {
+			L.title = {
+				x:left + margin, y:top + margin + 30,
+				width:innerWidth, yAlign:"yCentre"
+			};
+			L.scale = new zLayout({
+				x:left + margin, y:L.title.y + 44,
+				width:innerWidth * 0.8, height:innerHeight * 0.012
+			});
+			L.description = {
+				x:left + margin, y:L.scale.bottom + 36,
+				width:innerWidth
+			};
+			L.lineChart = new zLayout({
+				x:left + margin + 16, y:bottom - margin - 20,
+				width:innerWidth * 0.95, height:zt.forceBetween(height - 500, 120, 300)
+			});
+			with (L.lineChart) {
+				L.tAxis = {anchor:anchor, width:width, height:margin};
+				L.dAxis = {anchor:anchor, width:height, yAlign:"bottom", rotation:270};
+			};
+		};
+		L.swarm = new zLayout({
+			x:sideBar.right + margin + (innerWidth - sideBar.width) / 2, y:centre.y,
+			width:innerWidth - sideBar.width - margin, height:innerHeight,
+			xAlign:"xCentre", yAlign:"yCentre"
+		});
+		with (L.swarm) {
+			L.altHeight = height - 26;
+			L.altSwarm = clone({ // When zoomed in, need to leave a bit of extra space on the bottom for zoomOutTab
+				anchor:{x:x, y:L.margin + L.altHeight / 2},
+				height:L.altHeight, width:L.altHeight * width / height
+			});
+			L.zoomOutTab = {
+				x:xCentre, y:L.bottom + 8,
+				xAlign:"xCentre", yAlign:"bottom"
+			};
+		};
+		L.narrator = {width:400, xAlign:"xCentre", yAlign:"yCentre"};
+	};
+
+	var baseY = {
+			valFormat:{prefix:"$", mode:"abbreviate", dp:1, multiply:1},
+			decFormat:{mode:"%", dp:1, wordSign:true},
+			axisText:{
+				fill:"#444",
+				"font-weight":"bold"
+			},
+			axisLine:{opacity:0.8}
+		},
+		Y = zt.parseStyle({
+			base:baseY,
+			background:{
+				fill:"#f0f0f0",
+				stroke:"#f0f0f0"
+			},
+			tooltipBox:{
+				format:{wrap:40}
+			},
+			swarm:{
+				block:{
+					opacity:1,
+					neutralFill:"#ddc",
+					posFill:"#292",
+					negFill:"#a22",
+					nullFill:"#aF8Dc3",
+					"stroke-width":0.1,
+					highlight:{"stroke-width":2},
+					fade:{opacity:0.15}
+				},
+				zoomOutTab:{
+					margin:12,
+					rounded:8,
+					opacity:0.2,
+					"font-size":40,
+					"font-weight":"bold",
+					background:{fill:"#999"},
+					highlight:{opacity:0.5}
+				},
+				highlight:{t:400, e:"<>"},
+				fadeIn:{t:800, e:"<>"},
+				zoom:{t:1000, e:"<>"}
+			},
+			tAxis:{
+				parallelSize:0.01,
+				label:{baseStyle:"base.axisText"},
+				axisLine:{baseStyle:"base.axisLine"}
+			},
+			dAxis:{
+				maxNotches:5,
+				label:{
+					baseStyle:"base.axisText",
+					radialStart:-L.lineChart.innerWidth, radialEnd:2,
+					margin:2,
+					format:baseY.valFormat,
+					branch:{"stroke-width":0.05}
+				},
+				axisLine:{baseStyle:"base.axisLine"}
+			},
+			sideBar:{
+				valFormat:baseY.valFormat,
+				decFormat:baseY.decFormat,
+				background:{
+					rounded:16,
+					fill:"#e8e8ef",
+					opacity:0.9,
+					"stroke-width":0.18
+				},
+				title:{
+					format:{wrap:36},
+					"font-size":"18",
+					"font-weight":"bold"
+				},
+				scale:{
+					maxNotches:6,
+					branchLength:6,
+					notch:{"stroke-width":0.4},
+					label:{baseStyle:"sideBar.label"}
+				},
+				description:{
+					setClass:"sideBarDescription"
+				},
+				line:{
+					stroke:"#667",
+					"stroke-width":2
+				},
+				points:{
+					radius:3.5,
+					largeRadius:6,
+					opacity:0.8,
+					fill:"white"
+				},
+				label:{
+					"font-weight":"bold",
+					branchLength:20,
+					branch:{opacity:0.8}
+				}
+			}
+		});
+	var PROJECT = {
+		id:0,
+		type:"HotTree",
+// 		rawdata:RAWDATA,
+		dataOptions:{
+			map:[]
+		},
+		protocube:PROTOCUBE,
+		L:L,
+		Y:Y
+	};
+	HotTree(PROJECT);
+};
+
+function HotTree (PROJECT) {
+	logger("BudgetTreeMap(): Collating and crunching data.");
+// 	var protocube = new zDataCube(2).importStrip(RAW_STRIP).exportProtoCube(); // Load rawStrip
+	var L = PROJECT.L, Y = PROJECT.Y, PROTOCUBE = PROJECT.protocube;
+
+	var CURR_YEAR, BASE_YEAR,
+		i, j, index = [];
+	with (PROTOCUBE.data) for (i = 0; i < val.length; i++) for (j = 0; j < val[i].length; j++) val[i][j] *= 1000;
+	var dc = new zDataCube(2);
+	// Read data
+	with (dc) { // Load rawStrip
+		importProtoCube(PROTOCUBE)
+		makeHierarchy(); // Creates the structure NOTE to Andrew - THIS IS IMPORTANT!
+// 		// Verify data
+// 		if (meta[0].hierarchy.length > 2) { // If there are more than 2 generations
+// 			for (i = 0; i < meta[0].hierarchy[2].length; i++) { // List all of those in the 3rd generation
+// 				x = {d:0, a:meta[0].hierarchy[2][i]};
+// 				console.log(x.a, getMeta("title", x), findParent(x), getName({d:0, a:findParent(x)})); // It's probably an error with their parents
+// 			};
+// 			explode("BudgetTreeMap.primeData(): More than two generations.");
+// 		};
+		// Set up root node
+		dc.rootNode = dc.addRootNode(0, "Total"); // Create root node
+		calcHierarchyData("val", 0); // Checks that low-level nodes add up to high level nodes if they exist, or creates them if they don't NOTE to Andrew - this stacks all the values *AND* does the checking
+		// Parse names
+		for (i = 0; i < getSize(0); i++) {
+			meta[0].title[i] = meta[0].title[i] || meta[0].name[i]; // Newly created categories will have names but not titles
+			index.push({key:i, label:meta[0].title[i]}); // Log title (searchBox will need this)
+		};
+// 		$("#searchBox").autocomplete({source:index, select:function (event, ui) {swarm.zoomTo(ui.item.key)}}); // Give list to searchBox
+		// Set initial generation
+		dc.maxGen = meta[0].hierarchy.length - 1;
+		dc.rootGen = meta[0].hierarchy[1];
+		setShown(0, rootGen);
+		CURR_YEAR = getSize(1) - 1;
+		BASE_YEAR = CURR_YEAR - 1;
+	};
+	logger("BudgetTreeMap(): Drawing accessories.");
+	var background = new zRectangle({layout:L, base:Y.background}),
+		tooltipBox = new zTooltipBox({base:Y.tooltipBox}),
+		defaultMouseEvents = function (D) {
+			var A = D.A || [];
+			D.click(function () {
+				var S = swarm;
+				if (S.locked) return;
+				if (za.contains(S.focused.childrenPos, A[0])) S.zoomTo(A[0]); // Zoom in
+				else if (S.focused.a != dc.rootNode.a) S.zoomTo(S.focused.parentPos); // Zoom out (only if not already at root)
+			});
+			D.hover(function () {
+				var S = swarm;
+				if (S.locked || S.focused.generation == dc.maxGen) return;
+				S.targHighlight = A[0];
+				S.G.delay(100, function () {
+					if (!S.locked && S.targHighlight == A[0]) S.setHighlight(A[0]);
+				});
+			}, function () {
+				var S = swarm;
+				if (S.locked || S.focused.generation == dc.maxGen) return;
+				S.targHighlight = null;
+				S.G.delay(100, function () {
+					if (!S.locked && S.targHighlight == null) S.unsetHighlight();
+				});
+			});
+		};
+	defaultMouseEvents(background);
+	tooltipBox.clearEvents();
+
+	logger("BudgetTreeMap(): Drawing swarm.");
+	var swarm = new zSwarm({
+		layout:L.swarm.clone(), style:Y.swarm,
+		dc:dc, rSpace:["all", CURR_YEAR], focused:dc.rootNode,
+		updateData:function () {
+			var S = this, vals, layout,
+				A = [dc.rootGen, CURR_YEAR];
+			vals = dc.getData("val", {as:A});
+			layout = S.L;
+			dc.treemap({d:0, as:A}, vals, layout); // Always plot top level
+			if (S.focused.generation > 0) { // Plot second level, if zoomed
+				A[0] = S.focused.childrenPos;
+				vals = dc.getData("val", {as:A});
+				layout = dc.getMeta("layout", {d:0, a:S.focused.a});
+				dc.treemap({d:0, as:A}, vals, layout);
+			};
+		},
+		setHighlight:function (aPos, b) {
+			var S = this, t = S.Y.highlight.t, e = S.Y.highlight.e,
+				layout, x = {d:0, a:aPos};
+			if (za.contains(S.focused.childrenPos, aPos)) { // Only children of zoomed are valid targets for highlight
+				layout = zp.completeBox(dc.getMeta("layout", x));
+				S.toFront(x);
+				S.highlight(x, t, e, b);
+				sideBar.setSelected(aPos, t, e, null, S.K);
+				tooltipBox.showAt({
+					text:dc.getMeta("title", x),
+					layout:{x:layout.xCentre, y:layout.top + 1, xAlign:"xCentre", yAlign:"bottom"}
+				}, t, e, null, S.K);
+			} else S.unsetHighlight(b);
+		},
+		unsetHighlight:function (b) {
+			var S = this, t = S.Y.highlight.t, e = S.Y.highlight.e;
+			S.reset("all", t, e, b);
+			sideBar.setSelected(S.focused.a, t, e, null, S.K);
+			tooltipBox.hide(t, e, null, S.K);
+		},
+		setFocus:function (n, b) {
+			var S = this, t = S.Y.highlight.t, e = S.Y.highlight.e;
+			S.setHighlight(n.a, function () {
+				S.setMode({d:0, a:za.subtract(S.focused.childrenPos, n.a)}, "fade", t, e, b);
+				S.focused = n;
+				document.location.hash = S.focused.a;
+			});
+		},
+		unsetFocus:function (b) {
+			var S = this, t = S.Y.highlight.t, e = S.Y.highlight.e;
+			S.focused = dc.getMetaObj({d:0, a:S.focused.parentPos});
+			document.location.hash = S.focused.a;
+			S.unsetMode({d:0, a:S.focused.childrenPos}, t, e, function () {
+				S.unsetHighlight(b);
+			});
+		},
+		zoomTo:function (aPos, b) {
+			var S = this, t = S.Y.zoom.t, e = S.Y.zoom.e,
+				iterate = function () {S.zoomTo(aPos, b)},
+				path = dc.getRelationship(0, S.focused.a, (aPos != null) ? aPos : (S.focused) ? S.focused.parentPos : dc.rootNode.a),
+				m = path[0], n = path[1];
+			S.lock();
+ 			S.clearEvents("all");
+			if (aPos == dc.rootNode.a) S.remove("zoomOutTab", t, e);
+			else S.add("zoomOutTab", t, e);
+			if (n == null) { // At right place
+				logger("BudgetTreeMap.ZoomTo(): Arrived at " + dc.getMeta("title", {d:0, a:m.a}) + " (" + m.a + ")."  );
+				S.unlock();
+				S.mouseEvents("all"); // Restore events
+				if (b) b();
+			} else if (m.generation < n.generation) { // Going deeper
+				if (n.generation == dc.maxGen) { // Last generation - focus instead of zoom
+					logger("BudgetTreeMap.ZoomTo(): Focusing on " + dc.getMeta("title", {d:0, a:n.a}) + " (" + n.a + ")." );
+					S.setFocus(n, iterate);
+				} else { // Zoom in
+					logger("BudgetTreeMap.ZoomTo(): Zooming in to " + dc.getMeta("title", {d:0, a:n.a}) + " (" + n.a + ")." );
+					sideBar.layer(); // Need to raise sideBar against blocks which have been highlighted and brought toFront()
+					dAxis.toFront();
+					tAxis.toFront();
+					S.setFocus(n, function () {
+						tooltipBox.hide(t, e);
+						S.zoom(n.layout, L.altSwarm, t, e, function () { // Redraw into new position
+							S.disaggregate({d:0, a:n.a}, S.Y.fadeIn.t, S.Y.fadeIn.e, iterate);
+						});
+					});
+				};
+			} else if (m.generation > n.generation) { // Coming back out
+				if (m.generation == dc.maxGen) { // Coming back from last generation unfocus instead of zoom
+					logger("BudgetTreeMap.ZoomTo(): Returning focus to " + dc.getMeta("title", {d:0, a:n.a}) + " (" + n.a + ")." );
+					S.unsetFocus(iterate);
+				} else { // Zoom out
+					logger("BudgetTreeMap.ZoomTo(): Zooming out to " + dc.getMeta("title", {d:0, a:n.a}) + " (" + n.a + ")." );
+					S.aggregate({d:0, a:m.childrenPos[0]}, S.Y.fadeIn.t, S.Y.fadeIn.e, function () {
+						tooltipBox.hide(t, e);
+						S.zoom(S.L, L.swarm, t, e, function () {
+							S.unsetFocus(iterate);
+						});
+					});
+				};
+			} else logger("BudgetTreeMap.ZoomTo(): YEAH NAH - attempting to go to a different element in the same generation." );
+		},
+		plan:{
+			block:{
+				type:"zRectangle", mask:"mask",
+				init:function (S, A, D, Y) {
+					var baseVal = dc.getData("val", {as:[A[0], BASE_YEAR]}),
+						currVal = dc.getData("val", {as:[A[0], CURR_YEAR]}),
+						decChange = currVal / baseVal - 1;
+					return {
+						fill:(!baseVal) ? Y.nullFill : zt.getColour(2 * decChange, Y.neutralFill, Y.posFill, Y.negFill),
+						mouseEvents:defaultMouseEvents
+					};
+				},
+				curr:function (S, A) {return {layout:dc.getMeta("layout", {d:0, as:A})}}
+ 			},
+ 			zoomOutTab:{
+				type:"zTextBox", mask:"fixed", ignore:true,
+				init:function (S, A, D, Y) {
+					return {
+						text:"Zoom out", layout:L.zoomOutTab,
+						mouseEvents:function (D) {
+							D.click(function () {if (!S.locked) S.zoomTo(dc.rootNode.a)}); // Zoom out
+							D.hoverHighlight(200);
+						}
+					};
+				}
+ 			}
+		}
+	});
+
+	var tAxis = new zSmartAxis({layout:L.tAxis, style:Y.tAxis, d:1, dc:dc, plan:{axisTitle:null}}),
+		dAxis = new zAxis({layout:L.dAxis, style:Y.dAxis, range:[0,10], plan:{axisTitle:null}}),
+		sideBar = new zSwarm({
+			layout:L.sideBar, style:Y.sideBar,
+			dc:dc, rSpace:"all", aSelected:[dc.rootNode.a, CURR_YEAR],
+			highlighted:null,
+			setSelected:function (aPos, t, e, b, w) {
+				this.aSelected[0] = aPos;
+				this.refresh("all", t, e, b, w);
+			},
+			setHighlight:function (aPos) {
+				var S = this, radius,
+					t = swarm.Y.highlight.t, e = swarm.Y.highlight.e;
+				if (aPos != null) {
+					radius = S.Y.points.largeRadius;
+					S.highlighted = aPos;
+					S.refresh("label");
+					S.show("label", t, e);
+				} else {
+					radius = S.Y.points.radius;
+					S.delayedHide("label", 800, t, e);
+				};
+				S.forEachDrone({role:"points", d:1, a:S.highlighted}, "redraw", {circle:{radius:radius}}, t, e);
+				tAxis.toFront();
+			},
+			plotPoint:function (aPos) {
+				var S = this;
+				return {x:tAxis.getX({a:aPos}), y:dAxis.getY(S.vals[aPos])};
+			},
+			updateData:function (t, e, b, w) {
+				var S = this, i;
+				S.vals = dc.getData("val", {as:[S.aSelected[0], "all"]});
+				S.aStart = za.find(S.vals, 0, ">"); // The first valid year for this line item
+				S.aEnd = za.reverseFind(S.vals, 0, ">"); // The first valid year for this line item
+				dAxis.setShown([zt.getFactorOfTen(Math.min(0, za.min(S.vals))), zt.getFactorOfTen(za.max(S.vals))]);
+				// Plot points
+				S.points = [];
+				for (i = 0; i <= S.aStart; i++) S.points.push(S.plotPoint(S.aStart)); // Draw placeholder points for empty/null values prior to first value *AT* the first value
+				for (null; i <= S.aEnd; i++) S.points.push(S.plotPoint(i)); // Draw actual values
+				for (null; i < S.vals.length; i++) S.points.push(S.plotPoint(S.aEnd)); // Draw placeholder points for empty/null values after to last value *AT* the last value
+			},
+			plan:{
+				background:{
+					type:"zRectangle", mask:"fixed",
+					init:function (S) {return {layer:1, layout:S.L}}
+				},
+				title:{
+					type:"zTextBox", mask:"fixed",
+					init:function (S) {return {layer:1, layout:L.title}},
+					curr:function (S) {return {text:dc.getMeta("title", {d:0, a:S.aSelected[0]})}}
+				},
+				scale:{
+					type:"zMultiDrone", mask:"fixed",
+					init:function (S, A, D, Y) {
+						var i, out = [],
+							base = {
+								type:"zRectangle", base:Y.notch,
+								layout:{width:L.scale.width / Y.maxNotches, height:L.scale.height}
+							};
+						for (i = 0; i < Y.maxNotches; i++) out.push(zo.clone(base, {
+							fill:zt.getColour(2 * i / (Y.maxNotches - 1) - 1, swarm.Y.block.neutralFill, swarm.Y.block.posFill, swarm.Y.block.negFill),
+							layout:{anchor:L.scale.getPoint(i / Y.maxNotches, 0)}
+						}));
+						out.push(zo.clone(base, {
+							fill:swarm.Y.block.nullFill,
+							layout:{x:L.sideBar.right - L.sideBar.margin, y:L.scale.top, xAlign:"right"}
+						}));
+						return out;
+					},
+					curr:function (S, A, D, Y) {
+						var baseVal = S.vals[BASE_YEAR],
+							currVal = S.vals[CURR_YEAR],
+							decChange = currVal / baseVal - 1,
+							text = zt.format(currVal, S.Y.valFormat) +
+								" in " + dc.getName({d:1, a:CURR_YEAR}) + (
+								(!currVal) ? "" :
+								(!baseVal) ? "\n(new)" :
+								(decChange == 0) ? "\n(no change)" :
+								"\n(" + zt.format(decChange, S.Y.decFormat) + ")"),
+							anchor =
+								(!baseVal || !currVal) ? {x:L.sideBar.right - L.sideBar.margin - 0.5 * L.scale.width / Y.maxNotches, y:L.scale.bottom} :
+								L.scale.getPoint(zt.forceBetween(decChange + 0.5, 0, 1), 1);
+						return {
+							layer:1,
+							label:{
+								type:"zTextBox", text:text,
+								layout:{anchor:anchor, radial:90, radialEnd:Y.branchLength}
+							}
+						};
+					}
+				},
+				description:{
+					type:"zHTML", mask:"fixed",
+					init:function (S) {return {layout:L.description}},
+					curr:function (S, A, D, Y) {
+						var A = S.aSelected, x = {d:0, a:A[0]},
+							node = dc.getMetaObj(x),
+							i, aPos, title, prevVal, currVal, content, vals = [],
+							addList = function (vals, mode) {
+								var i, title, valChange, text = "",
+									mod = (mode == "min") ? 1 : -1,
+									vals = za.getAllObjects(vals, "valChange", 3, mode); // Find the 3 smallest/biggest
+								for (i = 0; i < vals.length && (mod * vals[i].valChange) < 0; i++) { // Go through list, and only accept if it's an actual cut
+									title = vals[i].title;
+									valChange = zt.format(vals[i].valChange, S.Y.valFormat);
+									if (i == 0) text = "<h4>Biggest <b>" + ((mode == "min") ? "decreases" :"increases") + "</b>:</h4>";
+									text += "<li>" + title + " (" + valChange + ")";
+								};
+								return text;
+							};
+						if (node.generation == 2) content = "<p>" + dc.getMeta("description", x) + "</p>";
+						else {
+							for (i = 0; i < node.childrenPos.length; i++) {
+								aPos = node.childrenPos[i];
+								title = dc.getMeta("title", {d:0, a:aPos})
+								prevVal = dc.getData("val", {as:[aPos, BASE_YEAR]}) || 0;
+								currVal = dc.getData("val", {as:[aPos, CURR_YEAR]}) || 0;
+								vals.push({title:title, valChange:currVal - prevVal});
+							};
+							content = addList(vals, "min") + "<br>" + addList(vals, "max"); // Find the biggest cuts/increase among node.childrenPos
+						};
+						return {content:content};
+					}
+				},
+				line:{
+					type:"zLine", mask:"fixed",
+					curr:function (S, A, D, Y) {return {layer:1, points:S.points}}
+				},
+				points:{
+					type:"zCircle", mask:["na", "mask"],
+					init:function (S, A, D, Y) {
+						var t = swarm.Y.highlight.t, e = swarm.Y.highlight.e;
+						return {
+							layer:2, circle:{radius:Y.radius},
+							preRedraw:function (D) {
+								if (D.A[1] < S.aStart || D.A[1] > S.aEnd) { // Point is invalid in new line
+									D.newOrders = D.oldOrders; // Ignore new position
+									D.hide(t, e, null, swarm.K);
+								} else {
+									if (D.hidden) D.oldOrders = D.newOrders; // Instant redraw
+									D.show(t, e, null, swarm.K);
+								};
+							},
+							mouseEvents:function (D) {
+								D.hover(function () {S.setHighlight(A[1])}, function () {S.setHighlight()});
+							}
+						};
+					},
+					curr:function (S, A, D, Y) {return {circle:{centre:S.points[A[1]]}}}
+				},
+				label:{
+					type:"zTextBox", mask:"fixed",
+					curr:function (S, A, D, Y) {
+						var aPos = S.highlighted,
+							prevVal = S.vals[aPos - 1],
+							currVal = S.vals[aPos],
+							decChange = currVal / prevVal - 1,
+ 							text = zt.format(currVal, S.Y.valFormat) +
+								" in " + dc.getName({d:1, a:aPos}) + (
+								(!currVal || !aPos) ? "" :
+								(!prevVal) ? "\n(new)" :
+								(decChange == 0) ? "\n(no change)" :
+								"\n(" + zt.format(decChange, S.Y.decFormat) + ")");
+						return {
+							layer:1, text:text,
+							layout:{
+								anchor:S.points[aPos], xAlign:"xCentre", yAlign:"bottom",
+								radial:(decChange < 0) ? 90 : 270, radialStart:S.Y.points.largeRadius, radialEnd:Y.branchLength
+							}
+						};
+					}
+				}
+			}
+		});
+	tAxis.toFront();
+	dAxis.toFront();
+
+	return;
+	logger("BudgetTreeMap(): Introductions...");
+	var init = document.location.hash;
+	if (init != "" && !isNaN(init) && init != dc.rootNode.a) { // If init is a valid number and not root
+		swarm.lock();
+		swarm.G.delay(800, function () {swarm.zoomTo(init * 1)});
+	} else {
+		swarm.superLock();
+		new zNarrator({base:Y.narrator, layout:L.narrator,
+			onClose:function () {
+				swarm.zoomTo(dc.rootNode.a);
+				sideBar.setHighlight();
+				swarm.superUnlock();
+			},
+			script:[
+				{
+					content:"<h3>Introduction</h3><p>Welcome to ChewyData's HotTree visualisation. Each block in the main panel represents a category:<ul><li>The <b>bigger</b> the block, the bigger that category is. <li><b>Green</b> represents an <b>increase</b> since the last period. <li><b>Red</b> represents a <b>decrease</b> since the last period.</p></ul><p><i>All figures are inflation adjusted.</i></p></ul>",
+					layout:{x:L.centre.x, y:L.getY(0.3), height:"auto"}
+				},{
+					content:"<h3>Highlighting</h3><p>You can highlight a block by moving your mouse over it. The panel on the left will update automatically.</p>",
+					layout:{x:L.sideBar.right, y:200, height:"auto"},
+					delay:Y.swarm.highlight.t,
+					action:function () {
+						swarm.zoomTo(dc.rootNode.a, function () {swarm.setHighlight(1919)});
+					}
+				},{
+					content:"<h3>Zooming</h3><p>Clicking on a block will zoom in on that block and show all the items that make up the category.</p><p><i>You can click 'Zoom Out' at the bottom of the screen to zoom back to the top.</i></p>",
+					layout:{x:L.sideBar.right, y:200, height:"auto"},
+					delay:Y.swarm.zoom.t,
+					action:function () {swarm.zoomTo(1919)}
+				},{
+					content:"<h3>Locking</h3><p>Clicking on a block will lock it in place...</p>",
+					layout:{x:L.sideBar.right, y:200, xAlign:"xCentre", yAlign:"yCentre", height:"auto"},
+					delay:Y.swarm.zoom.t,
+					action:function () {
+						swarm.zoomTo(1382);
+						sideBar.setHighlight();
+					}
+				},{
+					content:"<h3>Locking</h3><p>...allowing you to use the side panel to look at changes over time.</p><p><i>Move your mouse over a point in the line to see the value for that period.</i></p>",
+					layout:{x:20, y:L.centre.y, xAlign:"left", yAlign:"bottom", height:"auto"},
+					action:function () {sideBar.setHighlight(4)}
+				},{
+					content:"<h3>Advanced features</h3><p>You can also use the search box on the left to find specific items.</p><p><i>Note that items which were in previous periods but which no longer exists are not displayed.</i></p>",
+					layout:{x:180, y:-5, yAlign:"top", height:"auto"},
+					action:function () {sideBar.setHighlight()}
+				}
+			]
+		});
+	};
+	logger("BudgetTreeMap(): Done.");
+};
+</script>
+</head>
+<body>
+	<div id=menubar>
+		<ul>
+			<li><input id=searchBox value=Search... onclick=this.value='' onblur=this.value='Search...'></li>
+			<li id=credit><a href="http://www.chewydata.com">Created by Keith Ng</a></li>
+		</ul>
+	</div>
+	<div id="Raphael"></div>
+</body>
+</html>
