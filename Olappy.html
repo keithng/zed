@@ -336,7 +336,7 @@ window.onload = function () {
 			updateData:function (t, e, b, w) {
 				var S = this, i, j, rSpace,
 					d = sAxis.selected.a,
-					groups = groupsDC.getName({d:0, a:"all"});
+					groups = groupsDC.getMeta("name", {d:0, a:"all"});
 				// Calculate sum
 				S.vals = [];
 				for (i = 0; i < groups.length; i++) { // For every group
@@ -344,7 +344,7 @@ window.onload = function () {
 					rSpace = groups[i].slice(); // Grab rSpace for that group
 					for (j = 0; j < dc.getSize(d, true); j++) { // Run through sAxis.selected.a
 						rSpace[d] = j;
-						S.vals[i][j] = dc.calcData("val", {rs:rSpace}, "sum");
+						S.vals[i][j] = dc.calcData("sum", "val", {rs:rSpace});
 					};
 				};
 				yAxis.setShown([0, za.max(za.flatten(S.vals)) * 1.2], t, e, b, w); // Must set yAxis before replotting points
@@ -428,13 +428,13 @@ window.onload = function () {
 					},
 					curr:function (S, A, D, Y) {
 						var d, out = {},
-							rSpace = groupsDC.getName({d:0, as:A}); // rSpace for the current legend
+							rSpace = groupsDC.getMeta("name", {d:0, as:A}); // rSpace for the current legend
 						for (d = 0; d < rSpace.length; d++) out["row" + d] = {
 							text:
 								(d == sAxis.selected.a) ? "-" :
 								(!rSpace[d].length) ? "None" :
 								(rSpace[d].length == dc.shown[d].length) ? "All " + dc.getMeta("title", {d:d}) :
-								dc.getName({d:d, rs:rSpace}).join(", "),
+								dc.getMeta("name", {d:d, rs:rSpace}).join(", "),
 							"font-weight":(d == S.controlDimension) ? "bold" : "normal"
 						};
 						return out;
@@ -606,7 +606,7 @@ window.onload = function () {
 								D.initialising = false;
 								var i, rPos, same = true,
 									group = swarm.activeGroup,
-									rSpace = groupsDC.getName({d:0, a:group});
+									rSpace = groupsDC.getMeta("name", {d:0, a:group});
 								if (group == "all") { // If select all
 									for (i = 0; i < rSpace.length - 1; i++) {
 										if (!za.equals(rSpace[i][d], rSpace[i + 1][d])) same = false; // Check whether the groups share the same values in this dimension
@@ -622,7 +622,7 @@ window.onload = function () {
 								if (this.initialising) return;
 								var i, t = this.Y.select.t, e = this.Y.select.e,
 									group = za.asArray(swarm.activeGroup),
-									rSpace = groupsDC.getName({d:0, a:group});
+									rSpace = groupsDC.getMeta("name", {d:0, a:group});
 								for (i = 0; i < rSpace.length; i++) rSpace[i][d] = this.selected.r.slice();
 								swarm.refresh("all", t, e); // Swarm.updateData() happens here, which updates the values
 							}

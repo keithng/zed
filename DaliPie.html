@@ -79,9 +79,9 @@ var DaliPie = function (L, Y) {
 		},
 		getTooltipText:function (A, D) {
 			var S = this,
-				year = dc.getName({d:0, a:A[0]}),
-				industry = dc.getName({d:1, a:A[1]}),
-				measure = dc.getName({d:2, a:A[2]}),
+				year = dc.getMeta("name", {d:0, a:A[0]}),
+				industry = dc.getMeta("name", {d:1, a:A[1]}),
+				measure = dc.getMeta("name", {d:2, a:A[2]}),
 				weight = zt.format(dc.getData("weight", {as:A}), {m:"%", dp:1}),
 				changeVal = S.calcChange(A),
 				change = (changeVal) ? zt.format(changeVal, {m:"%", dp:1, forceSign:1}) : "No change";
@@ -118,8 +118,8 @@ var DaliPie = function (L, Y) {
 			if (S.parentAPos == ROOT) {
 				S.parentAPos = aPos;
 				x = {d:2, a:S.parentAPos};
-				logger("Zooming in to " + dc.getName(x) + ".");
-				S.refresh({all:true, mode:{forceFrameRedraw:true}}, S.Y.spin.t, S.Y.spin.e, function () { // Spin to new offset (angle of spin will be calculated by updateData)
+				logger("Zooming in to " + dc.getMeta("name", x) + ".");
+				S.refresh("all", S.Y.spin.t, S.Y.spin.e, function () { // Spin to new offset (angle of spin will be calculated by updateData)
 					var zoomArea = S.getBoundaries(x), // Find zoomArea for all children
 						ratio = {x:zoomArea.width / S.L.innerWidth, y:zoomArea.height / S.L.innerHeight};
 					if (ratio.x > ratio.y) { // x is dominant, change y so that zoomArea has the same aspect ratio as S.L
@@ -147,7 +147,7 @@ var DaliPie = function (L, Y) {
 			// Aggregration
 			} else {
 				x = {d:2, a:S.parentAPos};
-				logger("Zooming out from " + dc.getName(x) + ".");
+				logger("Zooming out from " + dc.getMeta("name", x) + ".");
 				S.remove("rings", S.Y.merge.t, S.Y.merge.e, null, S.K);
 				S.refresh({d:2, a:dc.findChildren(x), mode:{aggregate:true}}, S.Y.merge.t, S.Y.merge.e, function () {
 					S.aggregate({d:2, a:dc.findChildren(x)[0]});
@@ -163,15 +163,13 @@ var DaliPie = function (L, Y) {
 		},
 		updateData:function () {
 			var S = this;
-			S.baseDate = dc.getName({d:0, a:tAxis.baseSelected.a});
-			S.currDate = dc.getName({d:0, a:tAxis.selected.a});
+			S.baseDate = dc.getMeta("name", {d:0, a:tAxis.baseSelected.a});
+			S.currDate = dc.getMeta("name", {d:0, a:tAxis.selected.a});
 			if (S.parentAPos == ROOT) S.degOffset = S.Y.baseOffset; // Default angle
 			else {
-				var dec = dc.getData("weightStacked", {as:[tAxis.selected.a, iAxis.selected.a, S.parentAPos]}),
-					deg = zp.normaliseDeg(S.Y.zoomedOffset - 360 * zt.mid(0.5, dec.start, dec.end), -180, 180), // deg is the midDeg of the selected.a segment
-					candidates = [deg, (deg > 0) ? deg - 360 : deg + 360], // Test deg and the closest deg on the other side of 0
-					scores = [Math.abs(S.degOffset - candidates[0]), Math.abs(S.degOffset - candidates[1])]; // Find the candidate which is closest to the current offset, so the spin is < 180 degrees
-				S.degOffset = candidates[za.find(scores, 1, "min")];
+				var dec = dc.getData("weightStacked", {as:[tAxis.selected.a, iAxis.selected.a, S.parentAPos]}), // Find the segment
+					deg = S.Y.zoomedOffset - 360 * zt.mid(0.5, dec.start, dec.end); // Get deg of mid point
+				S.degOffset = zp.matchDeg(deg, S.degOffset); // Use matchDeg to ensure spin in the right direction
 			};
 		},
 		plan:{
@@ -204,7 +202,7 @@ var DaliPie = function (L, Y) {
 				type:"zMultiDrone", mask:"fixed",
 				curr:function (S, A, D, Y) {
 					var A = [tAxis.selected.a, iAxis.selected.a, S.parentAPos],
-						measure = dc.getName({d:2, a:A[2]}),
+						measure = dc.getMeta("name", {d:2, a:A[2]}),
 						weight = dc.getData("weight", {as:A}),
 						change = S.calcChange(A),
 						anchor = (S.parentAPos == ROOT) ? S.L.getPoint(0.5, 1) : S.L.getPoint(0.85, 0.95); // Fixed positions
@@ -235,8 +233,8 @@ var DaliPie = function (L, Y) {
 			slice:{
 				type:"zArc", mask:"mask",
 				curr:function (S, A, D, Y, mode) {
-					var measure = dc.getName({d:2, a:A[2]}),
-						inactive = (S.parentAPos != ROOT) && (A[2] != S.parentAPos) && (dc.findParent({d:2, a:A[2]}) != S.parentAPos),
+					var measure = dc.getMeta("name", {d:2, a:A[2]}),
+						inactive = (A[2] != S.parentAPos) && (dc.findParent({d:2, a:A[2]}) != S.parentAPos),
 						weight = dc.getData("weight", {as:A}),
 						dec = dc.getData("weightStacked", {as:A}),
 						aPos = (mode.aggregate || mode.disaggregate) ? dc.findParent({d:2, a:A[2]}) : A[2], // If it's being inserted or removed, use parent's value
@@ -280,7 +278,7 @@ var DaliPie = function (L, Y) {
 		updateData:function () {
 			var S = this,
 				A = dc.asASpace({rs:S.rSpace}),
-				val = dc.calcData("val", {as:[A[0], A[1], swarm.focused]}, "getNumbers"), // aSpace is awkward because S.selected needs to be an aPos while "all" needs to be an rPos
+				val = dc.calcData("getNumbers", "val", {as:[A[0], A[1], swarm.focused]}), // aSpace is awkward because S.selected needs to be an aPos while "all" needs to be an rPos
 				maxVal = za.max(val) * 1.2;
 			dAxis.setShown([0, maxVal], (S.frame == null) ? null : S.Y.select.t, S.Y.select.e, null, S.K);
 			S.toFront("bar");
@@ -290,7 +288,7 @@ var DaliPie = function (L, Y) {
 			title:{
 				type:"zTextBox", mask:"fixed",
 				init:function () {return {layout:L.title}},
-				curr:function (S, A, D) {return {text:dc.getName({d:2, a:swarm.focused})}}
+				curr:function (S, A, D) {return {text:dc.getMeta("name", {d:2, a:swarm.focused})}}
 			},
 			description:{
 				type:"zTextBox", mask:"fixed",

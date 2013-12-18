@@ -267,7 +267,7 @@ function HotTree (PROJECT) {
 // 		};
 		// Set up root node
 		dc.rootNode = dc.addRootNode(0, "Total"); // Create root node
-		calcHierarchyData("val", 0); // Checks that low-level nodes add up to high level nodes if they exist, or creates them if they don't NOTE to Andrew - this stacks all the values *AND* does the checking
+		calcHierarchyData("sum", "val", 0); // Checks that low-level nodes add up to high level nodes if they exist, or creates them if they don't NOTE to Andrew - this stacks all the values *AND* does the checking
 		// Parse names
 		for (i = 0; i < getSize(0); i++) {
 			meta[0].title[i] = meta[0].title[i] || meta[0].name[i]; // Newly created categories will have names but not titles
@@ -358,7 +358,7 @@ function HotTree (PROJECT) {
 		},
 		unsetFocus:function (b) {
 			var S = this, t = S.Y.highlight.t, e = S.Y.highlight.e;
-			S.focused = dc.getMetaObj({d:0, a:S.focused.parentPos});
+			S.focused = dc.getMeta("all", {d:0, a:S.focused.parentPos});
 			document.location.hash = S.focused.a;
 			S.unsetMode({d:0, a:S.focused.childrenPos}, t, e, function () {
 				S.unsetHighlight(b);
@@ -367,8 +367,9 @@ function HotTree (PROJECT) {
 		zoomTo:function (aPos, b) {
 			var S = this, t = S.Y.zoom.t, e = S.Y.zoom.e,
 				iterate = function () {S.zoomTo(aPos, b)},
-				path = dc.getRelationship(0, S.focused.a, (aPos != null) ? aPos : (S.focused) ? S.focused.parentPos : dc.rootNode.a),
-				m = path[0], n = path[1];
+				path = dc.findRelationship(0, S.focused.a, (aPos != null) ? aPos : (S.focused) ? S.focused.parentPos : dc.rootNode.a),
+				m = dc.getMeta("all", {d:0, a:path[0]}),
+				n = dc.getMeta("all", {d:0, a:path[1]});
 			S.lock();
  			S.clearEvents("all");
 			if (aPos == dc.rootNode.a) S.remove("zoomOutTab", t, e);
@@ -512,7 +513,7 @@ function HotTree (PROJECT) {
 							currVal = S.vals[CURR_YEAR],
 							decChange = currVal / baseVal - 1,
 							text = zt.format(currVal, S.Y.valFormat) +
-								" in " + dc.getName({d:1, a:CURR_YEAR}) + (
+								" in " + dc.getMeta("name", {d:1, a:CURR_YEAR}) + (
 								(!currVal) ? "" :
 								(!baseVal) ? "\n(new)" :
 								(decChange == 0) ? "\n(no change)" :
@@ -534,7 +535,7 @@ function HotTree (PROJECT) {
 					init:function (S) {return {layout:L.description}},
 					curr:function (S, A, D, Y) {
 						var A = S.aSelected, x = {d:0, a:A[0]},
-							node = dc.getMetaObj(x),
+							node = dc.getMeta("all", x),
 							i, aPos, title, prevVal, currVal, content, vals = [],
 							addList = function (vals, mode) {
 								var i, title, valChange, text = "",
@@ -596,7 +597,7 @@ function HotTree (PROJECT) {
 							currVal = S.vals[aPos],
 							decChange = currVal / prevVal - 1,
  							text = zt.format(currVal, S.Y.valFormat) +
-								" in " + dc.getName({d:1, a:aPos}) + (
+								" in " + dc.getMeta("name", {d:1, a:aPos}) + (
 								(!currVal || !aPos) ? "" :
 								(!prevVal) ? "\n(new)" :
 								(decChange == 0) ? "\n(no change)" :

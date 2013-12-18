@@ -233,10 +233,10 @@ window.onload = function () {
 	// Raw data
 	with (dc = new zDataCube(2).importStrip(rawStrip)) { // Load rawStrip
 		if (meta[0].hierarchy.length > 2) explode("Budget2012(): More than two generations. Your data is broken because some of the parentLabels already exist as a label.");
-		calcHierarchyData("val", 0);
-		addCalcData("val", {as:"all"}, {d:0, a:meta[0].hierarchy[0]}, "dec");
-		addCalcData("valDec", {as:"all"}, {d:0, a:meta[0].hierarchy[0]}, "stacked"); // Calculate stacked dec (used for horizontal positioning)
-		addCalcData("val", {as:"all"}, {d:1, a:[BASE_TIME, CURR_TIME]}, "change", true);
+		calcHierarchyData("sum", "val", 0);
+		addCalcData("dec", "val", {as:"all", mask:{d:0, a:meta[0].hierarchy[0]}});
+		addCalcData("stacked", "valDec", {as:"all", mask:{d:0, a:meta[0].hierarchy[0]}}); // Calculate stacked dec (used for horizontal positioning)
+		addCalcData("change", "val", {as:"all", mask:{d:1, a:[BASE_TIME, CURR_TIME]}});
 		setShown(0, meta[0].hierarchy[0]);
 	};
 
@@ -408,7 +408,7 @@ window.onload = function () {
 				type:"zTextBox", mask:"fixed",
 				init:function (S, A, D) {
 					return {
-						text:"Budget " + dc.getName({d:1, r:S.R[1] - 1}),
+						text:"Budget " + dc.getMeta("name", {d:1, r:S.R[1] - 1}),
 						layout:{anchor:S.L.getPoint(0.43, 0.12), xAlign:"xCentre", yAlign:"bottom"}
 					};
 				}
@@ -536,8 +536,8 @@ window.onload = function () {
 						posL = new zLayout(data.posL),
 						negL = new zLayout(data.negL),
 						shaderL = new zLayout(data.shaderL),
-						currName = dc.getName({d:0, a:S.focused}),
-						baseYear = dc.getName({d:1, a:BASE_TIME});
+						currName = dc.getMeta("name", {d:0, a:S.focused}),
+						baseYear = dc.getMeta("name", {d:1, a:BASE_TIME});
 					return {
 						title:{
 							text:currName,
@@ -637,11 +637,11 @@ window.onload = function () {
 				type:"zMultiDrone", mask:"fixed", ignore:true,
 				curr:function (S, A, D) {
 					var x = {d:0, as:[S.treeFocused, dc.asAPos({d:1, r:S.R[1]})]},
-						title = dc.getName(x),
+						title = dc.getMeta("name", x),
 						description = dc.getMeta("description", x),
 						val = dc.getData("val", x) || 0,
 						change = dc.getData("valChange", x),
-						year = dc.getName({d:1, r:S.R[1]}),
+						year = dc.getMeta("name", {d:1, r:S.R[1]}),
 						rows = [
 							20,
 							(S.Y.treeTip.title["font-size"] + 3) * Math.ceil(title.length / S.Y.treeTip.title.format.wrap) + 8,
