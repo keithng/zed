@@ -2,10 +2,10 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=9">
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<title>BudgetTreeMap: HotTree Visualisation</title>
 <script src="./lib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./lib/raphael-min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./lib/zed.js" type="text/javascript" charset="utf-8"></script>
-<title>BudgetTreeMap: HotTree Visualisation</title>
 <script src="./data/HotTree.data" type="text/javascript" charset="utf-8"></script>
 <script src="./data/HotTree-Strip.data" type="text/javascript" charset="utf-8"></script>
 <style type="text/css" charset="utf-8">
@@ -158,6 +158,7 @@ window.onload = function () {
 					negFill:"#a22",
 					nullFill:"#aF8Dc3",
 					"stroke-width":0.1,
+					stroke:"#666",
 					highlight:{"stroke-width":2},
 					fade:{opacity:0.15}
 				},
@@ -248,7 +249,6 @@ function HotTree (PROJECT) {
 	logger("BudgetTreeMap(): Collating and crunching data.");
 // 	var protocube = new zDataCube(2).importStrip(RAW_STRIP).exportProtoCube(); // Load rawStrip
 	var L = PROJECT.L, Y = PROJECT.Y, PROTOCUBE = PROJECT.protocube;
-
 	var CURR_YEAR, BASE_YEAR,
 		i, j, index = [];
 	with (PROTOCUBE.data) for (i = 0; i < val.length; i++) for (j = 0; j < val[i].length; j++) val[i][j] *= 1000;
@@ -256,7 +256,7 @@ function HotTree (PROJECT) {
 	// Read data
 	with (dc) { // Load rawStrip
 		importProtoCube(PROTOCUBE)
-		makeHierarchy(); // Creates the structure NOTE to Andrew - THIS IS IMPORTANT!
+		makeHierarchy(0); // Creates the structure NOTE to Andrew - THIS IS IMPORTANT!
 // 		// Verify data
 // 		if (meta[0].hierarchy.length > 2) { // If there are more than 2 generations
 // 			for (i = 0; i < meta[0].hierarchy[2].length; i++) { // List all of those in the 3rd generation

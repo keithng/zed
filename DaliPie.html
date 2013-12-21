@@ -1,266 +1,447 @@
 <!DOCTYPE HTML>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=9">
-<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-<script src="./lib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lib/raphael-min.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lib/zed.js" type="text/javascript" charset="utf-8"></script>
-<title>IBM Innovation Index Visualisation</title>
-<script src="./data/DaliPie.data" type="text/javascript" charset="utf-8"></script>
-<style type="text/css" charset="utf-8">
-	.text {color:#333; font-family:sans-serif; font-size:0.75em}
-	.descriptionTitle {font-family:sans-serif; font-size:18px; color:#f0593e}
-
-	.hoverText {font-family:sans-serif; font-size:1em}
-	.hoverTitle {font-family:sans-serif; font-size:1.8em}
-	.hoverSubtitle {font-family:sans-serif; font-size:1em; font-weight:bold}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>DaliPie: Animated Disaggregating Bivariate Pie</title>
+<script src="./lib/jquery-1.9.1.min.js"></script>
+<script src="./lib/raphael-min.js" type="text/javascript"></script>
+<script src="./lib/zed.js" type="text/javascript"></script>
+<script src="./data/DaliPie.data" type="text/javascript"></script>
+<style>
+	.text {color:#ccc; font-family:sans-serif; font-size:13px}
+	.alttext {color:#000; font-family:sans-serif; font-size:13px}
+	.subtitle {font-size:14px; font-weight:bold}
+	.title {font-size:18px; font-weight:bold}
 </style>
+
 <script type="text/javascript" charset="utf-8">
-var DaliPie = function (L, Y) {
-	var RINGS = [0, 0.25, 0.5],
-		ROOT = 0,
-		INIT_BASE_TIME = 7, INIT_TIME = 11,
-		INIT_INDUSTRY = 19,
-		INIT_CATEGORY = ROOT;
-
-	logger("DaliPie(): Chewing data.");
-	var dc = new zDataCube(3);
-	with (dc) {
-		if (protocube) importProtoCube(protocube);
-		else {
-
+window.onload = function () {
+	BASE_TIME = 1, INIT_TIME = 23;
+	WEIGHTS = ["Jun 2006 Weights", "Jun 2008 Weights", "Jun 2011 Weights"];
+	logger("DaliPie(): Initialising.");
+	var L = new zLayout({
+		width:Math.max(1200, $(window).width() - $("#Raphael").offset().left * 2), // Fit to screen, with minimum size
+		height:Math.max(600, $(window).height() - $("#Raphael").offset().top * 2.75), // Fit to screen, with minimum size
+		margin:50
+	});
+	with (L) {
+		L.tooltipBox = {
+			width:280, // TooltipBox is floating, so position doesn't need to be defined, and height is automatic (depending on text)
+			height:"auto"
 		};
-// 		makeHierarchy(2);
-		setShown(2, meta[2].hierarchy[1]); // Start at top level
+		L.tAxis = {
+			x:20, y:20,
+			width:width - 40, height:20
+		};
+		L.swarm = new zLayout({
+			anchor:getPoint(1, 1, true),
+			width:innerWidth * 0.55, height:innerHeight - 160,
+			xAlign:"right", yAlign:"bottom",
+			innerRadius:height * 0.1,
+			outerRadius:height * 0.25
+		});
+		L.sideSwarm = new zLayout({
+			x:left, y:bottom,
+			width:width * 0.4, height:innerHeight + 40,
+			xAlign:"left", yAlign:"bottom",
+			margin:60
+		});
+		L.credits = {
+			anchor:getPoint(1, 1, true),
+			xAlign:"right", yAlign:"bottom"
+		};
+	};
+	with (L.sideSwarm) {
+		L.fakeTAxis = {
+			anchor:getPoint(0, 0, true), // Last flag ("true") tells getPoint to innerSpace, which takes margins into consideration
+			width:innerWidth,
+			xAlign:"left", yAlign:"top"
+		};
+		L.dAxis = {
+			anchor:getPoint(0, 0, true),
+			width:height * 0.55, height:innerWidth,
+			xAlign:"right", yAlign:"top",
+			rotation:90
+		};
 	};
 
-	logger("DaliPie(): Drawing accessories.");
-	var background = new zRectangle({layout:L, base:Y.background}),
-		tAxis = new zSlideAxis({
-			layout:L.tAxis, style:Y.tAxis,
-			dc:dc, d:0, baseSelected:{a:INIT_BASE_TIME}, selected:{a:INIT_BASE_TIME},
-			plan:{axisTitle:null, axisLine:null}
-		}),
-		iAxis = new zScrollAxis({
-			dc:dc, d:1, expanded:false, selected:{a:INIT_INDUSTRY},
-			layout:L.iAxis, style:Y.iAxis,
-			plan:{
+	var Y = zt.parseStyle({
+		base:{
+			lines:{
+				"stroke-width":0.3,
+				stroke:"#ccc"
+			}
+		},
+		introText:{
+			"z-index":9999, // To top
+			"border":"solid 1px #c4dde2",
+			"background-color":"#d4edf2",
+			"font-family":"sans-serif",
+			"font-size":"13px",
+			"text-align":"center",
+			opacity:0.9,
+			margin:L.height * 0.35
+		},
+		tAxis:{
+			maxNotches:20,
+			select:{t:300},
+			notchLabel:{
+				margin:7,
+				"font-size":12,
+				"font-weight":"bold",
+				fill:"#aaa"
+			},
+			baseNotch:{
+				margin:5,
+				"font-size":12,
+				"font-weight":"bold",
+				highlighted:{background:{opacity:1}},
 				background:{
-					type:"zRectangle", mask:"fixed",
-					curr:function (S, A, D, Y) {
-						return {
-							layer:0,
-							layout:{anchor:S.L.anchor, width:S.L.height, height:S.L.width, xAlign:"xCentre"}
-						};
-					}
+					rounded:10,
+					fill:"white",
+					opacity:0.75
 				}
 			}
+		},
+		swarm:{
+			titlePos:1.6, // Extension of the title, as a ratio of the radius
+			baseTitleDeg:-90,
+			zoomedTitleDeg:-130,
+			baseOffset:0,
+			zoomedOffset:-135,
+			minZoomDeg:35,
+			spin:{t:600, e:"<>"},
+			zoom:{t:600, e:"<>"},
+			merge:{t:600, e:"<>"},
+			rings:{
+				label:{
+					"font-weight":"bold",
+					fill:"#888"
+				},
+				ring:{baseStyle:"base.lines"}
+			},
+			title:{
+				fill:"#888",
+				title:{
+					format:["wrap", 22],
+					"font-size":28,
+					"font-weight":"bold"
+				},
+				subtitle:{
+					"font-size":16
+				}
+			},
+			slice:{
+// 				stroke:null,
+// 				"stroke-opacity":0,
+				opacity:0.9,
+				"stroke-width":0.2,
+				"stroke-opacity":1,
+				highlighted:{
+	 				"stroke-opacity":0,
+					opacity:1
+				},
+				faded:{opacity:0.1}
+			}
+		},
+		sideSwarm:{
+			select:{t:400, e:"<>"},
+			text:{},
+			bar:{
+				rounded:0, // Force rounded so complex rectangles are drawn
+				parallelSize:1,
+				"stroke-width":0.5
+			}
+		},
+		dAxis:{
+			maxNotches:16,
+			minNotchGap:0.01,
+			axisTitle:{
+				fill:"#ccc"
+			},
+			notch:{
+				format:["number", "%"],
+				fill:"#ccc",
+				radialStart:-L.sideSwarm.innerWidth,
+				radialEnd:2,
+				branch:{baseStyle:"base.lines"},
+				baseBranch:{
+					stroke:"#ccc",
+					"stroke-width":2,
+					opacity:0.5
+				}
+			}
+		},
+		tooltipBox:{},
+		credits:{fill:"#ccc"},
+		background:{fill:"#060606", opacity:0.1}
+	});
+
+	var ROOT, RINGS = [0, 0.2, 0.4];
+
+	logger("DaliPie(): Collating and crunching data.");
+	var dc = new zDataCube(3);
+	with (dc) {
+		importStrip(rawStrip);
+
+		// Categories
+		ROOT = meta[2].hierarchy[0][0];
+ 		setShown(2, meta[2].hierarchy[1]);
+ 		calcHierarchyData("stacked", "weight", 2);
+		setColour({d:2}, null, "hierarchic");
+	};
+
+	logger("DaliPie(): Setting up canvas.");
+	PAPER = Raphael("Raphael", L.width, L.height);
+	//if ($.browser.msie && parseInt($.browser.version) < 9) PAPER.noAnimation = true;
+	logger("DaliPie(): Drawing accessories.");
+	var background = new zRectangle({layout:L, base:Y.background}),
+		credits = new zTextBox({text:"Created by Keith Ng", layout:L.credits, base:Y.credits}),
+		tAxis = new zSlideAxis({
+			layout:L.tAxis, style:Y.tAxis,
+			dc:dc, d:0,
+			baseSelected:{a:0},
+			selected:{a:dc.getSize(0) - 1},
+			plan:{axisTitle:null, axisLine:null}
 		}),
-		fakeTAxis = new zSmartAxis({layout:L.fakeTAxis, dc:dc, d:0, plan:{axisTitle:null, axisLine:null, label:null}}),
-		dAxis = new zAxis({layout:L.dAxis, style:Y.dAxis, title:"Score", plan:{axisLine:null}}),
+		fakeTAxis = new zSmartAxis({
+			layout:L.fakeTAxis, dc:dc, d:0,
+			plan:{axisTitle:null, axisLine:null, notch:null, notchLabel:null}
+		}),
+		dAxis = new zAxis({
+			layout:L.dAxis, style:Y.dAxis,
+			scale:[0, 0.5], title:"Quarterly Change",
+			plan:{axisLine:null}
+		}),
 		tooltipBox = new zHTMLTooltipBox({layout:L.tooltipBox, base:Y.tooltipBox});
-	background.click(function () {swarm.zoom(swarm.parentAPos)});
 
 	logger("DaliPie(): Drawing main pie.");
 	var swarm = new zSwarm({ // Resources
-		layout:L.swarm.clone(), style:Y.swarm,
-		dc:dc, axes:{i:iAxis, t:tAxis},
-		rSpace:[tAxis.selected.r, iAxis.selected.r, "all"],
-		focused:INIT_CATEGORY,
-		parentAPos:INIT_CATEGORY,
-		degOffset:Y.swarm.baseOffset,
-		pieCentre:L.swarm.getPoint(0.5, 0.5),
-		radius:L.swarm.baseRadius,
-		calcChange:function (A) {
-			var base = dc.getData("val", {as:[tAxis.baseSelected.a, A[1], A[2]]}),
-				curr = dc.getData("val", {as:A}),
-				out = curr / base - 1;
+		layout:L.swarm, style:Y.swarm,
+		dc:dc, axes:{t:tAxis}, d:2,
+		selected:{a:ROOT},
+		rSpace:[tAxis.selected.r, 0, "all"],
+		getState:function (A) {
+			var S = this,
+				parent = dc.findParent({d:2, as:A});
+			return (
+				(A[2] == S.selected.a) ? "parent" :
+				(parent == S.selected.a) ? "child" :
+				"inactive");
+		},
+		getWeightStacked:function (A) {
+			return dc.getData("weightStacked", {as:[tAxis.baseSelected.a, A[1], A[2]]});
+		},
+		getWeight:function (A) {
+			return dc.getData("weight", {as:[tAxis.baseSelected.a, A[1], A[2]]});
+		},
+		getVal:function (A) {
+			return dc.getData("val", {as:A});
+		},
+		getDeg:function (A) {
+			var S = this,
+				dec = S.getWeightStacked(A);
+			return {
+				start:S.offset + zp.decToDeg(dec.start),
+				end:S.offset + zp.decToDeg(dec.end)
+			};
+		},
+		getChange:function (A, baseTime) {
+			if (baseTime == null) baseTime = tAxis.baseSelected.a;
+			var S = this,
+				base = S.getVal([baseTime, A[1], A[2]]),
+				curr = S.getVal(A),
+				out = (curr / base);
 			return (isNaN(out)) ? 0 : out;
 		},
+// 		// Dynamic weight mode
+// 		getWeightStacked:function (A) {
+// 			return dc.getData("weightStacked", {as:A});
+// 		},
+// 		getWeight:function (A) {
+// 			return dc.getData("weight", {as:A});
+// 		},
+// 		getChange:function (A, baseTime) {
+// 			if (A[0] == 0) return 1;
+// 			var weights = dc.getData("weight", {as:["all", 0, A[2]]}),
+// 				currWeight = this.getWeight(A),
+// 				aPos = za.find(weights, currWeight);
+// 			var S = this,
+// 				base = S.getVal([aPos, A[1], A[2]]),
+// 				curr = S.getVal(A),
+// 				out = (curr / base);
+// 			return (isNaN(out)) ? 0 : out;
+// 		},
 		getTooltipText:function (A, D) {
 			var S = this,
-				year = dc.getMeta("name", {d:0, a:A[0]}),
-				industry = dc.getMeta("name", {d:1, a:A[1]}),
-				measure = dc.getMeta("name", {d:2, a:A[2]}),
-				weight = zt.format(dc.getData("weight", {as:A}), {m:"%", dp:1}),
-				changeVal = S.calcChange(A),
-				change = (changeVal) ? zt.format(changeVal, {m:"%", dp:1, forceSign:1}) : "No change";
-			return "<div class='hoverText'><div class='hoverTitle'>" + measure + "</div>" +
-				"<div class='hoverSubtitle'>" + industry + "</div><br>" +
-				"<b>" + change + "</b> between " + S.baseDate + " and " + year + "<br>" +
-				"Contributes <b>" + weight + "</b> towards overall score" +
-				"<b><i>" + ((D.role == "bar") ? "<br><br>Click to select this year" : (A[2] == ROOT) ? "" : "<br><br>Click to zoom " + ((S.parentAPos == ROOT) ? "in" : "out")) + "</i></b></div>";
+				asPercent = function (dec) {
+					return (dec) ? zt.format(dec, {m:"%", dp:1, forceSign:1}) : "No change";
+				},
+				time = dc.getName({d:0, as:A}),
+				baseTime = dc.getName(tAxis.baseSelected),
+				category = dc.getMeta("description", {d:2, as:A}),
+				weight = dc.getData("weight", {as:A}),
+				change = S.getChange(A) - 1,
+				currChange = (A[0] > 0) ? S.getChange(A, A[0] - 1) - 1 : null;
+			return "<div class='alttext'>" +
+				"<div class='title'>" + category + "</div>" +
+				((A[0] > 0) ? "<br><b>" + asPercent(currChange) + "</b> in " + time : "") +
+				"<br><b>" + asPercent(change) + "</b> between " + baseTime + " and " + time +
+				"<br><b>" + asPercent(weight) + "</b> of " + baseTime + " CPI basket" +
+				"<b><i>" + ((D.role == "bar") ? "<br><br>Click to select this period" : (A[2] == ROOT) ? "" : "<br><br>Click to zoom " + ((S.zoomed) ? "out" : "in")) + "</i></b></div>";
 		},
-		// Calculate the boundaries of all the child segments
-		getBoundaries:function (x) {
-			var S = this,
-				i, j, A, weight, currDeg, currRadius,
-				children = dc.findChildren(x),
-				points = [];
-			for (i = 0; i < dc.getSize(0, true); i++) { // For every valid time
-				A = [dc.shown[0][i], iAxis.selected.a, S.parentAPos];
-				weight = dc.getData("weight", {as:A});
-				currDeg = S.Y.zoomedOffset - 90 - 180 * weight;
-				if (weight) for (j = 0; j < children.length; j++) { // For each child element
-					A[2] = children[j];
-					weight = dc.getData("weight", {as:A});
-					currRadius = S.radius * Math.sqrt(S.calcChange(A) + 1);
-					points = points.concat(zp.arcToPoints(S.pieCentre, currRadius * 0.2, currRadius, currDeg, currDeg += 360 * weight)); // Calculate its edge points
-				};
-			};
-			return zp.completeBox(zp.pointsToBox(points)); // Turn points into a box - that's the boundary
+		updateSpin:function () {
+			var S = this, oldDeg, newDeg,
+				A = [tAxis.selected.a, 0, S.selected.a];
+			if (S.zoomed) {
+				oldDeg = zo.midStack(S.getDeg(A)); // Find bisect of segment
+				newDeg = S.Y.zoomedOffset + S.offset - oldDeg; // Convert to offset
+				S.offset = zp.matchDeg(newDeg, S.offset); // Use matchDeg to ensure spin in the right direction
+			} else S.offset = S.Y.baseOffset; // Default angle
 		},
-		zoom:function (aPos) {
-			var S = this, x;
-			tooltipBox.hide();
- 			if (aPos == ROOT) return; // Do not zoom to root
-			// Disaggregration
-			if (S.parentAPos == ROOT) {
-				S.parentAPos = aPos;
-				x = {d:2, a:S.parentAPos};
-				logger("Zooming in to " + dc.getMeta("name", x) + ".");
-				S.refresh("all", S.Y.spin.t, S.Y.spin.e, function () { // Spin to new offset (angle of spin will be calculated by updateData)
-					var zoomArea = S.getBoundaries(x), // Find zoomArea for all children
-						ratio = {x:zoomArea.width / S.L.innerWidth, y:zoomArea.height / S.L.innerHeight};
-					if (ratio.x > ratio.y) { // x is dominant, change y so that zoomArea has the same aspect ratio as S.L
-						zoomArea.height = S.L.innerHeight * ratio.x;
-						zoomArea.top = zoomArea.yCentre - zoomArea.height / 2;
-						zoomArea.bottom = zoomArea.yCentre + zoomArea.height / 2;
-					} else { // y is dominant, change x so that zoomArea has the same aspect ratio as S.L
-						zoomArea.width = S.L.innerWidth * ratio.y;
-						zoomArea.left = zoomArea.xCentre - zoomArea.width / 2;
-						zoomArea.right = zoomArea.xCentre + zoomArea.width / 2;
-					};
-					S.radius /= Math.max(ratio.x, ratio.y);
-					S.pieCentre = S.L.getPoint(
-						1 - zt.calcDec(S.L.centre.x, zoomArea.left, zoomArea.right),
-						1 - zt.calcDec(S.L.centre.y, zoomArea.top, zoomArea.bottom), true
-					);
-					S.refresh("all", S.Y.zoom.t, S.Y.zoom.e, function () { // Zoom into focused slice
-						S.add("rings", S.Y.merge.t, S.Y.merge.e, null, S.K);
-						S.disaggregate(x);
-						S.refresh("all", S.Y.merge.t, S.Y.merge.e);
-						iAxis.layer(); // Bring iAxis in front of swarms
-						tAxis.layer(); // Bring tAxis in front of swarms
-					});
-				});
-			// Aggregration
-			} else {
-				x = {d:2, a:S.parentAPos};
-				logger("Zooming out from " + dc.getMeta("name", x) + ".");
-				S.remove("rings", S.Y.merge.t, S.Y.merge.e, null, S.K);
-				S.refresh({d:2, a:dc.findChildren(x), mode:{aggregate:true}}, S.Y.merge.t, S.Y.merge.e, function () {
-					S.aggregate({d:2, a:dc.findChildren(x)[0]});
-					iAxis.layer(); // Bring iAxis in front of swarms
-					S.parentAPos = ROOT;
-					S.pieCentre = S.L.getPoint(0.5, 0.5);
-					S.radius = L.swarm.baseRadius;
-					S.refresh({all:true, mode:{noUpdateData:true}}, S.Y.zoom.t, S.Y.zoom.e, function () { // Zoom out
-						S.refresh({all:true, mode:{forceFrameRedraw:true}}, S.Y.spin.t, S.Y.spin.e); // Spin back into position
-					});
-				});
-			};
-		},
-		updateData:function () {
+		updateZoom:function () {
 			var S = this;
-			S.baseDate = dc.getMeta("name", {d:0, a:tAxis.baseSelected.a});
-			S.currDate = dc.getMeta("name", {d:0, a:tAxis.selected.a});
-			if (S.parentAPos == ROOT) S.degOffset = S.Y.baseOffset; // Default angle
-			else {
-				var dec = dc.getData("weightStacked", {as:[tAxis.selected.a, iAxis.selected.a, S.parentAPos]}), // Find the segment
-					deg = S.Y.zoomedOffset - 360 * zt.mid(0.5, dec.start, dec.end); // Get deg of mid point
-				S.degOffset = zp.matchDeg(deg, S.degOffset); // Use matchDeg to ensure spin in the right direction
+			if (S.zoomed) {
+				var zoomArea, points = [],
+					children = dc.findChildren(S.selected);
+				dc.forSpaces(["all", 0, children], function (x) { // Targeted category and all its children
+					var deg = S.getDeg(x.as),
+						val = S.getChange(x.as),
+						arcPoints = zp.arcToPoints(S.centre, S.radius * 0.2, S.radius * Math.sqrt(val), deg.start, deg.end); // Calculate its edge points
+					points = points.concat(arcPoints);
+				});
+				zoomArea = zp.completeBox(zp.pointsToBox(points)); // Turn points into a box - that's the zoomArea
+				S.L.zoom(zoomArea); // Zoom into it
+			};
+			S.radius = S.L.innerHeight * 0.5;
+			S.centre = S.L.getPoint(0.5, 0.5, true);
+			S.L.unzoom(); // Always unzoom after calculating new radius/centre
+		},
+		onInit:function () {
+			var S = this;
+			S.updateSpin();
+			S.updateZoom();
+		},
+		updateData:function () {},
+		select:function (A) {
+			var S = this, parent, children;
+			tooltipBox.hide();
+ 			if (A[2] == ROOT) return; // Do not zoom to root
+			// Aggregration (zoom out)
+			if (S.zoomed) {
+				parent = dc.findParent(S.selected);
+				children = dc.findChildren(S.selected);
+				S.refresh({d:S.d, a:children, mode:{aggregate:true}}, S.Y.merge.t, S.Y.merge.e, function () { // Merge children back into parent
+					S.aggregate({d:S.d, a:children[0]}); // Remove children
+					tAxis.layer(); // Bring tAxis in front of swarms
+					S.selected = {d:S.d, a:parent};
+					S.zoomed = false;
+					S.updateZoom();
+					S.updateSpin();
+					S.refresh("all", S.Y.zoom.t, S.Y.zoom.e); // Zoom out and spin back into position
+				});
+			// Disaggregration (zoom in)
+			} else {
+				S.selected = {d:S.d, a:A[S.d]};
+				S.zoomed = true;
+				S.updateSpin();
+				S.refresh("all", S.Y.spin.t, S.Y.spin.e, function () { // Spin to new offset (angle of spin will be calculated by updateData once CATEGORY is updated)
+					S.updateZoom();
+					S.refresh("all", S.Y.zoom.t, S.Y.zoom.e, function () { // Find boundary for all children and zoom in
+						S.disaggregate(S.selected);
+						tAxis.layer(); // Bring tAxis in front of swarms
+						S.refresh("all", S.Y.merge.t, S.Y.merge.e);
+					});
+				});
 			};
 		},
 		plan:{
 			rings:{
-				type:"zMultiDrone", mask:"fixed", ignore:true, // Ignored to start, will only be added when zoomed in
-				init:function (S, A, D, Y) {
-					var i, radius, out = [];
-					for (i = 0; i < RINGS.length; i++) { // Create a new object for each ring
-						radius = S.radius * Math.sqrt(1 + RINGS[i]);
+				type:"zMultiDrone", mask:"fixed",
+				init:function (S, A, D) {
+					var i, val, out = [];
+					for (i = 0; i < RINGS.length; i++) {
+						val = RINGS[i];
 						out.push({
 							type:"zMultiDrone",
 							label:{
 								type:"zTextBox",
-								text:zt.format(RINGS[i], "%"),
-								layout:{
-									anchor:zp.addVector(Y.labelDeg, radius, S.pieCentre),
-									xAlign:"right", yAlign:"bottom"
-								}
+								text:zt.format(val, "%"),
+								layout:{xAlign:"right", yAlign:"bottom"}
+							},
+							ring:{type:"zCircle"}
+						})
+					};
+					return out;
+				},
+				curr:function (S, A, D) {
+					var i, val, radius, out = [];
+					for (i = 0; i < RINGS.length; i++) {
+						val = 1 + RINGS[i];
+						radius = S.radius * Math.sqrt(val);
+						out.push({
+							label:{
+								layout:zp.addVector(225, radius, S.centre)
 							},
 							ring:{
-								type:"zCircle",
-								circle:{centre:S.pieCentre, radius:radius}
+								circle:{centre:S.centre, radius:radius}
 							}
-						});
+						})
 					};
 					return out;
 				}
 			},
 			title:{
 				type:"zMultiDrone", mask:"fixed",
-				curr:function (S, A, D, Y) {
-					var A = [tAxis.selected.a, iAxis.selected.a, S.parentAPos],
-						measure = dc.getMeta("name", {d:2, a:A[2]}),
-						weight = dc.getData("weight", {as:A}),
-						change = S.calcChange(A),
-						anchor = (S.parentAPos == ROOT) ? S.L.getPoint(0.5, 1) : S.L.getPoint(0.85, 0.95); // Fixed positions
+				init:function (S, A, D) {
 					return {
-						topText:{
-							type:"zTextBox",
-							text:measure + " [" + zt.format(change, {mode:"%", dp:1, forceSign:true}) + "]",
-							layout:{anchor:anchor, xAlign:"xCentre", yAlign:"bottom"}
+						title:{type:"zTextBox", layout:{yAlign:"bottom"}},
+						subtitle:{type:"zTextBox", layout:{yAlign:"top"}}
+					};
+				},
+				curr:function (S, A, D) {
+					var name = (S.zoomed) ? dc.getName(S.selected) : "Total",
+						val = S.getChange([tAxis.selected.a, 0, S.selected.a]) - 1,
+						time = dc.getName(tAxis.selected),
+						baseTime = dc.getName(tAxis.baseSelected),
+						layout = {
+							anchor:S.centre,
+							radial:(S.zoomed) ? S.Y.zoomedTitleDeg : S.Y.baseTitleDeg,
+							radialStart:S.radius * Math.sqrt(S.Y.titlePos)
+						};
+					return {
+						title:{
+							text:name + " (" + zt.format(val, {mode:"%", dp:1, forceSign:true}) + ")",
+							layout:layout
 						},
-						bottomText:{
-							type:"zTextBox",
-							text:"from " + S.baseDate + " to " + S.currDate,
-							layout:{anchor:anchor, xAlign:"xCentre", yAlign:"top"}
-						},
-						mouseEvents:function (D) {
-							D.tooltip(null, tooltipBox, {width:L.tooltipBox.width});
-							D.hover(function () {
-								swarm.focused = A[2];
-								sideSwarm.refresh("all", sideSwarm.Y.select.t, sideSwarm.Y.select.e);
-								swarm.highlight({d:2, a:A[2]}, sideSwarm.Y.select.t, sideSwarm.Y.select.e, null, sideSwarm.K);
-							});
-							D.click(function () {S.zoom(A[2])});
-						},
-						tooltipText:S.getTooltipText(A, D)
+						subtitle:{
+							text:"from " + baseTime + " to " + time,
+							layout:layout
+						}
 					};
 				}
 			},
 			slice:{
 				type:"zArc", mask:"mask",
 				curr:function (S, A, D, Y, mode) {
-					var measure = dc.getMeta("name", {d:2, a:A[2]}),
-						inactive = (A[2] != S.parentAPos) && (dc.findParent({d:2, a:A[2]}) != S.parentAPos),
-						weight = dc.getData("weight", {as:A}),
-						dec = dc.getData("weightStacked", {as:A}),
-						aPos = (mode.aggregate || mode.disaggregate) ? dc.findParent({d:2, a:A[2]}) : A[2], // If it's being inserted or removed, use parent's value
-						colour = dc.getMeta("colour", {d:2, a:aPos}),
-						change = (!weight) ? 0 : S.calcChange([A[0], A[1], aPos]);
+					var deg = S.getDeg(A),
+						aPos = (mode.aggregate || mode.disaggregate) ? dc.findParent({d:S.d, as:A}) : A[S.d], // If it's being inserted or removed, use parent's value
+						colour = dc.getMeta("colour", {d:S.d, a:aPos}),
+						opacity = (S.getState(A) == "inactive") ? Y.faded.opacity : Y.opacity, // Element is inactive if it is not a child of the selected element
+						val = S.getChange([A[0], A[1], aPos]);
 					return {
-						arc:{
-							centre:S.pieCentre,
-							degStart:zp.decToDeg(dec.start) + S.degOffset,
-							degEnd:zp.decToDeg(dec.end) + S.degOffset,
-							innerRadius:0,
-							outerRadius:S.radius * Math.sqrt(change + 1),
-							minSeg:4
-						},
-						fill:colour,
-						opacity:(inactive) ? 0.1 : 0.8,
+						arc:{centre:S.centre, innerRadius:0, outerRadius:S.radius * Math.sqrt(val), degStart:deg.start, degEnd:deg.end, minSeg:4},
+						fill:colour, opacity:opacity,
 						mouseEvents:function (D) {
-							if (!inactive) {
+							if (S.getState(D.A) == "child") { // Element is inactive if it is not a child of the selected element
+	 							D.hoverHighlight(100);
 								D.tooltip(null, tooltipBox, {width:L.tooltipBox.width});
 								D.hover(function () {
-									swarm.focused = A[2];
+									sideSwarm.selected = {d:2, a:D.A[2]}; // Use .selected rather than .setSpace() to control sideSwarm because if parent is selected, .setSpace() won't work because parent isn't part of .shown
 									sideSwarm.refresh("all", sideSwarm.Y.select.t, sideSwarm.Y.select.e);
-									swarm.highlight({d:2, a:A[2]}, sideSwarm.Y.select.t, sideSwarm.Y.select.e, null, sideSwarm.K);
 								});
 							};
-							D.click(function () {S.zoom(D.A[2])});
+							D.click(function () {S.select(D.A)});
 						},
 						tooltipText:S.getTooltipText(A, D)
 					};
@@ -272,35 +453,67 @@ var DaliPie = function (L, Y) {
 	logger("DaliPie(): Drawing side bar graph.");
 	var sideSwarm = new zSwarm({ // Resources
 		layout:L.sideSwarm, style:Y.sideSwarm,
-		dc:dc, d:1,
-		rSpace:["all", iAxis.selected.r, "na"],
-		axes:{i:iAxis, t:tAxis},
+		dc:dc, selected:{d:2, a:0},
+		rSpace:["all", 0, "na"],
+		axes:{i:fakeTAxis, d:dAxis, t:tAxis},
+		getVal:function (time, baseTime) {
+			var S = this;
+			return swarm.getChange([time, 0, S.selected.a], baseTime) - 1;
+		},
+		getWeight:function (time) {
+			var S = this;
+			return dc.getData("weight", {as:[time, 0, S.selected.a]});
+		},
 		updateData:function () {
-			var S = this,
-				A = dc.asASpace({rs:S.rSpace}),
-				val = dc.calcData("getNumbers", "val", {as:[A[0], A[1], swarm.focused]}), // aSpace is awkward because S.selected needs to be an aPos while "all" needs to be an rPos
-				maxVal = za.max(val) * 1.2;
-			dAxis.setShown([0, maxVal], (S.frame == null) ? null : S.Y.select.t, S.Y.select.e, null, S.K);
-			S.toFront("bar");
-			S.colour = dc.getMeta("colour", {d:2, a:swarm.focused});
+			var S = this, i, val = [];
+			for (i = 0; i < dc.getSize(0); i++) {
+				val.push(S.getVal(i));
+			};
+			range = [
+				Math.min(za.min(val) * 1.2, 0),
+				Math.max(za.max(val) * 1.2, 0)
+			];
+			dAxis.setShown(range, (S.frame == null) ? null : S.Y.select.t, S.Y.select.e, null, S.K);
+			S.name = dc.getName(S.selected);
+			S.colour = dc.getMeta("colour", S.selected);
+			S.baseLine = dAxis.getPoint(0).y;
 		},
 		plan:{
-			title:{
-				type:"zTextBox", mask:"fixed",
-				init:function () {return {layout:L.title}},
-				curr:function (S, A, D) {return {text:dc.getMeta("name", {d:2, a:swarm.focused})}}
-			},
-			description:{
-				type:"zTextBox", mask:"fixed",
-				init:function () {return {layout:L.description}},
-				curr:function (S, A, D) {return {text:dc.getMeta("description", {d:2, a:swarm.focused})}}
+			text:{
+				type:"zHTML", mask:"fixed",
+				init:function (S, A, D) {
+					return {
+						layout:{
+							anchor:S.L.getPoint(0, 1, true),
+							width:S.L.innerWidth
+						}
+					};
+				},
+				curr:function (S, A, D) {
+					var parentName = dc.getFamily("parent", "name", S.selected),
+						children = dc.findChildren(S.selected),
+						time = dc.getName(tAxis.selected),
+						baseTime = dc.getName(tAxis.baseSelected),
+						weight = swarm.getWeight([tAxis.selected.a, 0, S.selected.a]),
+						change = S.getVal(tAxis.selected.a),
+						quarterChange = S.getVal(tAxis.selected.a, tAxis.selected.a - 1);
+					return {content:
+						"<div class='text title'>" + S.name + "</div><p>" +
+						"<div class='text'>" + S.name + ((children.length) ? " contains " + children.length + " subcategories" : " is a subcategory of " + parentName) +
+						" and was " + zt.format(weight, {m:"%", dp:1}) + " of the " + baseTime + " CPI basket.<p>" +
+						"Prices " + ((quarterChange < 0) ? "fell" : "rose") + " by " +
+						zt.format(quarterChange, {m:"%", dp:1, noSign:1}) + " in the " + time + " quarter, " +
+						"and were " + zt.format(change, {m:"%", dp:1, noSign:1}) + ((change < 0) ? " lower" : " higher") +
+						" than they were in " + baseTime + ".</div>"
+					};
+				}
 			},
 			bar:{
 				type:"zRectangle", mask:"mask",
 				init:function (S, A, D, Y) {
 					return {
 						layout:{
-							width:fakeTAxis.getLength(Y.parallelSize),
+							width:S.axes.i.getLength(Y.parallelSize),
 							xAlign:"xCentre", yAlign:"bottom"
 						},
 						mouseEvents:function (D) {
@@ -314,292 +527,42 @@ var DaliPie = function (L, Y) {
 				},
 				curr:function (S, A, D) {
 					var x = {d:0, a:A[0]},
-						val = dc.getData("val", {as:[A[0], A[1], swarm.focused]});
+						val = S.getVal(A[0]);
 					return {
+						tooltipText:swarm.getTooltipText([A[0], A[1], S.selected.a], D),
 						layout:{
-							anchor:fakeTAxis.getPoint(x),
-							height:dAxis.getLength(val)
+							x:S.axes.i.getPoint(x).x, y:S.baseLine,
+							height:S.axes.d.getLength(val)
 						},
 						fill:S.colour,
-						opacity:(A[0] == tAxis.selected.a) ? 1 : 0.7,
-						tooltipText:swarm.getTooltipText([A[0], A[1], swarm.focused], D)
+						opacity:(A[0] == tAxis.selected.a) ? 1 : 0.5
 					};
 				}
 			}
 		}
 	});
-
-	logger("DaliPie(): Initialising keyboard accessibility.");
-	$(document).keydown(function (e) {
-		if (swarm.G.animating || iAxis.G.animating || sideSwarm.G.animating) return;
-		// Up/down
-		if (e.keyCode == 38 || e.keyCode == 40) {
-			tooltipBox.hide(100, "<>");
-			swarm.reset("all", 500, "<>");
-			if (e.keyCode == 38) iAxis.scrollBy(-1, 500, "<>"); // Up
-			else if (e.keyCode == 40) iAxis.scrollBy(1, 500, "<>"); // Down
-		// Left/right
-		} else if (e.keyCode == 37 || e.keyCode == 39) {
-			if (iAxis.expanded) iAxis.collapse({a:iAxis.selected.a}, 500, "<>");
-			if (e.keyCode == 37 && tAxis.selected.r > tAxis.range[0]) tAxis.axisSelect({a:tAxis.selected.a - 1}, 500, "<>"); // Left
-			else if (e.keyCode == 39 && tAxis.selected.r < tAxis.range[1]) tAxis.axisSelect({a:tAxis.selected.a + 1}, 500, "<>"); // right
-		// Page up/page down
-		} else if (e.keyCode == 33 || e.keyCode == 34) {
-			if (iAxis.expanded) iAxis.collapse({a:iAxis.selected.a}, 500, "<>");
-			var aPos, D, children = dc.findChildren({d:2, a:swarm.parentAPos}),
-				rPos = za.find(children, swarm.highlighted);
-			if (e.keyCode == 33) { // Page up
-				if (rPos == null || rPos == 0) aPos = za.last(children);
-				else aPos = children[rPos - 1];
-			} else { // Page down
-				if (rPos == null || rPos == children.length - 1) aPos = children[0];
-				else aPos = children[rPos + 1];
-			};
-			D = swarm.get({d:2, a:aPos})[0];
-			tooltipBox.showAt({
-				text:swarm.getTooltipText([tAxis.selected.a, iAxis.selected.a, aPos], D),
-				layout:{
-					anchor:swarm.pieCentre,
-					radial:za.mean([D.O.arc.degStart, D.O.arc.degEnd]),
-					radialEnd:swarm.radius,
-					xAlign:"xCentre", yAlign:"yCentre"
-				}
-			}, 100, "<>");
-			swarm.focused = aPos;
-			sideSwarm.refresh("all", sideSwarm.Y.select.t, sideSwarm.Y.select.e);
-			swarm.highlight({d:2, a:aPos}, sideSwarm.Y.select.t, sideSwarm.Y.select.e, null, sideSwarm.K);
-		// Enter
-		} else if (e.keyCode == 13) {
-			if (iAxis.expanded) iAxis.collapse({r:za.mean(iAxis.range)}, 500, "<>"); // While iAxis is expanded
-			else if (swarm.highlighted != null) swarm.zoom(swarm.highlighted, swarm.Y.zoom.t, swarm.Y.zoom.e);
-		};
-	});
-
 	logger("DaliPie(): Done.");
-// 	tAxis.axisSelect({a:INIT_TIME}, 400, "<>");
-	tAxis.axisSelect({a:INIT_TIME});
-};
-window.onload = function () {
-	logger("DaliPie(): Initialising.");
-	var L = zt.getMaxLayout(1024, 768);
-	PAPER = zt.makePaper(L);
-	with (L) {
-		L.tooltipBox = {
-			width:280, // TooltipBox is floating, so position doesn't need to be defined, and height is automatic (depending on text)
-			height:"auto",
-		};
-		L.tAxis = { // Bottom bar, with time
-			x:106, y:bottom - 60,
-			width:width - 212, height:16
-		};
-		L.sideSwarm = new zLayout({
-			x:80, y:40,
-			width:480, height:L.tAxis.y - 80
-		});
-		L.swarm = new zLayout({
-			x:right - 60, y:L.tAxis.y + 20,
-			width:(width - 120) - L.sideSwarm.width, height:L.sideSwarm.height * 0.9,
-			xAlign:"right", yAlign:"bottom",
-			baseRadius:height * 0.25, // Initial size of the pie
-			margin:30
-		});
-		L.iAxis = { // Top bar, with industry name
-			x:L.centre.x, y:50,
-			height:L.swarm.width * 0.8,
-			yAlign:"yCentre",
-			innerWidth:44, // Each row takes up this much space
-			rotation:90
-		};
-	};
-	with (L.sideSwarm) {
-		L.title = {x:left, y:120, width:innerWidth};
-		L.description = {x:left, y:160, width:innerWidth};
-		L.dAxis = { // y axis for the bars
-			x:left + 30, y:L.tAxis.y - 30,
-			width:height - 360, height:50,
-			xAlign:"right", rotation:90
-		};
-		L.fakeTAxis = { // x axis for the bars
-			x:L.dAxis.x, y:L.dAxis.y,
-			width:right - L.dAxis.x
-		};
-	};
+	return;
 
-	var Y = zt.parseStyle({
-		base:{ // Reference styles
-			gridLines:{
-				"stroke-width":0.2,
-				stroke:"#666"
-			}
-		},
-		introText:{
-			"z-index":9999, // To top
-			"border":"solid 1px #c4dde2",
-			"background-color":"#d4edf2",
-			"font-family":"sans-serif",
-			"font-size":"13px",
-			"text-align":"center",
-			opacity:0.9,
-			margin:L.height * 0.35
-		},
-		background:{fill:"#e9edee"},
-		tooltipBox:{},
-		iAxis:{
-			axisTitle:{
-				margin:4,
-				"font-family":"sans-serif",
-				"font-size":11,
-				fill:"#999"
-			},
-			background:{
-				opacity:0.8,
-				fill:"#e9edee",
-				stroke:null,
-				"stroke-width":0,
-				"stroke-opacity":0
-			},
-			label:{
-				"font-family":"sans-serif",
-				"font-size":14,
-				fill:"#0687c1",
-				opacity:1,
-				highlight:{opacity:1},
-				select:{
-					"font-size":28,
-					unhighlighted:{opacity:1} // So that selected cannot be unhighlighted
-				}
-			},
-			upArrow:{
-				xSize:14, ySize:28,
-				fill:"#222",
-				opacity:0.75
-			},
-			downArrow:{baseStyle:"iAxis.upArrow"}
-		},
-		tAxis:{
-			extension:0,
-			select:{t:300},
-			slideBar:{
-				fill:"#801c7e",
-				background:{
-					rounded:8,
-					"stroke-width":1,
-					"stroke-opacity":1,
-					stroke:"#000",
-					opacity:0.2
-				},
-				foreground:{opacity:1}
-			},
-			label:{
-				"font-family":"sans-serif",
-				margin:7,
-				"font-size":12,
-				"font-weight":"bold",
-				fill:"#666"
-			},
-			baseNotch:{
-				baseStyle:"tAxis.currNotch",
-				label:{
-					"font-size":12
-				}
-			},
-			currNotch:{
-				flagWidth:10, flagHeight:20,
-				width:48, height:36,
-				ring:{
-					stroke:"#801c7e",
-					"stroke-width":3,
-					fill:"#dedede"
-				},
-				label:{
-					"font-family":"sans-serif",
-					"font-size":18,
-					fill:"#dedede",
-					background:null
-				},
-				background:{
-					fill:"#000",
-					opacity:0.75
-				},
-				highlight:{opacity:1}
-			},
-			playButton:{
-				background:{fill:"#151c22"},
-				foreground:{fill:"#dedede"}
-			}
-		},
-		dAxis:{
-			maxNotches:12,
-			minNotchGap:20,
-			axisTitle:{
-				radialStart:24,
-				"font-weight":"bold"
-			},
-			label:{
-				radialStart:-L.fakeTAxis.width,
-				radialEnd:2,
-				fill:"#666",
-				"font-weight":"bold",
-				branch:{baseStyle:"base.gridLines"},
-				baseBranch:{
-					baseStyle:"base.gridLines",
-					"stroke-width":2,
-					"stroke-opacity":0.5
-				}
-			}
-		},
-		swarm:{
-			baseOffset:0,
-			zoomedOffset:-35,
-			spin:{t:600, e:"<>"}, // Animation time for various actions
-			zoom:{t:600, e:"<>"},
-			merge:{t:600, e:"<>"},
-			rings:{
-				labelDeg:225,
-				label:{
-					"font-family":"sans-serif",
-					fill:"#666"
-				},
-				ring:{baseStyle:"base.gridLines"}
-			},
-			title:{
-				baseExtend:2.0, // Extension of the title, as a ratio of the radius
-				zoomedExtend:3, // Extension of the title, as a ratio of the radius
-				baseDeg:-120,
-				zoomedDeg:-140,
-				"font-family":"sans-serif",
-				topText:{
-					"font-size":18,
-					fill:"#f0593e"
-				},
-				bottomText:{
-					"font-size":12,
-					fill:"#666"
-				}
-			},
-			slice:{
-				stroke:"#e9edee",
-				"stroke-width":3,
- 				"stroke-opacity":1,
-				highlight:{opacity:1}
-			}
-		},
-		sideSwarm:{
-			select:{t:400, e:"<>"},
-			text:{},
-			bar:{
-				parallelSize:0.8,
-				"stroke-width":0.0
-			}
-		},
+	tAxis.axisSelect({a:BASE_TIME});
+	var introText = new zHTML({
+		content:
+			"<div class='title'>Consumer Price Index</div><br>" +
+			"This is a visualisation of the Consumer Price Index. The bar graph on the left shows quarterly changes. The DaliPie graph on the left show total changes. " +
+			"The wider the slice, the more important that group is to the overall index (angle = weighting in the CPI basket of groups).<br><br>" +
+			"The more each slice sticks out, the more the price has increased (area is proportional to the cumulative change in that group).<br><br>" +
+			"Click on a slice to see its subgroups.<br><br>" +
+			"Click on the top bar to change to a different period.<br><br>" +
+			"<b><i>Click anywhere to begin.</i></b>",
+		layout:L, base:Y.introText});
+	introText.click(function () {
+		introText.remove(500);
+// 		tAxis.axisSelect({a:INIT_TIME}, tAxis.Y.select.t, tAxis.Y.select.e);
+		tAxis.axisSelect({a:INIT_TIME}, 80, tAxis.Y.select.e);
 	});
-
-	DaliPie(L, Y);
 };
+
 </script>
-
-
-
 </head>
 <body>
     <div id="Raphael"></div>
