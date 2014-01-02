@@ -1,5 +1,5 @@
-var rawStrip = [
-["0~name","1~name","1~parentName","2~name","weight","val"],
+var rawStripCPI = [
+["name","0~name","0~parentName","1~name","val","index"],
 ["CPI","All Items",,1996,1,88.1],
 ["CPI","Food & Non-Alcoholic Beverages","All Items",1996,0.156,91.9],
 ["CPI","Food","Food & Non-Alcoholic Beverages",1996,0.141,91.3],

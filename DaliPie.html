@@ -8,7 +8,7 @@
 <script src="./lib/zed.js" type="text/javascript"></script>
 <script src="./data/DaliPie.data" type="text/javascript"></script>
 <style>
-	.text {color:#ccc; font-family:sans-serif; font-size:13px}
+	.text {color:#666; font-family:sans-serif; font-size:13px}
 	.alttext {color:#000; font-family:sans-serif; font-size:13px}
 	.subtitle {font-size:14px; font-weight:bold}
 	.title {font-size:18px; font-weight:bold}
@@ -16,8 +16,6 @@
 
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
-	BASE_TIME = 1, INIT_TIME = 23;
-	WEIGHTS = ["Jun 2006 Weights", "Jun 2008 Weights", "Jun 2011 Weights"];
 	logger("DaliPie(): Initialising.");
 	var L = new zLayout({
 		width:Math.max(1200, $(window).width() - $("#Raphael").offset().left * 2), // Fit to screen, with minimum size
@@ -29,37 +27,37 @@ window.onload = function () {
 			width:280, // TooltipBox is floating, so position doesn't need to be defined, and height is automatic (depending on text)
 			height:"auto"
 		};
-		L.tAxis = {
-			x:20, y:20,
-			width:width - 40, height:20
-		};
 		L.swarm = new zLayout({
-			anchor:getPoint(1, 1, true),
-			width:innerWidth * 0.55, height:innerHeight - 160,
-			xAlign:"right", yAlign:"bottom",
-			innerRadius:height * 0.1,
-			outerRadius:height * 0.25
+			anchor:getPoint(0.72, 0.92, true),
+			width:innerHeight * 0.7, height:innerHeight * 0.7,
+			xAlign:"xCentre", yAlign:"bottom"
 		});
+		L.tAxis = {
+			x:60, y:bottom - 52,
+			width:width - 80, height:15
+		};
 		L.sideSwarm = new zLayout({
-			x:left, y:bottom,
-			width:width * 0.4, height:innerHeight + 40,
-			xAlign:"left", yAlign:"bottom",
-			margin:60
+			x:margin + 20, y:margin,
+			width:460, height:height - 160,
 		});
 		L.credits = {
 			anchor:getPoint(1, 1, true),
 			xAlign:"right", yAlign:"bottom"
 		};
+		L.zoomOutTab = {
+			x:xCentre, y:top,
+			xAlign:"xCentre", yAlign:"top"
+		};
 	};
 	with (L.sideSwarm) {
 		L.fakeTAxis = {
-			anchor:getPoint(0, 0, true), // Last flag ("true") tells getPoint to innerSpace, which takes margins into consideration
+			anchor:getPoint(0, 1, true), // Last flag ("true") tells getPoint to innerSpace, which takes margins into consideration
 			width:innerWidth,
 			xAlign:"left", yAlign:"top"
 		};
 		L.dAxis = {
-			anchor:getPoint(0, 0, true),
-			width:height * 0.55, height:innerWidth,
+			anchor:getPoint(0, 1, true),
+			width:height - 260, height:width,
 			xAlign:"right", yAlign:"top",
 			rotation:90
 		};
@@ -89,9 +87,13 @@ window.onload = function () {
 				margin:7,
 				"font-size":12,
 				"font-weight":"bold",
-				fill:"#aaa"
+				fill:"#aaa",
+			},
+			currNotch:{
+				width:80
 			},
 			baseNotch:{
+				width:60,
 				margin:5,
 				"font-size":12,
 				"font-weight":"bold",
@@ -104,7 +106,8 @@ window.onload = function () {
 			}
 		},
 		swarm:{
-			titlePos:1.6, // Extension of the title, as a ratio of the radius
+			titlePos:1.4, // Extension of the title, as a ratio of the radius
+			zoomedTitlePos:1.5,
 			baseTitleDeg:-90,
 			zoomedTitleDeg:-130,
 			baseOffset:0,
@@ -123,7 +126,7 @@ window.onload = function () {
 			title:{
 				fill:"#888",
 				title:{
-					format:["wrap", 22],
+					format:{wrap:22},
 					"font-size":28,
 					"font-weight":"bold"
 				},
@@ -134,10 +137,10 @@ window.onload = function () {
 			slice:{
 // 				stroke:null,
 // 				"stroke-opacity":0,
-				opacity:0.9,
+				opacity:0.8,
 				"stroke-width":0.2,
 				"stroke-opacity":1,
-				highlighted:{
+				highlight:{
 	 				"stroke-opacity":0,
 					opacity:1
 				},
@@ -153,24 +156,42 @@ window.onload = function () {
 				"stroke-width":0.5
 			}
 		},
+		fakeTAxis:{
+			maxNotches:4,
+			label:{
+				margin:7,
+				"font-size":12,
+				fill:"#aaa"
+			}
+		},
 		dAxis:{
-			maxNotches:16,
+			maxNotches:8,
 			minNotchGap:0.01,
 			axisTitle:{
 				fill:"#ccc"
 			},
-			notch:{
-				format:["number", "%"],
-				fill:"#ccc",
+			label:{
+				format:{mode:"%"},
+				fill:"#666",
 				radialStart:-L.sideSwarm.innerWidth,
 				radialEnd:2,
-				branch:{baseStyle:"base.lines"},
+				branch:{
+					baseStyle:"base.lines"
+				},
 				baseBranch:{
-					stroke:"#ccc",
 					"stroke-width":2,
-					opacity:0.5
+					opacity:1
 				}
 			}
+		},
+		zoomOutTab:{
+			margin:12,
+			rounded:8,
+			opacity:0.2,
+			"font-size":40,
+			"font-weight":"bold",
+			background:{fill:"#999"},
+			highlight:{opacity:0.5}
 		},
 		tooltipBox:{},
 		credits:{fill:"#ccc"},
@@ -183,12 +204,13 @@ window.onload = function () {
 	var dc = new zDataCube(3);
 	with (dc) {
 		importStrip(rawStrip);
-
 		// Categories
-		ROOT = meta[2].hierarchy[0][0];
- 		setShown(2, meta[2].hierarchy[1]);
- 		calcHierarchyData("stacked", "weight", 2);
-		setColour({d:2}, null, "hierarchic");
+		ROOT = meta[1].hierarchy[0][0];
+ 		setShown(1, meta[1].hierarchy[1]);
+ 		calcHierarchyData("stacked", "weight", 1);
+		setColour({d:1}, null, "hierarchic");
+		// Time
+		for (var i = 0; i < getSize(2); i++) meta[2].name[i] += ""; // Force type to string
 	};
 
 	logger("DaliPie(): Setting up canvas.");
@@ -199,13 +221,14 @@ window.onload = function () {
 		credits = new zTextBox({text:"Created by Keith Ng", layout:L.credits, base:Y.credits}),
 		tAxis = new zSlideAxis({
 			layout:L.tAxis, style:Y.tAxis,
-			dc:dc, d:0,
+			dc:dc, d:2,
 			baseSelected:{a:0},
-			selected:{a:dc.getSize(0) - 1},
+			selected:{a:dc.getSize(2) - 1},
 			plan:{axisTitle:null, axisLine:null}
 		}),
 		fakeTAxis = new zSmartAxis({
-			layout:L.fakeTAxis, dc:dc, d:0,
+			layout:L.fakeTAxis, style:Y.fakeTAxis,
+			dc:dc, d:2,
 			plan:{axisTitle:null, axisLine:null, notch:null, notchLabel:null}
 		}),
 		dAxis = new zAxis({
@@ -213,86 +236,73 @@ window.onload = function () {
 			scale:[0, 0.5], title:"Quarterly Change",
 			plan:{axisLine:null}
 		}),
+		zoomOutTab = new zTextBox({text:"Zoom out", layout:L.zoomOutTab, base:Y.zoomOutTab}),
 		tooltipBox = new zHTMLTooltipBox({layout:L.tooltipBox, base:Y.tooltipBox});
+	background.click(function () {swarm.zoomOut()});
+	zoomOutTab.hide();
+	zoomOutTab.click(function () {swarm.zoomOut()});
+	zoomOutTab.hoverHighlight(200);
 
 	logger("DaliPie(): Drawing main pie.");
 	var swarm = new zSwarm({ // Resources
 		layout:L.swarm, style:Y.swarm,
-		dc:dc, axes:{t:tAxis}, d:2,
+		dc:dc, axes:{t:tAxis},
 		selected:{a:ROOT},
-		rSpace:[tAxis.selected.r, 0, "all"],
-		getState:function (A) {
-			var S = this,
-				parent = dc.findParent({d:2, as:A});
-			return (
-				(A[2] == S.selected.a) ? "parent" :
-				(parent == S.selected.a) ? "child" :
-				"inactive");
-		},
-		getWeightStacked:function (A) {
-			return dc.getData("weightStacked", {as:[tAxis.baseSelected.a, A[1], A[2]]});
-		},
-		getWeight:function (A) {
-			return dc.getData("weight", {as:[tAxis.baseSelected.a, A[1], A[2]]});
-		},
-		getVal:function (A) {
-			return dc.getData("val", {as:A});
-		},
+		rSpace:[0, "all", tAxis.selected.r],
+		getVal:function (A) {return dc.getData("val", {as:A})},
+		getBaseVal:function (A) {return this.getVal([A[0], A[1], tAxis.baseSelected.a])},
+		getWeight:function (A) {return dc.getData("weight", {as:A})},
+		getBaseWeight:function (A) {return this.getWeight([A[0], A[1], tAxis.baseSelected.a])},
 		getDeg:function (A) {
 			var S = this,
-				dec = S.getWeightStacked(A);
+				dec = dc.getData("weightStacked", {as:[A[0], A[1], tAxis.baseSelected.a]});
 			return {
 				start:S.offset + zp.decToDeg(dec.start),
 				end:S.offset + zp.decToDeg(dec.end)
 			};
 		},
-		getChange:function (A, baseTime) {
-			if (baseTime == null) baseTime = tAxis.baseSelected.a;
+		getBaseDeg:function (A) {return this.getDeg([A[0], A[1], tAxis.baseSelected.a])},
+		getChange:function (A) {
+			if (A[2] == 0) return 0;
 			var S = this,
-				base = S.getVal([baseTime, A[1], A[2]]),
+				base = S.getVal([A[0], A[1], A[2] - 1]),
 				curr = S.getVal(A),
-				out = (curr / base);
+				out = (curr / base) - 1;
 			return (isNaN(out)) ? 0 : out;
 		},
-// 		// Dynamic weight mode
-// 		getWeightStacked:function (A) {
-// 			return dc.getData("weightStacked", {as:A});
-// 		},
-// 		getWeight:function (A) {
-// 			return dc.getData("weight", {as:A});
-// 		},
-// 		getChange:function (A, baseTime) {
-// 			if (A[0] == 0) return 1;
-// 			var weights = dc.getData("weight", {as:["all", 0, A[2]]}),
-// 				currWeight = this.getWeight(A),
-// 				aPos = za.find(weights, currWeight);
-// 			var S = this,
-// 				base = S.getVal([aPos, A[1], A[2]]),
-// 				curr = S.getVal(A),
-// 				out = (curr / base);
-// 			return (isNaN(out)) ? 0 : out;
-// 		},
+		getBaseChange:function (A) {
+			var S = this,
+				base = S.getVal([A[0], A[1], tAxis.baseSelected.a]),
+				curr = S.getVal(A),
+				out = (curr / base) - 1;
+			return (isNaN(out)) ? 0 : out;
+		},
 		getTooltipText:function (A, D) {
 			var S = this,
 				asPercent = function (dec) {
 					return (dec) ? zt.format(dec, {m:"%", dp:1, forceSign:1}) : "No change";
 				},
-				time = dc.getName({d:0, as:A}),
-				baseTime = dc.getName(tAxis.baseSelected),
-				category = dc.getMeta("description", {d:2, as:A}),
-				weight = dc.getData("weight", {as:A}),
-				change = S.getChange(A) - 1,
-				currChange = (A[0] > 0) ? S.getChange(A, A[0] - 1) - 1 : null;
+				category = dc.getName({d:1, as:A}),
+				parent = dc.findParent({d:1, as:A}),
+				children = dc.findChildren({d:1, as:A}),
+				time = dc.getName({d:2, as:A}),
+				change = S.getChange(A),
+				baseWeight = S.getBaseWeight(A),
+				baseChange = S.getBaseChange(A);
 			return "<div class='alttext'>" +
 				"<div class='title'>" + category + "</div>" +
-				((A[0] > 0) ? "<br><b>" + asPercent(currChange) + "</b> in " + time : "") +
-				"<br><b>" + asPercent(change) + "</b> between " + baseTime + " and " + time +
-				"<br><b>" + asPercent(weight) + "</b> of " + baseTime + " CPI basket" +
-				"<b><i>" + ((D.role == "bar") ? "<br><br>Click to select this period" : (A[2] == ROOT) ? "" : "<br><br>Click to zoom " + ((S.zoomed) ? "out" : "in")) + "</i></b></div>";
+				((A[2] > 0) ? "<br><b>" + asPercent(change) + "</b> in " + time : "") +
+				"<br><b>" + asPercent(baseChange) + "</b> between " + S.baseTime + " and " + time +
+				"<br><b>" + asPercent(baseWeight) + "</b> of " + S.baseTime + " CPI basket" +
+				"<b><i>" + (
+					(D.role == "bar") ? "<br><br>Click to select this period" :
+					(D.role == "slice" && children.length) ? "<br><br>Click to zoom in" : // If it has children, then zoom must be possible
+					""
+				) + "</i></b></div>";
 		},
 		updateSpin:function () {
 			var S = this, oldDeg, newDeg,
-				A = [tAxis.selected.a, 0, S.selected.a];
+				A = [0, S.selected.a, tAxis.selected.a];
 			if (S.zoomed) {
 				oldDeg = zo.midStack(S.getDeg(A)); // Find bisect of segment
 				newDeg = S.Y.zoomedOffset + S.offset - oldDeg; // Convert to offset
@@ -301,59 +311,68 @@ window.onload = function () {
 		},
 		updateZoom:function () {
 			var S = this;
+			S.radius = S.L.height * 0.5; // Reset radius
+			S.centre = S.L.getPoint(0.5, 0.5, true); // Reset centre
 			if (S.zoomed) {
-				var zoomArea, points = [],
-					children = dc.findChildren(S.selected);
-				dc.forSpaces(["all", 0, children], function (x) { // Targeted category and all its children
+				var points = [], children = dc.findChildren(S.selected);
+				dc.forSpaces([0, children, "all"], function (x) { // Targeted category and all its children
 					var deg = S.getDeg(x.as),
-						val = S.getChange(x.as),
-						arcPoints = zp.arcToPoints(S.centre, S.radius * 0.2, S.radius * Math.sqrt(val), deg.start, deg.end); // Calculate its edge points
+						val = S.getBaseChange(x.as),
+						arcPoints = zp.arcToPoints(S.centre, S.radius * 0.2, S.radius * Math.sqrt(1 + val), deg.start, deg.end); // Calculate its edge points
 					points = points.concat(arcPoints);
 				});
-				zoomArea = zp.completeBox(zp.pointsToBox(points)); // Turn points into a box - that's the zoomArea
-				S.L.zoom(zoomArea); // Zoom into it
+				S.L.zoom(zp.pointsToBox(points)); // Turn points into a box - and zoom into it
 			};
-			S.radius = S.L.innerHeight * 0.5;
-			S.centre = S.L.getPoint(0.5, 0.5, true);
-			S.L.unzoom(); // Always unzoom after calculating new radius/centre
+			S.radius = S.L.height * 0.5; // Set radius based on new layout
+			S.centre = S.L.getPoint(0.5, 0.5, true); // Set centre based on new layout
+			S.L.unzoom(); // Reset layout
 		},
 		onInit:function () {
 			var S = this;
 			S.updateSpin();
 			S.updateZoom();
 		},
-		updateData:function () {},
-		select:function (A) {
-			var S = this, parent, children;
+		updateData:function () {
+			var S = this;
+			S.category = (S.zoomed) ? dc.getName(S.selected) : "Total";
+			S.currTime = dc.getName(tAxis.selected);
+			S.baseTime = dc.getName(tAxis.baseSelected);
+		},
+		// Disaggregrate (zoom in)
+		zoomIn:function (A) {
+			var S = this;
+			if (!dc.findChildren({d:1, as:A}).length) return; // Can't zoom in to element with no children
 			tooltipBox.hide();
- 			if (A[2] == ROOT) return; // Do not zoom to root
-			// Aggregration (zoom out)
-			if (S.zoomed) {
-				parent = dc.findParent(S.selected);
-				children = dc.findChildren(S.selected);
-				S.refresh({d:S.d, a:children, mode:{aggregate:true}}, S.Y.merge.t, S.Y.merge.e, function () { // Merge children back into parent
-					S.aggregate({d:S.d, a:children[0]}); // Remove children
+			S.selected = {d:1, a:A[1]};
+			S.zoomed = true;
+			S.updateSpin();
+			S.refresh("all", S.Y.spin.t, S.Y.spin.e, function () { // Spin to new offset (angle of spin will be calculated by updateData once CATEGORY is updated)
+				S.updateZoom();
+				S.refresh("all", S.Y.zoom.t, S.Y.zoom.e, function () { // Find boundary for all children and zoom in
+					S.disaggregate(S.selected);
 					tAxis.layer(); // Bring tAxis in front of swarms
-					S.selected = {d:S.d, a:parent};
-					S.zoomed = false;
-					S.updateZoom();
-					S.updateSpin();
-					S.refresh("all", S.Y.zoom.t, S.Y.zoom.e); // Zoom out and spin back into position
+					zoomOutTab.show(S.Y.merge.t, S.Y.merge.e, null, S.K);
+					S.refresh("all", S.Y.merge.t, S.Y.merge.e);
 				});
-			// Disaggregration (zoom in)
-			} else {
-				S.selected = {d:S.d, a:A[S.d]};
-				S.zoomed = true;
+			});
+		},
+		// Aggregrate (zoom out)
+		zoomOut:function () {
+			var S = this,
+				parent = dc.findParent(S.selected),
+				children = dc.findChildren(S.selected);
+			if (S.selected.a == ROOT) return; // Can't zoom out from root
+			tooltipBox.hide();
+			S.refresh({d:1, a:children, mode:{asParent:true}}, S.Y.merge.t, S.Y.merge.e, function () { // Merge children back into parent
+				S.aggregate({d:1, a:children[0]}); // Remove children
+				tAxis.layer(); // Bring tAxis in front of swarms
+				S.selected = {d:1, a:parent};
+				if (parent == ROOT) S.zoomed = false; // Reset zoomed flag if it's zoomed out to top
 				S.updateSpin();
-				S.refresh("all", S.Y.spin.t, S.Y.spin.e, function () { // Spin to new offset (angle of spin will be calculated by updateData once CATEGORY is updated)
-					S.updateZoom();
-					S.refresh("all", S.Y.zoom.t, S.Y.zoom.e, function () { // Find boundary for all children and zoom in
-						S.disaggregate(S.selected);
-						tAxis.layer(); // Bring tAxis in front of swarms
-						S.refresh("all", S.Y.merge.t, S.Y.merge.e);
-					});
-				});
-			};
+				S.updateZoom();
+				if (!S.zoomed) zoomOutTab.hide(S.Y.zoom.t, S.Y.zoom.e, null, S.K);
+				S.refresh("all", S.Y.zoom.t, S.Y.zoom.e); // Zoom out and spin back into position
+			});
 		},
 		plan:{
 			rings:{
@@ -375,18 +394,13 @@ window.onload = function () {
 					return out;
 				},
 				curr:function (S, A, D) {
-					var i, val, radius, out = [];
+					var i, radius, out = [];
 					for (i = 0; i < RINGS.length; i++) {
-						val = 1 + RINGS[i];
-						radius = S.radius * Math.sqrt(val);
+						radius = S.radius * Math.sqrt(1 + RINGS[i]);
 						out.push({
-							label:{
-								layout:zp.addVector(225, radius, S.centre)
-							},
-							ring:{
-								circle:{centre:S.centre, radius:radius}
-							}
-						})
+							label:{layout:zp.addVector(225, radius, S.centre)},
+							ring:{circle:{centre:S.centre, radius:radius}}
+						});
 					};
 					return out;
 				}
@@ -400,22 +414,19 @@ window.onload = function () {
 					};
 				},
 				curr:function (S, A, D) {
-					var name = (S.zoomed) ? dc.getName(S.selected) : "Total",
-						val = S.getChange([tAxis.selected.a, 0, S.selected.a]) - 1,
-						time = dc.getName(tAxis.selected),
-						baseTime = dc.getName(tAxis.baseSelected),
+					var val = S.getBaseChange([0, S.selected.a, tAxis.selected.a]),
 						layout = {
 							anchor:S.centre,
 							radial:(S.zoomed) ? S.Y.zoomedTitleDeg : S.Y.baseTitleDeg,
-							radialStart:S.radius * Math.sqrt(S.Y.titlePos)
+							radialStart:S.radius * ((S.zoomed) ? S.Y.zoomedTitlePos : S.Y.titlePos)
 						};
 					return {
 						title:{
-							text:name + " (" + zt.format(val, {mode:"%", dp:1, forceSign:true}) + ")",
+							text:S.category + " (" + zt.format(val, {mode:"%", dp:1, forceSign:true}) + ")",
 							layout:layout
 						},
 						subtitle:{
-							text:"from " + baseTime + " to " + time,
+							text:"from " + S.baseTime + " to " + S.currTime,
 							layout:layout
 						}
 					};
@@ -424,24 +435,29 @@ window.onload = function () {
 			slice:{
 				type:"zArc", mask:"mask",
 				curr:function (S, A, D, Y, mode) {
-					var deg = S.getDeg(A),
-						aPos = (mode.aggregate || mode.disaggregate) ? dc.findParent({d:S.d, as:A}) : A[S.d], // If it's being inserted or removed, use parent's value
-						colour = dc.getMeta("colour", {d:S.d, a:aPos}),
-						opacity = (S.getState(A) == "inactive") ? Y.faded.opacity : Y.opacity, // Element is inactive if it is not a child of the selected element
-						val = S.getChange([A[0], A[1], aPos]);
+					var parent = dc.findParent({d:1, as:A}),
+						state = (
+							(A[1] == S.selected.a) ? "parent" :
+							(parent == S.selected.a) ? "child" :
+							"inactive"),
+						deg = S.getDeg(A),
+						opacity = (state == "inactive") ? Y.faded.opacity : Y.opacity, // Element is inactive if it is not a child of the selected element
+						aPos = (mode.asParent) ? parent : A[1], // If it's being inserted or removed, use parent's value
+						colour = dc.getMeta("colour", {d:1, a:aPos}),
+						val = S.getBaseChange([A[0], aPos, A[2]]);
 					return {
-						arc:{centre:S.centre, innerRadius:0, outerRadius:S.radius * Math.sqrt(val), degStart:deg.start, degEnd:deg.end, minSeg:4},
+						arc:{centre:S.centre, innerRadius:0, outerRadius:S.radius * Math.sqrt(1 + val), degStart:deg.start, degEnd:deg.end, minSeg:4},
 						fill:colour, opacity:opacity,
-						mouseEvents:function (D) {
-							if (S.getState(D.A) == "child") { // Element is inactive if it is not a child of the selected element
-	 							D.hoverHighlight(100);
-								D.tooltip(null, tooltipBox, {width:L.tooltipBox.width});
-								D.hover(function () {
-									sideSwarm.selected = {d:2, a:D.A[2]}; // Use .selected rather than .setSpace() to control sideSwarm because if parent is selected, .setSpace() won't work because parent isn't part of .shown
-									sideSwarm.refresh("all", sideSwarm.Y.select.t, sideSwarm.Y.select.e);
-								});
-							};
-							D.click(function () {S.select(D.A)});
+						mouseEvents:(state == "child") ? function (D) { // Element is inactive if it is not a child of the selected element
+							D.hoverHighlight(100);
+							D.tooltip(null, tooltipBox, {width:L.tooltipBox.width});
+							D.hover(function () {
+								sideSwarm.selected = {d:1, a:D.A[1]}; // Use .selected rather than .setSpace() to control sideSwarm because if parent is selected, .setSpace() won't work because parent isn't part of .shown
+								sideSwarm.refresh("all", sideSwarm.Y.select.t, sideSwarm.Y.select.e);
+							});
+							D.click(function () {S.zoomIn(D.A)});
+						} : function (D) {
+							D.click(function () {S.zoomOut()});
 						},
 						tooltipText:S.getTooltipText(A, D)
 					};
@@ -453,28 +469,19 @@ window.onload = function () {
 	logger("DaliPie(): Drawing side bar graph.");
 	var sideSwarm = new zSwarm({ // Resources
 		layout:L.sideSwarm, style:Y.sideSwarm,
-		dc:dc, selected:{d:2, a:0},
-		rSpace:["all", 0, "na"],
+		dc:dc, selected:{d:1, a:ROOT},
+		rSpace:[0, "na", "all"],
 		axes:{i:fakeTAxis, d:dAxis, t:tAxis},
-		getVal:function (time, baseTime) {
-			var S = this;
-			return swarm.getChange([time, 0, S.selected.a], baseTime) - 1;
-		},
-		getWeight:function (time) {
-			var S = this;
-			return dc.getData("weight", {as:[time, 0, S.selected.a]});
-		},
 		updateData:function () {
 			var S = this, i, val = [];
-			for (i = 0; i < dc.getSize(0); i++) {
-				val.push(S.getVal(i));
+			for (i = 0; i < dc.getSize(2); i++) {
+				val.push(swarm.getChange([0, S.selected.a, i]));
 			};
 			range = [
 				Math.min(za.min(val) * 1.2, 0),
 				Math.max(za.max(val) * 1.2, 0)
 			];
 			dAxis.setShown(range, (S.frame == null) ? null : S.Y.select.t, S.Y.select.e, null, S.K);
-			S.name = dc.getName(S.selected);
 			S.colour = dc.getMeta("colour", S.selected);
 			S.baseLine = dAxis.getPoint(0).y;
 		},
@@ -484,27 +491,27 @@ window.onload = function () {
 				init:function (S, A, D) {
 					return {
 						layout:{
-							anchor:S.L.getPoint(0, 1, true),
+							anchor:S.L.getPoint(0, 0, true),
 							width:S.L.innerWidth
 						}
 					};
 				},
 				curr:function (S, A, D) {
-					var parentName = dc.getFamily("parent", "name", S.selected),
+					var A = [0, S.selected.a, tAxis.selected.a],
+						name = dc.getName(S.selected),
+						parentName = dc.getFamily("parent", "name", S.selected),
 						children = dc.findChildren(S.selected),
-						time = dc.getName(tAxis.selected),
-						baseTime = dc.getName(tAxis.baseSelected),
-						weight = swarm.getWeight([tAxis.selected.a, 0, S.selected.a]),
-						change = S.getVal(tAxis.selected.a),
-						quarterChange = S.getVal(tAxis.selected.a, tAxis.selected.a - 1);
+						baseWeight = swarm.getBaseWeight(A),
+						change = swarm.getChange(A),
+						baseChange = swarm.getBaseChange(A);
 					return {content:
-						"<div class='text title'>" + S.name + "</div><p>" +
-						"<div class='text'>" + S.name + ((children.length) ? " contains " + children.length + " subcategories" : " is a subcategory of " + parentName) +
-						" and was " + zt.format(weight, {m:"%", dp:1}) + " of the " + baseTime + " CPI basket.<p>" +
-						"Prices " + ((quarterChange < 0) ? "fell" : "rose") + " by " +
-						zt.format(quarterChange, {m:"%", dp:1, noSign:1}) + " in the " + time + " quarter, " +
-						"and were " + zt.format(change, {m:"%", dp:1, noSign:1}) + ((change < 0) ? " lower" : " higher") +
-						" than they were in " + baseTime + ".</div>"
+						"<div class='text title'>" + name + "</div><p>" +
+						"<div class='text'>" + name + ((children.length) ? " contains " + children.length + " subcategories" : " is a subcategory of " + parentName) +
+						" and was " + zt.format(baseWeight, {m:"%", dp:1}) + " of the " + swarm.baseTime + " CPI basket.<p>" +
+						"Prices " + ((change < 0) ? "fell" : "rose") + " by " +
+						zt.format(change, {m:"%", dp:1, noSign:1}) + " in the " + swarm.currTime + " quarter, " +
+						"and were " + zt.format(baseChange, {m:"%", dp:1, noSign:1}) + ((baseChange < 0) ? " lower" : " higher") +
+						" than they were in " + swarm.baseTime + ".</div>"
 					};
 				}
 			},
@@ -520,46 +527,29 @@ window.onload = function () {
 							D.tooltip(null, tooltipBox, {width:L.tooltipBox.width});
 							D.click(function () {
 								tooltipBox.hide();
-								tAxis.axisSelect({a:A[0]}, tAxis.Y.select.t, tAxis.Y.select.e);
+								tAxis.axisSelect({a:A[2]}, tAxis.Y.select.t, tAxis.Y.select.e);
 							});
 						}
 					};
 				},
 				curr:function (S, A, D) {
-					var x = {d:0, a:A[0]},
-						val = S.getVal(A[0]);
+					var A = [A[0], S.selected.a, A[2]],
+						x = {d:2, as:A},
+						val = swarm.getChange(A);
 					return {
-						tooltipText:swarm.getTooltipText([A[0], A[1], S.selected.a], D),
+						tooltipText:swarm.getTooltipText(A, D),
 						layout:{
 							x:S.axes.i.getPoint(x).x, y:S.baseLine,
 							height:S.axes.d.getLength(val)
 						},
 						fill:S.colour,
-						opacity:(A[0] == tAxis.selected.a) ? 1 : 0.5
+						opacity:(A[2] == tAxis.selected.a) ? 1 : 0.5
 					};
 				}
 			}
 		}
 	});
 	logger("DaliPie(): Done.");
-	return;
-
-	tAxis.axisSelect({a:BASE_TIME});
-	var introText = new zHTML({
-		content:
-			"<div class='title'>Consumer Price Index</div><br>" +
-			"This is a visualisation of the Consumer Price Index. The bar graph on the left shows quarterly changes. The DaliPie graph on the left show total changes. " +
-			"The wider the slice, the more important that group is to the overall index (angle = weighting in the CPI basket of groups).<br><br>" +
-			"The more each slice sticks out, the more the price has increased (area is proportional to the cumulative change in that group).<br><br>" +
-			"Click on a slice to see its subgroups.<br><br>" +
-			"Click on the top bar to change to a different period.<br><br>" +
-			"<b><i>Click anywhere to begin.</i></b>",
-		layout:L, base:Y.introText});
-	introText.click(function () {
-		introText.remove(500);
-// 		tAxis.axisSelect({a:INIT_TIME}, tAxis.Y.select.t, tAxis.Y.select.e);
-		tAxis.axisSelect({a:INIT_TIME}, 80, tAxis.Y.select.e);
-	});
 };
 
 </script>
