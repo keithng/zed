@@ -16,13 +16,11 @@ window.onload = function () {
 	Revenue version
 	Scrolling sideways
 	Dynamic position to show net changes
-	Filtering - can't do without rewriting .calcHierarchyData() because .filterMeta() only changes .shown, which does not affect .calcHierarchyData() because it relies on child-parent relationships rather than shown.
+	Filtering - can't do without rewriting .calcTreeData() because .filterMeta() only changes .shown, which does not affect .calcTreeData() because it relies on child-parent relationships rather than shown.
 	Can rewrite filter, as there are only two generations, which should be easy
 	*/
 	logger("Budget2012(): Initialising.");
 	var L = zt.getMaxLayout(1024, 768);
-	PAPER = zt.makePaper(L);
-
 	with (L) zo.extend(L, {
 		swarm:new zLayout({
 			x:width * 0.52, y:height * 0.5, //y:height * 0.53,
@@ -70,7 +68,7 @@ window.onload = function () {
 			fill:"#555"
 		}
 	};
-	var Y = zt.parseStyle({
+	var Y = zo.parseStyle({
 		base:baseY,
 		background:{
 			fill:"#f0f4f5",
@@ -232,15 +230,16 @@ window.onload = function () {
 	logger("Budget2012(): Collating and crunching data.");
 	// Raw data
 	with (dc = new zDataCube(2).importStrip(rawStrip)) { // Load rawStrip
-		if (meta[0].hierarchy.length > 2) explode("Budget2012(): More than two generations. Your data is broken because some of the parentLabels already exist as a label.");
-		calcHierarchyData("sum", "val", 0);
-		addCalcData("dec", "val", {as:"all", mask:{d:0, a:meta[0].hierarchy[0]}});
-		addCalcData("stacked", "valDec", {as:"all", mask:{d:0, a:meta[0].hierarchy[0]}}); // Calculate stacked dec (used for horizontal positioning)
+		if (meta[0].tree.length > 2) explode("Budget2012(): More than two generations. Your data is broken because some of the parentLabels already exist as a label.");
+		calcTreeData("sum", "val", 0);
+		addCalcData("dec", "val", {as:"all", mask:{d:0, a:meta[0].tree[0]}});
+		addCalcData("stacked", "valDec", {as:"all", mask:{d:0, a:meta[0].tree[0]}}); // Calculate stacked dec (used for horizontal positioning)
 		addCalcData("change", "val", {as:"all", mask:{d:1, a:[BASE_TIME, CURR_TIME]}});
-		setShown(0, meta[0].hierarchy[0]);
+		setShown(0, meta[0].tree[0]);
 	};
 
 	logger("Budget2012(): Drawing axes.");
+	PAPER = zt.makePaper(L);
 	var background = new zRectangle({layout:L.swarm, base:Y.background});
 	background.click(function () {swarm.zoom()});
 	background.hover(function () {
@@ -290,7 +289,7 @@ window.onload = function () {
 		},
 		highlight:function (aPos, b) {
 			var S = this, t = 400, e = "<>",
-				toHighlight = [], toFade = dc.meta[0].hierarchy[0].slice();
+				toHighlight = [], toFade = dc.meta[0].tree[0].slice();
 			if (S.zoomed != null) {
 				if (S.zoomLevel < 2) toHighlight.push(S.zoomed);
 				za.remove(toFade, S.zoomed);
@@ -470,7 +469,7 @@ window.onload = function () {
 				curr:function (S, A, D) {
 					var rPos = dc.asRPos({d:0, a:A[0]}),
 						baseDec = dc.getData("valDecStacked", {as:[A[0], BASE_TIME]}),
-						scale = 1 - S.Y.bar.gap * (dc.meta[0].hierarchy[0].length + 1), // Count how many gaps are required and scale down the width
+						scale = 1 - S.Y.bar.gap * (dc.meta[0].tree[0].length + 1), // Count how many gaps are required and scale down the width
 						width = S.L.width * (baseDec.end - baseDec.start) * scale,
 						baseVal = dc.getData("val", {as:[A[0], BASE_TIME]}),
 						children = dc.findChildren({d:0, a:A[0]}),
@@ -613,7 +612,7 @@ window.onload = function () {
 								" (" + zt.format(Math.abs(data.netVal / data.baseVal), baseY.decFormat) + ")",
 							layout:{
 								x:posL.right + bigGap,
-								y:(data.posVal > data.negVal) ? zt.mid(0.5, posL.top, shaderL.top) : zt.mid(0.5, negL.bottom, shaderL.bottom),
+								y:(data.posVal > data.negVal) ? zt.calcMid(0.5, posL.top, shaderL.top) : zt.calcMid(0.5, negL.bottom, shaderL.bottom),
 								radial:0, radialEnd:textGap
 							}
 						},

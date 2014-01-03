@@ -10,13 +10,7 @@
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
 	logger("Olappy(): Initialising.");
-	var baseL = new zLayout({
-		width:Math.max(1200, $(window).width() - $("#Raphael").offset().left * 2),
-		height:Math.max(600, $(window).height() - $("#Raphael").offset().top * 2.75),
-		margin:20
-	});
-	PAPER = Raphael("Raphael", baseL.width, baseL.height);
-
+	var baseL = zt.getMaxLayout(1200, 600, 20);
 	var L = {};
 	with (baseL) {
 		L.selector = new zLayout({
@@ -74,7 +68,7 @@ window.onload = function () {
 			};
 		};
 	};
-	var Y = zt.parseStyle({
+	var Y = zo.parseStyle({
 		base:{
 			controller:{
 				"font-weight":"normal",
@@ -235,7 +229,7 @@ window.onload = function () {
 
 	with (dc) {
 		importProtoCube(PROTOCUBE);
-		makeHierarchy();
+		makeTree();
 		setShown(0, findAllMeta("generation", {d:0}, 1));
 		setShown(1, findAllMeta("generation", {d:1}, 1));
 		setShown(2, findAllMeta("generation", {d:2}, 1));
@@ -283,6 +277,7 @@ window.onload = function () {
 	};
 
 	logger("Olappy(): Drawing...");
+	PAPER = zt.makePaper(baseL);
 	var tooltipBox = new zTooltipBox(Y.tooltipBox),
 		sAxis = new zScrollAxis({
 			dc:dimensionsDC, d:0,

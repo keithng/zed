@@ -85,8 +85,6 @@
 window.onload = function () {
 	logger("HotTree(): Initialising.");
 	var L = zt.getMaxLayout(1024, 768, 32);
-	PAPER = zt.makePaper(L);
-
 	with (L) {
 		L.sideBar = new zLayout({
 			x:5, y:5,
@@ -144,7 +142,7 @@ window.onload = function () {
 			},
 			axisLine:{opacity:0.8}
 		},
-		Y = zt.parseStyle({
+		Y = zo.parseStyle({
 			base:baseY,
 			background:{
 				fill:"#f0f0f0",
@@ -249,22 +247,22 @@ window.onload = function () {
 		// CPI data
 		importStrip(rawStripCPI);
 		meta[0].description = meta[0].description || [];
-		makeHierarchy(0); // Creates the structure
+		makeTree(0); // Creates the structure
 // 		// Verify data
-// 		if (meta[0].hierarchy.length > 2) { // If there are more than 2 generations
-// 			for (i = 0; i < meta[0].hierarchy[2].length; i++) { // List all of those in the 3rd generation
-// 				x = {d:0, a:meta[0].hierarchy[2][i]};
+// 		if (meta[0].tree.length > 2) { // If there are more than 2 generations
+// 			for (i = 0; i < meta[0].tree[2].length; i++) { // List all of those in the 3rd generation
+// 				x = {d:0, a:meta[0].tree[2][i]};
 // 				console.log(x.a, getMeta("title", x), findParent(x), getName({d:0, a:findParent(x)})); // It's probably an error with their parents
 // 			};
 // 			explode("HotTree.primeData(): More than two generations.");
 // 		};
 		// There should always be a true root node which encompasses everything and is never shown
-		if (meta[0].hierarchy[0].length > 1) {
+		if (meta[0].tree[0].length > 1) {
 			dc.addRootNode(0, "Total"); // Create root node
 		};
-		ROOT = meta[0].hierarchy[0][0];
+		ROOT = meta[0].tree[0][0];
 		setMeta("layout", {d:0, a:ROOT}, L.swarm.clone());
-		// Replace names (which must be unique for parentName-based hierarchy to work) with displayNames, if it exists
+		// Replace names (which must be unique for parentName-based tree to work) with displayNames, if it exists
 		if (meta[0].displayName) for (i = 0; i < getSize(0); i++) {
 			meta[0].name[i] = meta[0].displayName[i] || meta[0].name[i];
 		};
@@ -274,14 +272,15 @@ window.onload = function () {
 		};
 		$("#searchBox").autocomplete({source:index, select:function (event, ui) {swarm.zoomTo(ui.item.key)}}); // Give list to searchBox
 		// Set initial generation
-		calcHierarchyData("sum", "val", 0); // Checks that low-level nodes add up to high level nodes if they exist, or creates them if they don't NOTE to Andrew - this stacks all the values *AND* does the checking
-		dc.maxGen = meta[0].hierarchy.length - 1;
-		dc.rootGen = meta[0].hierarchy[1];
+		calcTreeData("sum", "val", 0); // Checks that low-level nodes add up to high level nodes if they exist, or creates them if they don't NOTE to Andrew - this stacks all the values *AND* does the checking
+		dc.maxGen = meta[0].tree.length - 1;
+		dc.rootGen = meta[0].tree[1];
 		setShown(0, rootGen);
 		CURR_YEAR = getSize(1) - 1;
 		BASE_YEAR = CURR_YEAR - 1;
 	};
 	logger("HotTree(): Drawing accessories.");
+	PAPER = zt.makePaper(L);
 	var background = new zRectangle({layout:L, base:Y.background}),
 		tooltipBox = new zTooltipBox({base:Y.tooltipBox}),
 		defaultMouseEvents = function (D) {

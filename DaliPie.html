@@ -17,11 +17,7 @@
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
 	logger("DaliPie(): Initialising.");
-	var L = new zLayout({
-		width:Math.max(1200, $(window).width() - $("#Raphael").offset().left * 2), // Fit to screen, with minimum size
-		height:Math.max(600, $(window).height() - $("#Raphael").offset().top * 2.75), // Fit to screen, with minimum size
-		margin:50
-	});
+	var L = zt.getMaxLayout(1200, 600, 50); // minWidth, minHeight, margin
 	with (L) {
 		L.tooltipBox = {
 			width:280, // TooltipBox is floating, so position doesn't need to be defined, and height is automatic (depending on text)
@@ -62,8 +58,9 @@ window.onload = function () {
 			rotation:90
 		};
 	};
+console.log($.type(NaN), 0/0);
 
-	var Y = zt.parseStyle({
+	var Y = zo.parseStyle({
 		base:{
 			lines:{
 				"stroke-width":0.3,
@@ -205,18 +202,16 @@ window.onload = function () {
 	with (dc) {
 		importStrip(rawStrip);
 		// Categories
-		ROOT = meta[1].hierarchy[0][0];
- 		setShown(1, meta[1].hierarchy[1]);
- 		calcHierarchyData("stacked", "weight", 1);
+		ROOT = meta[1].tree[0][0];
+ 		setShown(1, meta[1].tree[1]);
+ 		calcTreeData("stacked", "weight", 1);
 		setColour({d:1}, null, "hierarchic");
 		// Time
 		for (var i = 0; i < getSize(2); i++) meta[2].name[i] += ""; // Force type to string
 	};
 
-	logger("DaliPie(): Setting up canvas.");
-	PAPER = Raphael("Raphael", L.width, L.height);
-	//if ($.browser.msie && parseInt($.browser.version) < 9) PAPER.noAnimation = true;
 	logger("DaliPie(): Drawing accessories.");
+	PAPER = zt.makePaper(L);
 	var background = new zRectangle({layout:L, base:Y.background}),
 		credits = new zTextBox({text:"Created by Keith Ng", layout:L.credits, base:Y.credits}),
 		tAxis = new zSlideAxis({
