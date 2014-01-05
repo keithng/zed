@@ -663,22 +663,22 @@ window.onload = function () {
 			script:[
 				{
 					content:"<h3>Introduction</h3><p>Welcome to ChewyData's HotTree visualisation. Each block in the main panel represents a category:<ul><li>The <b>bigger</b> the block, the bigger that category is. <li><b>Green</b> represents an <b>increase</b> since the last period. <li><b>Red</b> represents a <b>decrease</b> since the last period.</p></ul><p><i>All figures are inflation adjusted.</i></p></ul>",
-					layout:{x:L.centre.x, y:L.getY(0.3), height:"auto"}
+					layout:{x:L.centre.x, y:L.getY(0.3), autoHeight:true}
 				},{
 					content:"<h3>Highlighting</h3><p>You can highlight a block by moving your mouse over it. The panel on the left will update automatically.</p>",
-					layout:{x:L.sideBar.right, y:200, height:"auto"},
+					layout:{x:L.sideBar.right, y:200, autoHeight:true},
 					delay:Y.swarm.highlight.t,
 					action:function () {
 						swarm.zoomTo(ROOT, function () {swarm.setHighlight(1919)});
 					}
 				},{
 					content:"<h3>Zooming</h3><p>Clicking on a block will zoom in on that block and show all the items that make up the category.</p><p><i>You can click 'Zoom Out' at the bottom of the screen to zoom back to the top.</i></p>",
-					layout:{x:L.sideBar.right, y:200, height:"auto"},
+					layout:{x:L.sideBar.right, y:200, autoHeight:true},
 					delay:Y.swarm.zoom.t,
 					action:function () {swarm.zoomTo(1919)}
 				},{
 					content:"<h3>Locking</h3><p>Clicking on a block will lock it in place...</p>",
-					layout:{x:L.sideBar.right, y:200, xAlign:"xCentre", yAlign:"yCentre", height:"auto"},
+					layout:{x:L.sideBar.right, y:200, xAlign:"xCentre", yAlign:"yCentre", autoHeight:true},
 					delay:Y.swarm.zoom.t,
 					action:function () {
 						swarm.zoomTo(1382);
@@ -686,11 +686,11 @@ window.onload = function () {
 					}
 				},{
 					content:"<h3>Locking</h3><p>...allowing you to use the side panel to look at changes over time.</p><p><i>Move your mouse over a point in the line to see the value for that period.</i></p>",
-					layout:{x:20, y:L.centre.y, xAlign:"left", yAlign:"bottom", height:"auto"},
+					layout:{x:20, y:L.centre.y, xAlign:"left", yAlign:"bottom", autoHeight:true},
 					action:function () {sideBar.setHighlight(4)}
 				},{
 					content:"<h3>Advanced features</h3><p>You can also use the search box on the left to find specific items.</p><p><i>Note that items which were in previous periods but which no longer exists are not displayed.</i></p>",
-					layout:{x:180, y:-5, yAlign:"top", height:"auto"},
+					layout:{x:180, y:-5, yAlign:"top", autoHeight:true},
 					action:function () {sideBar.setHighlight()}
 				}
 			]

@@ -2,7 +2,8 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=9">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>DaliPie: Animated Disaggregating Bivariate Pie</title>
+<title>D3 test</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="./lib/jquery-1.9.1.min.js"></script>
 <script src="./lib/raphael-min.js" type="text/javascript"></script>
 <script src="./lib/zed.js" type="text/javascript"></script>
@@ -17,6 +18,7 @@
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
 	logger("DaliPie(): Initialising.");
+	var color = d3.scale.category20();
 	var L = zt.getMaxLayout(1200, 600, 50); // minWidth, minHeight, margin
 	with (L) {
 		L.tooltipBox = {
@@ -211,8 +213,8 @@ console.log($.type(NaN), 0/0);
 
 	logger("DaliPie(): Drawing accessories.");
 	PAPER = zt.makePaper(L);
-	var background = new zRectangle({layout:L, base:Y.background}),
-		credits = new zTextBox({text:"Created by Keith Ng", layout:L.credits, base:Y.credits}),
+// 	var background = new zRectangle({layout:L, base:Y.background}),
+	var credits = new zTextBox({text:"Created by Keith Ng", layout:L.credits, base:Y.credits}),
 		tAxis = new zSlideAxis({
 			layout:L.tAxis, style:Y.tAxis,
 			dc:dc, d:2,
@@ -232,7 +234,7 @@ console.log($.type(NaN), 0/0);
 		}),
 		zoomOutTab = new zTextBox({text:"Zoom out", layout:L.zoomOutTab, base:Y.zoomOutTab}),
 		tooltipBox = new zHTMLTooltipBox({layout:L.tooltipBox, base:Y.tooltipBox});
-	background.click(function () {swarm.zoomOut()});
+// 	background.click(function () {swarm.zoomOut()});
 	zoomOutTab.hide();
 	zoomOutTab.click(function () {swarm.zoomOut()});
 	zoomOutTab.hoverHighlight(200);
@@ -437,7 +439,7 @@ console.log($.type(NaN), 0/0);
 						deg = S.getDeg(A),
 						opacity = (state == "inactive") ? Y.faded.opacity : Y.opacity, // Element is inactive if it is not a child of the selected element
 						aPos = (mode.asParent) ? parent : A[1], // If it's being inserted or removed, use parent's value
-						colour = dc.getMeta("colour", {d:1, a:aPos}),
+						colour = color(aPos),
 						val = S.getBaseChange([A[0], aPos, A[2]]);
 					return {
 						arc:{centre:S.centre, innerRadius:0, outerRadius:S.radius * Math.sqrt(1 + val), degStart:deg.start, degEnd:deg.end, minSeg:4},
@@ -544,6 +546,137 @@ console.log($.type(NaN), 0/0);
 		}
 	});
 	logger("DaliPie(): Done.");
+
+	var width = 960,
+		height = 500,
+		outerRadius = Math.min(width, height) * .5 - 10,
+		innerRadius = outerRadius * .6;
+
+// 	console.log(dc.data);
+// 	console.log(za.sum());
+	var A = [0, dc.meta[1].tree[1], dc.getSize(2) - 1],
+		data0 = dc.getData("weight", {as:A}),
+		data1 = dc.getData("val", {as:A}),
+		n = data0.length,
+		data;
+
+		console.log(data1, za.sum(data1));
+		console.log(data0, za.sum(data0));
+	var color = d3.scale.category20();
+	var pie = d3.layout.pie()
+		.sort(null);
+
+	var svg = d3.select("body").append("svg")
+		.attr("width", width)
+		.attr("height", height);
+
+	svg.selectAll(".arc")
+		.data(arcs(data0, data1))
+	.enter().append("g")
+		.attr("class", "arc")
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")") // Moves
+	.append("path")
+		.attr("fill", function(d, i) {return color(i); })
+		.attr("d", d3.svg.arc());
+
+	console.log(color(), color(), color());
+// 	transition(1);
+
+// 					var parent = dc.findParent({d:1, as:A}),
+// 						state = (
+// 							(A[1] == S.selected.a) ? "parent" :
+// 							(parent == S.selected.a) ? "child" :
+// 							"inactive"),
+// 						deg = S.getDeg(A),
+// 						opacity = (state == "inactive") ? Y.faded.opacity : Y.opacity, // Element is inactive if it is not a child of the selected element
+// 						aPos = (mode.asParent) ? parent : A[1], // If it's being inserted or removed, use parent's value
+// 						colour = dc.getMeta("colour", {d:1, a:aPos}),
+// 						val = S.getBaseChange([A[0], aPos, A[2]]);
+// 					return {
+// 						arc:{centre:S.centre, innerRadius:0, outerRadius:S.radius * Math.sqrt(1 + val), degStart:deg.start, degEnd:deg.end, minSeg:4},
+// 						fill:colour, opacity:opacity,
+// 						mouseEvents:(state == "child") ? function (D) { // Element is inactive if it is not a child of the selected element
+// 							D.hoverHighlight(100);
+// 							D.tooltip(null, tooltipBox, {width:L.tooltipBox.width});
+// 							D.hover(function () {
+// 								sideSwarm.selected = {d:1, a:D.A[1]}; // Use .selected rather than .setSpace() to control sideSwarm because if parent is selected, .setSpace() won't work because parent isn't part of .shown
+// 								sideSwarm.refresh("all", sideSwarm.Y.select.t, sideSwarm.Y.select.e);
+// 							});
+// 							D.click(function () {S.zoomIn(D.A)});
+// 						} : function (D) {
+// 							D.click(function () {S.zoomOut()});
+// 						},
+// 						tooltipText:S.getTooltipText(A, D)
+// 					};
+
+
+	function arcs(data0, data1) {
+		var arcs = pie(data0),
+			i = -1,
+			arc;
+		while (++i < data0.length) {
+			arc = arcs[i];
+			arc.outerRadius = outerRadius * Math.sqrt(data1[i] / 1000);
+		}
+		return arcs;
+	}
+
+	function transition(state) {
+		var path = d3.selectAll(".arc > path")
+			.data(state ? arcs(data0, data1) : arcs(data1, data0));
+
+		// Wedges split into two rings.
+		var t0 = path.transition()
+			.duration(1000)
+			.attrTween("d", tweenArc(function(d, i) {
+				return {
+				innerRadius: i & 1 ? innerRadius : (innerRadius + outerRadius) / 2,
+				outerRadius: i & 1 ? (innerRadius + outerRadius) / 2 : outerRadius
+				};
+			}));
+
+		// Wedges translate to be centered on their final position.
+		var t1 = t0.transition()
+			.attrTween("d", tweenArc(function(d, i) {
+				var a0 = d.next.startAngle + d.next.endAngle,
+					a1 = d.startAngle - d.endAngle;
+				return {
+				startAngle: (a0 + a1) / 2,
+				endAngle: (a0 - a1) / 2
+				};
+			}));
+
+		// Wedges then update their values, changing size.
+		var t2 = t1.transition()
+				.attrTween("d", tweenArc(function(d, i) {
+				return {
+					startAngle: d.next.startAngle,
+					endAngle: d.next.endAngle
+				};
+				}));
+
+		// Wedges reunite into a single ring.
+		var t3 = t2.transition()
+			.attrTween("d", tweenArc(function(d, i) {
+				return {
+				innerRadius: innerRadius,
+				outerRadius: outerRadius
+				};
+			}));
+
+		setTimeout(function() { transition(!state); }, 5000);
+	}
+
+	function tweenArc(b) {
+		return function(a, i) {
+			var d = b.call(this, a, i), i = d3.interpolate(a, d);
+			for (var k in d) a[k] = d[k]; // update data
+			return function(t) { return arc(i(t)); };
+		};
+	}
+
+
+
 };
 
 </script>
