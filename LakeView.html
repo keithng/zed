@@ -2,23 +2,24 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=9">
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-<title>Olappy: Interactive OLAP</title>
+<title>Budget2012: Lakeview Visualisation</title>
 <script src="./lib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./lib/raphael-min.js" type="text/javascript" charset="utf-8"></script>
 <script src="./lib/zed.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lib/Olappy.js" type="text/javascript" charset="utf-8"></script>
-<script src="./data/Olappy.data" type="text/javascript" charset="utf-8"></script>
+<script src="./lib/LakeView.js" type="text/javascript" charset="utf-8"></script>
+<script src="./lib/jquery-ui-1.10.3.custom.min.js"></script>
+<link href="./css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+<script src="./data/LakeView.data" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
-	var style = {
-	}, layout = {};
-	$.getJSON('data/Olappy.json', function (data) {
-		Olappy(data, style, layout);
+	var style = {}, layout = {};
+	$.getJSON('data/LakeView.json', function (data) {
+		LakeView(data, style, layout);
 	}).error(JSONerror);
 };
 </script>
 </head>
 <body>
-	<div id="Raphael"></div>
+    <div id="Raphael"></div>
 </body>
 </html>

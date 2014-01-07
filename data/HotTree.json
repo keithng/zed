@@ -1,4 +1,4 @@
-var rawStrip = [
+[
 ["0~name","0~displayName","0~function","0~department","0~vote","0~description","1~name","val"],
 [8946,"Performance Audits and Inquiries","Core Government Services","Controller and Auditor-General","Audit","This output class is limited to undertaking and reporting on performance audits and inquiries relating to public entities under the Public Audit Act 2001 and responding to requests for approvals in relation to pecuniary interest questions regulated by the Local Authorities Members’ Interests Act 1968.",2008,6223],
 [9314,"Audit and Assurance Services","Core Government Services","Controller and Auditor-General","Audit","This appropriation is limited to the performance of audit and related assurance services as required or authorised by statute for smaller entities such as cemetery trusts and reserve boards.",2008,150],
@@ -6776,4 +6776,4 @@ var rawStrip = [
 [10435,"Ministerial Services","Other Economic","Ministry of Business, Innovation and Employment","Employment","This output class is limited to the provision of services to Ministers to enable them to discharge their portfolio (other than policy decision-making) responsibilities.",2013,1284],
 [10434,"Labour Market Policy Advice","Other Economic","Ministry of Business, Innovation and Employment","Employment","This output class is limited to the provision of advice (including second opinion advice and contributions to policy advice led by other agencies) to support decision-making by Ministers on government policy matters relating to the labour market and employment policy.",2014,5433],
 [10435,"Ministerial Services","Other Economic","Ministry of Business, Innovation and Employment","Employment","This output class is limited to the provision of services to Ministers to enable them to discharge their portfolio (other than policy decision-making) responsibilities.",2014,1755]
-];
+]
