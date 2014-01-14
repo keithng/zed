@@ -1,0 +1,1953 @@
+0~name	1~name	1~parentName	2~name	weight	val
+CPI	All Items		1996	1	88.1
+CPI	Food & Non-Alcoholic Beverages	All Items	1996	0.156	91.9
+CPI	Food	Food & Non-Alcoholic Beverages	1996	0.141	91.3
+CPI	Bread & Cereals	Food	1996	0.025	94.7
+CPI	Meat	Food	1996	0.034	96
+CPI	Fish	Food	1996	0.006	79.1
+CPI	Milk, Cheese & Eggs	Food	1996	0.021	92.7
+CPI	Oils & Fats	Food	1996	0.004	101.9
+CPI	Fruit	Food	1996	0.009	88.2
+CPI	Vegetables Including Potatoes & Other Tubers	Food	1996	0.02	93.3
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	1996	0.015	83.1
+CPI	Food Products	Food	1996	0.007	95.3
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	1996	0.015	96.2
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	1996	0.005	103.2
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	1996	0.01	94
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	1996	0.07	73.3
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	1996	0.035	97.6
+CPI	Spirits	Alcoholic Beverages	1996	0.01	97.8
+CPI	Wine (Inc Perry)	Alcoholic Beverages	1996	0.015	95.4
+CPI	Beer	Alcoholic Beverages	1996	0.01	101.8
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	1996	0.035	58.2
+CPI	Clothing & Footwear	All Items	1996	0.067	162.8
+CPI	Clothing	Clothing & Footwear	1996	0.055	166.4
+CPI	Garments	Clothing	1996	0.05	172.9
+CPI	Other Articles of Clothing & Accessories	Clothing	1996	0.004	122.5
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	1996	0.001	73.3
+CPI	Footwear Including Repairs	Clothing & Footwear	1996	0.012	141.2
+CPI	Housing, Water & Fuels	All Items	1996	0.134	79.6
+CPI	Actual Rents for Housing	Housing, Water & Fuels	1996	0.055	77.6
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	1996	0.019	75.2
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1996	0.008	98.1
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1996	0.011	57.8
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	1996	0.015	74.5
+CPI	Water Supply	Other Services Relating to the Dwelling	1996	0.007	73.3
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	1996	0.008	76
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	1996	0.045	85
+CPI	Electricity	Electricity, Gas & Other Fuels	1996	0.022	96.5
+CPI	Gas	Electricity, Gas & Other Fuels	1996	0.02	78.1
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	1996	0.001	53.9
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	1996	0.002	72.7
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	1996	0.09	102.5
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	1996	0.038	96.8
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	1996	0.028	98
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	1996	0.01	92.8
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	1996	0.006	121.9
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	1996	0.013	122.8
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	1996	0.011	134
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	1996	0.002	66.7
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	1996	0.007	116.1
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	1996	0.009	119.4
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	1996	0.017	83.8
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	1996	0.009	111.5
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	1996	0.008	62.2
+CPI	Health	All Items	1996	0.007	76.9
+CPI	Medical Products Appliances & Equipment	Health	1996	0.007	88.1
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	1996	0.003	93.7
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	1996	0.004	83.5
+CPI	Out-Patient Services	Health	1996	0	
+CPI	Medical Services & Paramedical Services	Out-Patient Services	1996	0	
+CPI	Dental Services	Out-Patient Services	1996	0	
+CPI	Hospital Services	Health	1996	0	
+CPI	Transport	All Items	1996	0.154	79.5
+CPI	Purchase of Vehicles	Transport	1996	0.058	113.8
+CPI	New Cars	Purchase of Vehicles	1996	0.013	100.4
+CPI	Second-Hand Cars	Purchase of Vehicles	1996	0.043	129.3
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	1996	0.002	114.5
+CPI	Operation of Personal Transport Equipment	Transport	1996	0.076	64.8
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	1996	0.008	90.7
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	1996	0.04	64.6
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	1996	0.021	60.3
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	1996	0.007	67.5
+CPI	Transport Services	Transport	1996	0.02	69.4
+CPI	Passenger Transport by Railway	Transport Services	1996	0.006	76.2
+CPI	Passenger Transport by Road	Transport Services	1996	0.011	67.3
+CPI	Passenger Transport by Air	Transport Services	1996	0.002	87.1
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	1996	0.001	76
+CPI	Communication	All Items	1996	0.021	122
+CPI	Postal Services	Communication	1996	0.002	83.3
+CPI	Telephone & Telefax Equipment & Services	Communication	1996	0.019	126.2
+CPI	Recreation & Culture	All Items	1996	0.131	98
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	1996	0.023	249.2
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	1996	0.008	267.9
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	1996	0.005	212.1
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	1996	0.005	1162.4
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	1996	0.004	130.6
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	1996	0.001	65.8
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	1996	0	
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	1996	0	
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	1996	0.026	114.7
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	1996	0.005	143.7
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	1996	0.003	130.9
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	1996	0.006	104.9
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	1996	0.012	83.4
+CPI	Recreational & Cultural Services	Recreation & Culture	1996	0.031	74.7
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	1996	0.012	70.3
+CPI	Cultural Services	Recreational & Cultural Services	1996	0.019	77.9
+CPI	Newspapers Books & Stationery	Recreation & Culture	1996	0.02	81
+CPI	Books	Newspapers Books & Stationery	1996	0.005	80.8
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	1996	0.01	74
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	1996	0.005	92.3
+CPI	Package Holiday	Recreation & Culture	1996	0.031	65.7
+CPI	Education	All Items	1996	0.011	60.8
+CPI	Hotels, Cafes & Restaurants	All Items	1996	0.111	73.8
+CPI	Catering	Hotels, Cafes & Restaurants	1996	0.107	74.9
+CPI	Restaurants & Cafes	Catering	1996	0.1	75.5
+CPI	Canteens	Catering	1996	0.007	67.5
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	1996	0.004	67.1
+CPI	Miscellaneous Goods & Services	All Items	1996	0.048	76.9
+CPI	Personal Care	Miscellaneous Goods & Services	1996	0.026	89.8
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	1996	0.007	63.5
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	1996	0.019	102.8
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	1996	0.009	103.7
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	1996	0.005	96.5
+CPI	Other Personal Effects	Personal Effects N.E.C.	1996	0.004	116.9
+CPI	Social Protection	Miscellaneous Goods & Services	1996	0	
+CPI	Insurance	Miscellaneous Goods & Services	1996	0.006	60.6
+CPI	Insurance Connected with the Dwelling	Insurance	1996	0.002	76
+CPI	Insurance Connected with Health	Insurance	1996	0	
+CPI	Insurance Connected with Transport	Insurance	1996	0.004	56.2
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	1996	0.002	132.5
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	1996	0.002	132.5
+CPI	Other Services Nec	Miscellaneous Goods & Services	1996	0.005	57.1
+CPI	All Items		1997	1	89.7
+CPI	Food & Non-Alcoholic Beverages	All Items	1997	0.152	91.8
+CPI	Food	Food & Non-Alcoholic Beverages	1997	0.137	90.9
+CPI	Bread & Cereals	Food	1997	0.025	94.4
+CPI	Meat	Food	1997	0.034	96.2
+CPI	Fish	Food	1997	0.005	80.3
+CPI	Milk, Cheese & Eggs	Food	1997	0.021	92.4
+CPI	Oils & Fats	Food	1997	0.004	103.2
+CPI	Fruit	Food	1997	0.009	90.5
+CPI	Vegetables Including Potatoes & Other Tubers	Food	1997	0.017	85.2
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	1997	0.015	85.5
+CPI	Food Products	Food	1997	0.007	96.9
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	1997	0.015	99.5
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	1997	0.005	106.8
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	1997	0.01	97.2
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	1997	0.071	76.2
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	1997	0.035	98.3
+CPI	Spirits	Alcoholic Beverages	1997	0.01	96.9
+CPI	Wine (Inc Perry)	Alcoholic Beverages	1997	0.015	95.7
+CPI	Beer	Alcoholic Beverages	1997	0.01	104.9
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	1997	0.036	62.5
+CPI	Clothing & Footwear	All Items	1997	0.068	158.8
+CPI	Clothing	Clothing & Footwear	1997	0.056	163.2
+CPI	Garments	Clothing	1997	0.051	169
+CPI	Other Articles of Clothing & Accessories	Clothing	1997	0.004	124.2
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	1997	0.001	75.6
+CPI	Footwear Including Repairs	Clothing & Footwear	1997	0.012	134.2
+CPI	Housing, Water & Fuels	All Items	1997	0.133	81
+CPI	Actual Rents for Housing	Housing, Water & Fuels	1997	0.055	80.2
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	1997	0.019	79.6
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1997	0.008	100.3
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1997	0.011	62.7
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	1997	0.015	77.9
+CPI	Water Supply	Other Services Relating to the Dwelling	1997	0.007	76
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	1997	0.008	80
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	1997	0.044	82.6
+CPI	Electricity	Electricity, Gas & Other Fuels	1997	0.022	91.8
+CPI	Gas	Electricity, Gas & Other Fuels	1997	0.019	77.4
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	1997	0.001	49.4
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	1997	0.002	73.3
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	1997	0.091	102.9
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	1997	0.039	98.2
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	1997	0.029	98.9
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	1997	0.01	95.3
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	1997	0.006	120.9
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	1997	0.013	120.8
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	1997	0.011	129.6
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	1997	0.002	71.9
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	1997	0.007	115.1
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	1997	0.009	119.8
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	1997	0.017	84
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	1997	0.009	108.5
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	1997	0.008	64.4
+CPI	Health	All Items	1997	0.007	79
+CPI	Medical Products Appliances & Equipment	Health	1997	0.007	90.6
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	1997	0.002	96.7
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	1997	0.005	85.9
+CPI	Out-Patient Services	Health	1997	0	
+CPI	Medical Services & Paramedical Services	Out-Patient Services	1997	0	
+CPI	Dental Services	Out-Patient Services	1997	0	
+CPI	Hospital Services	Health	1997	0	
+CPI	Transport	All Items	1997	0.155	83.4
+CPI	Purchase of Vehicles	Transport	1997	0.056	116.2
+CPI	New Cars	Purchase of Vehicles	1997	0.012	102.6
+CPI	Second-Hand Cars	Purchase of Vehicles	1997	0.042	132.1
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	1997	0.002	113.6
+CPI	Operation of Personal Transport Equipment	Transport	1997	0.079	69.6
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	1997	0.008	92.9
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	1997	0.043	71
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	1997	0.021	63.5
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	1997	0.007	70.8
+CPI	Transport Services	Transport	1997	0.02	72.2
+CPI	Passenger Transport by Railway	Transport Services	1997	0.006	78
+CPI	Passenger Transport by Road	Transport Services	1997	0.011	70.5
+CPI	Passenger Transport by Air	Transport Services	1997	0.002	90
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	1997	0.001	81.6
+CPI	Communication	All Items	1997	0.021	118.7
+CPI	Postal Services	Communication	1997	0.002	84.8
+CPI	Telephone & Telefax Equipment & Services	Communication	1997	0.019	122.1
+CPI	Recreation & Culture	All Items	1997	0.13	99
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	1997	0.022	226.7
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	1997	0.008	249
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	1997	0.004	195.4
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	1997	0.005	889.4
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	1997	0.004	130.9
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	1997	0.001	71
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	1997	0	
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	1997	0	
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	1997	0.026	116.3
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	1997	0.005	142.6
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	1997	0.003	129.9
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	1997	0.006	104.8
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	1997	0.012	86.4
+CPI	Recreational & Cultural Services	Recreation & Culture	1997	0.031	76.9
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	1997	0.011	73.4
+CPI	Cultural Services	Recreational & Cultural Services	1997	0.02	79.5
+CPI	Newspapers Books & Stationery	Recreation & Culture	1997	0.02	82.8
+CPI	Books	Newspapers Books & Stationery	1997	0.004	83.6
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	1997	0.011	76.7
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	1997	0.005	90.9
+CPI	Package Holiday	Recreation & Culture	1997	0.031	69.4
+CPI	Education	All Items	1997	0.011	63.9
+CPI	Hotels, Cafes & Restaurants	All Items	1997	0.112	76.4
+CPI	Catering	Hotels, Cafes & Restaurants	1997	0.108	77.6
+CPI	Restaurants & Cafes	Catering	1997	0.101	78.2
+CPI	Canteens	Catering	1997	0.007	70.7
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	1997	0.004	69.5
+CPI	Miscellaneous Goods & Services	All Items	1997	0.049	79.1
+CPI	Personal Care	Miscellaneous Goods & Services	1997	0.027	93.1
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	1997	0.007	66.8
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	1997	0.02	106.2
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	1997	0.009	102.7
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	1997	0.003	96.5
+CPI	Other Personal Effects	Personal Effects N.E.C.	1997	0.006	115.8
+CPI	Social Protection	Miscellaneous Goods & Services	1997	0	
+CPI	Insurance	Miscellaneous Goods & Services	1997	0.006	62.5
+CPI	Insurance Connected with the Dwelling	Insurance	1997	0.002	76.3
+CPI	Insurance Connected with Health	Insurance	1997	0	
+CPI	Insurance Connected with Transport	Insurance	1997	0.004	58.7
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	1997	0.002	134
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	1997	0.002	134
+CPI	Other Services Nec	Miscellaneous Goods & Services	1997	0.005	60
+CPI	All Items		1998	1	91.1
+CPI	Food & Non-Alcoholic Beverages	All Items	1998	0.144	92.7
+CPI	Food	Food & Non-Alcoholic Beverages	1998	0.129	91.4
+CPI	Bread & Cereals	Food	1998	0.023	94.3
+CPI	Meat	Food	1998	0.03	93
+CPI	Fish	Food	1998	0.006	87
+CPI	Milk, Cheese & Eggs	Food	1998	0.019	91.1
+CPI	Oils & Fats	Food	1998	0.003	104
+CPI	Fruit	Food	1998	0.009	91.8
+CPI	Vegetables Including Potatoes & Other Tubers	Food	1998	0.018	91.2
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	1998	0.014	86.5
+CPI	Food Products	Food	1998	0.007	99.2
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	1998	0.015	103.7
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	1998	0.005	113.8
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	1998	0.01	100.2
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	1998	0.068	80.4
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	1998	0.032	100.4
+CPI	Spirits	Alcoholic Beverages	1998	0.009	99.2
+CPI	Wine (Inc Perry)	Alcoholic Beverages	1998	0.014	96.9
+CPI	Beer	Alcoholic Beverages	1998	0.009	107.9
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	1998	0.036	67.9
+CPI	Clothing & Footwear	All Items	1998	0.068	152.6
+CPI	Clothing	Clothing & Footwear	1998	0.056	157
+CPI	Garments	Clothing	1998	0.051	162
+CPI	Other Articles of Clothing & Accessories	Clothing	1998	0.004	123.1
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	1998	0.001	79.2
+CPI	Footwear Including Repairs	Clothing & Footwear	1998	0.012	128.1
+CPI	Housing, Water & Fuels	All Items	1998	0.136	81.9
+CPI	Actual Rents for Housing	Housing, Water & Fuels	1998	0.057	82.6
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	1998	0.021	83.4
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1998	0.009	101.8
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1998	0.012	67.2
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	1998	0.015	82.2
+CPI	Water Supply	Other Services Relating to the Dwelling	1998	0.008	79.7
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	1998	0.007	85.1
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	1998	0.043	79.1
+CPI	Electricity	Electricity, Gas & Other Fuels	1998	0.021	87.6
+CPI	Gas	Electricity, Gas & Other Fuels	1998	0.019	74.9
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	1998	0.001	38.2
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	1998	0.002	74
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	1998	0.092	103.2
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	1998	0.04	98.5
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	1998	0.03	99.3
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	1998	0.01	95.4
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	1998	0.006	119.8
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	1998	0.013	119.2
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	1998	0.011	126.5
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	1998	0.002	74.9
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	1998	0.008	113.8
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	1998	0.01	118.2
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	1998	0.015	86.6
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	1998	0.008	110
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	1998	0.007	67.7
+CPI	Health	All Items	1998	0.008	81.8
+CPI	Medical Products Appliances & Equipment	Health	1998	0.008	93.8
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	1998	0.003	98.2
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	1998	0.005	89.9
+CPI	Out-Patient Services	Health	1998	0	
+CPI	Medical Services & Paramedical Services	Out-Patient Services	1998	0	
+CPI	Dental Services	Out-Patient Services	1998	0	
+CPI	Hospital Services	Health	1998	0	
+CPI	Transport	All Items	1998	0.164	85.4
+CPI	Purchase of Vehicles	Transport	1998	0.064	115.3
+CPI	New Cars	Purchase of Vehicles	1998	0.018	104.3
+CPI	Second-Hand Cars	Purchase of Vehicles	1998	0.043	130.6
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	1998	0.003	106
+CPI	Operation of Personal Transport Equipment	Transport	1998	0.08	72.6
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	1998	0.011	94.4
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	1998	0.043	74.5
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	1998	0.019	66.5
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	1998	0.007	73.5
+CPI	Transport Services	Transport	1998	0.02	74.6
+CPI	Passenger Transport by Railway	Transport Services	1998	0.005	81.3
+CPI	Passenger Transport by Road	Transport Services	1998	0.011	72.9
+CPI	Passenger Transport by Air	Transport Services	1998	0.003	93.4
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	1998	0.001	80.7
+CPI	Communication	All Items	1998	0.022	116.9
+CPI	Postal Services	Communication	1998	0.002	85.7
+CPI	Telephone & Telefax Equipment & Services	Communication	1998	0.02	120
+CPI	Recreation & Culture	All Items	1998	0.132	99.5
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	1998	0.02	200.8
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	1998	0.006	225.7
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	1998	0.004	175.9
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	1998	0.004	603
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	1998	0.004	132.2
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	1998	0.002	73.4
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	1998	0	
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	1998	0	
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	1998	0.03	116.3
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	1998	0.007	139.9
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	1998	0.003	125.4
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	1998	0.006	102.8
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	1998	0.014	88.4
+CPI	Recreational & Cultural Services	Recreation & Culture	1998	0.03	79.4
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	1998	0.01	76.5
+CPI	Cultural Services	Recreational & Cultural Services	1998	0.02	81.6
+CPI	Newspapers Books & Stationery	Recreation & Culture	1998	0.019	85.3
+CPI	Books	Newspapers Books & Stationery	1998	0.004	86.9
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	1998	0.01	78.9
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	1998	0.005	93.2
+CPI	Package Holiday	Recreation & Culture	1998	0.033	72.6
+CPI	Education	All Items	1998	0.014	67.6
+CPI	Hotels, Cafes & Restaurants	All Items	1998	0.106	79.4
+CPI	Catering	Hotels, Cafes & Restaurants	1998	0.103	80.7
+CPI	Restaurants & Cafes	Catering	1998	0.096	81.2
+CPI	Canteens	Catering	1998	0.007	73.8
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	1998	0.003	72.6
+CPI	Miscellaneous Goods & Services	All Items	1998	0.046	82.1
+CPI	Personal Care	Miscellaneous Goods & Services	1998	0.026	97.5
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	1998	0.007	70.9
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	1998	0.019	110.5
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	1998	0.008	102.2
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	1998	0.003	97.4
+CPI	Other Personal Effects	Personal Effects N.E.C.	1998	0.005	114.3
+CPI	Social Protection	Miscellaneous Goods & Services	1998	0	
+CPI	Insurance	Miscellaneous Goods & Services	1998	0.004	66.5
+CPI	Insurance Connected with the Dwelling	Insurance	1998	0.002	76.5
+CPI	Insurance Connected with Health	Insurance	1998	0	
+CPI	Insurance Connected with Transport	Insurance	1998	0.002	65.6
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	1998	0.001	138.2
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	1998	0.001	138.2
+CPI	Other Services Nec	Miscellaneous Goods & Services	1998	0.007	62.9
+CPI	All Items		1999	1	92.3
+CPI	Food & Non-Alcoholic Beverages	All Items	1999	0.141	92.9
+CPI	Food	Food & Non-Alcoholic Beverages	1999	0.127	91.8
+CPI	Bread & Cereals	Food	1999	0.023	94.3
+CPI	Meat	Food	1999	0.028	92.8
+CPI	Fish	Food	1999	0.006	94.8
+CPI	Milk, Cheese & Eggs	Food	1999	0.017	90
+CPI	Oils & Fats	Food	1999	0.003	102.2
+CPI	Fruit	Food	1999	0.009	91
+CPI	Vegetables Including Potatoes & Other Tubers	Food	1999	0.02	92
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	1999	0.014	87.5
+CPI	Food Products	Food	1999	0.007	99.5
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	1999	0.014	103.2
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	1999	0.004	110.2
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	1999	0.01	100.8
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	1999	0.063	85.6
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	1999	0.03	101.4
+CPI	Spirits	Alcoholic Beverages	1999	0.008	99.2
+CPI	Wine (Inc Perry)	Alcoholic Beverages	1999	0.014	98
+CPI	Beer	Alcoholic Beverages	1999	0.008	109.9
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	1999	0.033	75.7
+CPI	Clothing & Footwear	All Items	1999	0.068	144.6
+CPI	Clothing	Clothing & Footwear	1999	0.056	148.3
+CPI	Garments	Clothing	1999	0.051	152.5
+CPI	Other Articles of Clothing & Accessories	Clothing	1999	0.004	117.4
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	1999	0.001	82
+CPI	Footwear Including Repairs	Clothing & Footwear	1999	0.012	123.3
+CPI	Housing, Water & Fuels	All Items	1999	0.133	83.8
+CPI	Actual Rents for Housing	Housing, Water & Fuels	1999	0.057	85
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	1999	0.02	85.8
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1999	0.008	100.4
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	1999	0.012	71.1
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	1999	0.016	86
+CPI	Water Supply	Other Services Relating to the Dwelling	1999	0.008	82.9
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	1999	0.008	89.5
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	1999	0.04	79
+CPI	Electricity	Electricity, Gas & Other Fuels	1999	0.02	86.6
+CPI	Gas	Electricity, Gas & Other Fuels	1999	0.017	74.8
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	1999	0.001	43.4
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	1999	0.002	75.5
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	1999	0.092	102.8
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	1999	0.042	98.3
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	1999	0.032	99.1
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	1999	0.01	95.6
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	1999	0.007	118
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	1999	0.014	117.1
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	1999	0.012	122.5
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	1999	0.002	79.9
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	1999	0.007	111.6
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	1999	0.008	115.8
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	1999	0.014	88.8
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	1999	0.008	111
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	1999	0.006	70.9
+CPI	Health	All Items	1999	0.007	83.4
+CPI	Medical Products Appliances & Equipment	Health	1999	0.007	95.6
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	1999	0.002	99.4
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	1999	0.005	92.1
+CPI	Out-Patient Services	Health	1999	0	
+CPI	Medical Services & Paramedical Services	Out-Patient Services	1999	0	
+CPI	Dental Services	Out-Patient Services	1999	0	
+CPI	Hospital Services	Health	1999	0	
+CPI	Transport	All Items	1999	0.167	87.2
+CPI	Purchase of Vehicles	Transport	1999	0.068	111.5
+CPI	New Cars	Purchase of Vehicles	1999	0.021	103.2
+CPI	Second-Hand Cars	Purchase of Vehicles	1999	0.044	125.1
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	1999	0.003	101.6
+CPI	Operation of Personal Transport Equipment	Transport	1999	0.078	77.2
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	1999	0.009	95.5
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	1999	0.043	80.8
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	1999	0.019	69.4
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	1999	0.007	76.4
+CPI	Transport Services	Transport	1999	0.021	77.2
+CPI	Passenger Transport by Railway	Transport Services	1999	0.006	84.2
+CPI	Passenger Transport by Road	Transport Services	1999	0.01	76
+CPI	Passenger Transport by Air	Transport Services	1999	0.004	94.9
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	1999	0.001	82.2
+CPI	Communication	All Items	1999	0.023	113.4
+CPI	Postal Services	Communication	1999	0.002	86.3
+CPI	Telephone & Telefax Equipment & Services	Communication	1999	0.021	116
+CPI	Recreation & Culture	All Items	1999	0.133	99.8
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	1999	0.018	177
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	1999	0.005	196.5
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	1999	0.004	165.4
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	1999	0.003	402.1
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	1999	0.004	124.9
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	1999	0.002	75
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	1999	0	
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	1999	0	
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	1999	0.028	115.3
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	1999	0.007	134.3
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	1999	0.003	122.5
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	1999	0.006	101.1
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	1999	0.012	89.9
+CPI	Recreational & Cultural Services	Recreation & Culture	1999	0.035	81.9
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	1999	0.013	80.2
+CPI	Cultural Services	Recreational & Cultural Services	1999	0.022	83.5
+CPI	Newspapers Books & Stationery	Recreation & Culture	1999	0.019	87.9
+CPI	Books	Newspapers Books & Stationery	1999	0.003	88.6
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	1999	0.01	81.9
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	1999	0.006	95.3
+CPI	Package Holiday	Recreation & Culture	1999	0.033	75.5
+CPI	Education	All Items	1999	0.01	71.4
+CPI	Hotels, Cafes & Restaurants	All Items	1999	0.115	82.2
+CPI	Catering	Hotels, Cafes & Restaurants	1999	0.109	83.5
+CPI	Restaurants & Cafes	Catering	1999	0.102	84.1
+CPI	Canteens	Catering	1999	0.007	77
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	1999	0.006	75.1
+CPI	Miscellaneous Goods & Services	All Items	1999	0.048	84.6
+CPI	Personal Care	Miscellaneous Goods & Services	1999	0.026	99.9
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	1999	0.007	75.2
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	1999	0.019	111.9
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	1999	0.008	102.1
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	1999	0.004	98.2
+CPI	Other Personal Effects	Personal Effects N.E.C.	1999	0.004	113.2
+CPI	Social Protection	Miscellaneous Goods & Services	1999	0	
+CPI	Insurance	Miscellaneous Goods & Services	1999	0.006	70.8
+CPI	Insurance Connected with the Dwelling	Insurance	1999	0.003	77.1
+CPI	Insurance Connected with Health	Insurance	1999	0	
+CPI	Insurance Connected with Transport	Insurance	1999	0.003	73.6
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	1999	0.001	134.5
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	1999	0.001	134.5
+CPI	Other Services Nec	Miscellaneous Goods & Services	1999	0.007	66.5
+CPI	All Items		2000	1	93.1
+CPI	Food & Non-Alcoholic Beverages	All Items	2000	0.121	92.5
+CPI	Food	Food & Non-Alcoholic Beverages	2000	0.109	91.4
+CPI	Bread & Cereals	Food	2000	0.019	94.1
+CPI	Meat	Food	2000	0.027	93.2
+CPI	Fish	Food	2000	0.005	96.9
+CPI	Milk, Cheese & Eggs	Food	2000	0.014	89.5
+CPI	Oils & Fats	Food	2000	0.002	100.9
+CPI	Fruit	Food	2000	0.009	91.3
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2000	0.018	88.7
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2000	0.012	88.2
+CPI	Food Products	Food	2000	0.003	99.2
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2000	0.012	101.6
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2000	0.003	105
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2000	0.009	100.4
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2000	0.057	89.5
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2000	0.026	101.4
+CPI	Spirits	Alcoholic Beverages	2000	0.007	99.9
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2000	0.012	97.1
+CPI	Beer	Alcoholic Beverages	2000	0.007	110.6
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2000	0.031	82.3
+CPI	Clothing & Footwear	All Items	2000	0.07	134.1
+CPI	Clothing	Clothing & Footwear	2000	0.06	136.8
+CPI	Garments	Clothing	2000	0.056	139.9
+CPI	Other Articles of Clothing & Accessories	Clothing	2000	0.002	113.5
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2000	0.002	83.7
+CPI	Footwear Including Repairs	Clothing & Footwear	2000	0.01	117.9
+CPI	Housing, Water & Fuels	All Items	2000	0.118	84.9
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2000	0.053	87.8
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2000	0.02	88.3
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2000	0.01	100.3
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2000	0.01	75.2
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2000	0.012	80.7
+CPI	Water Supply	Other Services Relating to the Dwelling	2000	0.006	80.2
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2000	0.006	81.4
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2000	0.033	79.1
+CPI	Electricity	Electricity, Gas & Other Fuels	2000	0.017	84.8
+CPI	Gas	Electricity, Gas & Other Fuels	2000	0.013	73.3
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2000	0.002	66.4
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2000	0.001	76.7
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2000	0.078	101
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2000	0.033	96.7
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2000	0.027	97.1
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2000	0.006	95.8
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2000	0.008	111.7
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2000	0.012	112.4
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2000	0.011	116.2
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2000	0.001	84.9
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2000	0.007	108
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2000	0.006	114
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2000	0.012	90.1
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2000	0.007	108.2
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2000	0.005	75.8
+CPI	Health	All Items	2000	0.014	85.8
+CPI	Medical Products Appliances & Equipment	Health	2000	0.01	98
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2000	0.007	101.9
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2000	0.003	93.8
+CPI	Out-Patient Services	Health	2000	0.004	85
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2000	0.002	87.2
+CPI	Dental Services	Out-Patient Services	2000	0.002	81.6
+CPI	Hospital Services	Health	2000	0	
+CPI	Transport	All Items	2000	0.161	89.6
+CPI	Purchase of Vehicles	Transport	2000	0.055	105.9
+CPI	New Cars	Purchase of Vehicles	2000	0.034	100.2
+CPI	Second-Hand Cars	Purchase of Vehicles	2000	0.018	117.9
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2000	0.003	101.6
+CPI	Operation of Personal Transport Equipment	Transport	2000	0.074	84
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2000	0.007	95.8
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2000	0.038	91.5
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2000	0.021	72.8
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2000	0.008	79
+CPI	Transport Services	Transport	2000	0.032	79.9
+CPI	Passenger Transport by Railway	Transport Services	2000	0.008	85.7
+CPI	Passenger Transport by Road	Transport Services	2000	0.014	79.5
+CPI	Passenger Transport by Air	Transport Services	2000	0.009	97.1
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2000	0.001	91.5
+CPI	Communication	All Items	2000	0.025	109
+CPI	Postal Services	Communication	2000	0.002	89.1
+CPI	Telephone & Telefax Equipment & Services	Communication	2000	0.023	110.7
+CPI	Recreation & Culture	All Items	2000	0.149	100.4
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2000	0.02	160.4
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2000	0.007	172.6
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2000	0.003	156.8
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2000	0.003	317.7
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2000	0.006	116.1
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2000	0.001	78.7
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2000	0.007	90.3
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2000	0.007	90.3
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2000	0.033	113.1
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2000	0.015	125.9
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2000	0.005	119.9
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2000	0.005	104.4
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2000	0.008	90.6
+CPI	Recreational & Cultural Services	Recreation & Culture	2000	0.036	83.8
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2000	0.014	84
+CPI	Cultural Services	Recreational & Cultural Services	2000	0.022	84.1
+CPI	Newspapers Books & Stationery	Recreation & Culture	2000	0.025	90.2
+CPI	Books	Newspapers Books & Stationery	2000	0.004	90.7
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2000	0.01	84.3
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2000	0.011	97.3
+CPI	Package Holiday	Recreation & Culture	2000	0.028	80.2
+CPI	Education	All Items	2000	0.013	75.6
+CPI	Hotels, Cafes & Restaurants	All Items	2000	0.137	84.9
+CPI	Catering	Hotels, Cafes & Restaurants	2000	0.116	85.8
+CPI	Restaurants & Cafes	Catering	2000	0.109	86.2
+CPI	Canteens	Catering	2000	0.007	81.5
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2000	0.021	79.5
+CPI	Miscellaneous Goods & Services	All Items	2000	0.057	85.7
+CPI	Personal Care	Miscellaneous Goods & Services	2000	0.029	98.6
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2000	0.008	79.1
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2000	0.021	107.7
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2000	0.009	101.3
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2000	0.007	98.1
+CPI	Other Personal Effects	Personal Effects N.E.C.	2000	0.002	110.3
+CPI	Social Protection	Miscellaneous Goods & Services	2000	0.006	75
+CPI	Insurance	Miscellaneous Goods & Services	2000	0.006	79.6
+CPI	Insurance Connected with the Dwelling	Insurance	2000	0.002	84
+CPI	Insurance Connected with Health	Insurance	2000	0.002	69.5
+CPI	Insurance Connected with Transport	Insurance	2000	0.002	85.2
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2000	0.001	120.7
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2000	0.001	120.7
+CPI	Other Services Nec	Miscellaneous Goods & Services	2000	0.006	69.6
+CPI	All Items		2001	1	94.2
+CPI	Food & Non-Alcoholic Beverages	All Items	2001	0.114	96
+CPI	Food	Food & Non-Alcoholic Beverages	2001	0.103	95.2
+CPI	Bread & Cereals	Food	2001	0.018	95.1
+CPI	Meat	Food	2001	0.025	97.2
+CPI	Fish	Food	2001	0.005	98.7
+CPI	Milk, Cheese & Eggs	Food	2001	0.013	92.3
+CPI	Oils & Fats	Food	2001	0.002	98.9
+CPI	Fruit	Food	2001	0.009	99.3
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2001	0.017	97
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2001	0.011	89.5
+CPI	Food Products	Food	2001	0.003	100.3
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2001	0.011	101.8
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2001	0.002	104.9
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2001	0.009	100.8
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2001	0.048	92.5
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2001	0.02	101.8
+CPI	Spirits	Alcoholic Beverages	2001	0.005	100.3
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2001	0.009	97.9
+CPI	Beer	Alcoholic Beverages	2001	0.006	110.5
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2001	0.028	86.7
+CPI	Clothing & Footwear	All Items	2001	0.067	124
+CPI	Clothing	Clothing & Footwear	2001	0.058	125.8
+CPI	Garments	Clothing	2001	0.054	128
+CPI	Other Articles of Clothing & Accessories	Clothing	2001	0.002	106.4
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2001	0.002	86.5
+CPI	Footwear Including Repairs	Clothing & Footwear	2001	0.009	113.3
+CPI	Housing, Water & Fuels	All Items	2001	0.112	86.8
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2001	0.053	90.7
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2001	0.02	91
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2001	0.01	100.3
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2001	0.01	79.9
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2001	0.01	81.2
+CPI	Water Supply	Other Services Relating to the Dwelling	2001	0.005	81.2
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2001	0.005	81.4
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2001	0.029	79.5
+CPI	Electricity	Electricity, Gas & Other Fuels	2001	0.015	84
+CPI	Gas	Electricity, Gas & Other Fuels	2001	0.011	75.4
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2001	0.002	62.3
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2001	0.001	80.4
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2001	0.078	100.9
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2001	0.033	97.3
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2001	0.026	97.4
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2001	0.007	97.4
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2001	0.008	109.7
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2001	0.011	109
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2001	0.01	112
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2001	0.001	87.9
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2001	0.007	106.6
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2001	0.006	112.1
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2001	0.013	92.5
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2001	0.007	107.4
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2001	0.006	81
+CPI	Health	All Items	2001	0.025	89
+CPI	Medical Products Appliances & Equipment	Health	2001	0.012	100
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2001	0.008	102.9
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2001	0.004	97.7
+CPI	Out-Patient Services	Health	2001	0.004	88.7
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2001	0.002	91.1
+CPI	Dental Services	Out-Patient Services	2001	0.002	85.1
+CPI	Hospital Services	Health	2001	0.009	77.1
+CPI	Transport	All Items	2001	0.152	89.5
+CPI	Purchase of Vehicles	Transport	2001	0.046	102.4
+CPI	New Cars	Purchase of Vehicles	2001	0.029	95.7
+CPI	Second-Hand Cars	Purchase of Vehicles	2001	0.014	115.9
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2001	0.003	102
+CPI	Operation of Personal Transport Equipment	Transport	2001	0.073	83.7
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2001	0.006	94.5
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2001	0.037	86.8
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2001	0.023	77.7
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2001	0.007	82.1
+CPI	Transport Services	Transport	2001	0.033	84.6
+CPI	Passenger Transport by Railway	Transport Services	2001	0.009	89.3
+CPI	Passenger Transport by Road	Transport Services	2001	0.014	83.2
+CPI	Passenger Transport by Air	Transport Services	2001	0.009	105.8
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2001	0.001	98.9
+CPI	Communication	All Items	2001	0.025	101.8
+CPI	Postal Services	Communication	2001	0.002	90.3
+CPI	Telephone & Telefax Equipment & Services	Communication	2001	0.023	102.7
+CPI	Recreation & Culture	All Items	2001	0.159	101.7
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2001	0.023	149.3
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2001	0.008	159.1
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2001	0.004	148.9
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2001	0.004	249.8
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2001	0.006	115.3
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2001	0.001	83.6
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2001	0.008	90.9
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2001	0.008	90.9
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2001	0.037	111.7
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2001	0.018	123
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2001	0.004	117.5
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2001	0.007	103.7
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2001	0.008	91.9
+CPI	Recreational & Cultural Services	Recreation & Culture	2001	0.036	85.7
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2001	0.015	87.8
+CPI	Cultural Services	Recreational & Cultural Services	2001	0.021	84.7
+CPI	Newspapers Books & Stationery	Recreation & Culture	2001	0.025	92.3
+CPI	Books	Newspapers Books & Stationery	2001	0.005	92.6
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2001	0.01	87.8
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2001	0.01	97.9
+CPI	Package Holiday	Recreation & Culture	2001	0.03	87.1
+CPI	Education	All Items	2001	0.012	80.1
+CPI	Hotels, Cafes & Restaurants	All Items	2001	0.144	88.1
+CPI	Catering	Hotels, Cafes & Restaurants	2001	0.128	88.7
+CPI	Restaurants & Cafes	Catering	2001	0.121	89
+CPI	Canteens	Catering	2001	0.007	85.2
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2001	0.016	84.6
+CPI	Miscellaneous Goods & Services	All Items	2001	0.064	88.3
+CPI	Personal Care	Miscellaneous Goods & Services	2001	0.028	100
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2001	0.008	82.6
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2001	0.02	107.9
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2001	0.009	100.3
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2001	0.007	97.5
+CPI	Other Personal Effects	Personal Effects N.E.C.	2001	0.002	107.5
+CPI	Social Protection	Miscellaneous Goods & Services	2001	0.012	79.4
+CPI	Insurance	Miscellaneous Goods & Services	2001	0.006	86
+CPI	Insurance Connected with the Dwelling	Insurance	2001	0.002	87.3
+CPI	Insurance Connected with Health	Insurance	2001	0.002	77.3
+CPI	Insurance Connected with Transport	Insurance	2001	0.002	92.9
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2001	0.001	108
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2001	0.001	108
+CPI	Other Services Nec	Miscellaneous Goods & Services	2001	0.008	76.1
+CPI	All Items		2002	1	95.4
+CPI	Food & Non-Alcoholic Beverages	All Items	2002	0.115	96.7
+CPI	Food	Food & Non-Alcoholic Beverages	2002	0.103	96.1
+CPI	Bread & Cereals	Food	2002	0.016	95.9
+CPI	Meat	Food	2002	0.024	97.6
+CPI	Fish	Food	2002	0.004	101.5
+CPI	Milk, Cheese & Eggs	Food	2002	0.015	93.3
+CPI	Oils & Fats	Food	2002	0.002	100.3
+CPI	Fruit	Food	2002	0.009	100.4
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2002	0.017	96.3
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2002	0.013	91.4
+CPI	Food Products	Food	2002	0.003	101.3
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2002	0.012	101.5
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2002	0.003	105.7
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2002	0.009	100.2
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2002	0.051	94.1
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2002	0.02	101.9
+CPI	Spirits	Alcoholic Beverages	2002	0.005	101.4
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2002	0.009	98.1
+CPI	Beer	Alcoholic Beverages	2002	0.006	109.7
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2002	0.031	89.3
+CPI	Clothing & Footwear	All Items	2002	0.061	115.1
+CPI	Clothing	Clothing & Footwear	2002	0.053	116
+CPI	Garments	Clothing	2002	0.049	117.4
+CPI	Other Articles of Clothing & Accessories	Clothing	2002	0.003	103.1
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2002	0.001	89
+CPI	Footwear Including Repairs	Clothing & Footwear	2002	0.008	109.3
+CPI	Housing, Water & Fuels	All Items	2002	0.107	89
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2002	0.05	93.2
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2002	0.019	93.5
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2002	0.011	99.7
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2002	0.008	85.2
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2002	0.01	83.2
+CPI	Water Supply	Other Services Relating to the Dwelling	2002	0.005	82.5
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2002	0.005	83.9
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2002	0.028	81.3
+CPI	Electricity	Electricity, Gas & Other Fuels	2002	0.014	84.4
+CPI	Gas	Electricity, Gas & Other Fuels	2002	0.012	80.1
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2002	0.001	56.3
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2002	0.001	84.5
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2002	0.069	101
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2002	0.028	97.7
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2002	0.021	98.3
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2002	0.007	96
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2002	0.008	106.6
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2002	0.009	107.2
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2002	0.008	109.5
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2002	0.001	90.6
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2002	0.008	106.2
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2002	0.005	110
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2002	0.011	95.3
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2002	0.005	107.2
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2002	0.006	86
+CPI	Health	All Items	2002	0.023	92.4
+CPI	Medical Products Appliances & Equipment	Health	2002	0.01	100.5
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2002	0.005	101.9
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2002	0.005	99.7
+CPI	Out-Patient Services	Health	2002	0.004	91.3
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2002	0.002	93.5
+CPI	Dental Services	Out-Patient Services	2002	0.002	87.8
+CPI	Hospital Services	Health	2002	0.009	83.4
+CPI	Transport	All Items	2002	0.14	90.1
+CPI	Purchase of Vehicles	Transport	2002	0.045	101.5
+CPI	New Cars	Purchase of Vehicles	2002	0.028	95.4
+CPI	Second-Hand Cars	Purchase of Vehicles	2002	0.014	113.5
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2002	0.003	101.8
+CPI	Operation of Personal Transport Equipment	Transport	2002	0.063	84.3
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2002	0.005	95.5
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2002	0.028	84.1
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2002	0.023	82
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2002	0.007	86.4
+CPI	Transport Services	Transport	2002	0.032	86.6
+CPI	Passenger Transport by Railway	Transport Services	2002	0.009	91.5
+CPI	Passenger Transport by Road	Transport Services	2002	0.014	86.3
+CPI	Passenger Transport by Air	Transport Services	2002	0.008	104.6
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2002	0.001	102.3
+CPI	Communication	All Items	2002	0.024	102.6
+CPI	Postal Services	Communication	2002	0.002	90.8
+CPI	Telephone & Telefax Equipment & Services	Communication	2002	0.022	103.5
+CPI	Recreation & Culture	All Items	2002	0.159	103.4
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2002	0.03	139.4
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2002	0.007	146.1
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2002	0.005	142.8
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2002	0.006	204
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2002	0.011	113.8
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2002	0.001	87.1
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2002	0.008	92.9
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2002	0.008	92.9
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2002	0.036	108.5
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2002	0.018	116.6
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2002	0.005	113.3
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2002	0.006	102.2
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2002	0.007	94
+CPI	Recreational & Cultural Services	Recreation & Culture	2002	0.032	91
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2002	0.009	90.1
+CPI	Cultural Services	Recreational & Cultural Services	2002	0.023	91.4
+CPI	Newspapers Books & Stationery	Recreation & Culture	2002	0.022	94.2
+CPI	Books	Newspapers Books & Stationery	2002	0.005	94.9
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2002	0.009	89.3
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2002	0.008	99.9
+CPI	Package Holiday	Recreation & Culture	2002	0.031	95.2
+CPI	Education	All Items	2002	0.017	84.7
+CPI	Hotels, Cafes & Restaurants	All Items	2002	0.137	91.2
+CPI	Catering	Hotels, Cafes & Restaurants	2002	0.118	91.7
+CPI	Restaurants & Cafes	Catering	2002	0.107	91.9
+CPI	Canteens	Catering	2002	0.011	89.9
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2002	0.019	87.6
+CPI	Miscellaneous Goods & Services	All Items	2002	0.097	90.6
+CPI	Personal Care	Miscellaneous Goods & Services	2002	0.027	99.8
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2002	0.008	86.9
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2002	0.019	105.3
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2002	0.009	99.5
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2002	0.007	97.3
+CPI	Other Personal Effects	Personal Effects N.E.C.	2002	0.002	104.7
+CPI	Social Protection	Miscellaneous Goods & Services	2002	0.014	84.3
+CPI	Insurance	Miscellaneous Goods & Services	2002	0.005	91.5
+CPI	Insurance Connected with the Dwelling	Insurance	2002	0.001	93.4
+CPI	Insurance Connected with Health	Insurance	2002	0.002	85
+CPI	Insurance Connected with Transport	Insurance	2002	0.002	95.4
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2002	0.022	90.8
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2002	0.022	90.8
+CPI	Other Services Nec	Miscellaneous Goods & Services	2002	0.02	81.6
+CPI	All Items		2003	1	96.7
+CPI	Food & Non-Alcoholic Beverages	All Items	2003	0.108	97.9
+CPI	Food	Food & Non-Alcoholic Beverages	2003	0.095	97.4
+CPI	Bread & Cereals	Food	2003	0.016	96.9
+CPI	Meat	Food	2003	0.022	97.7
+CPI	Fish	Food	2003	0.004	100.1
+CPI	Milk, Cheese & Eggs	Food	2003	0.014	95.3
+CPI	Oils & Fats	Food	2003	0.002	100.2
+CPI	Fruit	Food	2003	0.007	101.7
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2003	0.015	97.8
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2003	0.012	94.9
+CPI	Food Products	Food	2003	0.003	101.4
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2003	0.013	101.2
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2003	0.003	103.1
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2003	0.01	100.6
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2003	0.047	95.9
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2003	0.019	101.2
+CPI	Spirits	Alcoholic Beverages	2003	0.005	101.2
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2003	0.009	98.2
+CPI	Beer	Alcoholic Beverages	2003	0.005	107
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2003	0.028	92.5
+CPI	Clothing & Footwear	All Items	2003	0.062	110.7
+CPI	Clothing	Clothing & Footwear	2003	0.054	111.2
+CPI	Garments	Clothing	2003	0.05	112.2
+CPI	Other Articles of Clothing & Accessories	Clothing	2003	0.003	102.3
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2003	0.001	92.2
+CPI	Footwear Including Repairs	Clothing & Footwear	2003	0.008	107.1
+CPI	Housing, Water & Fuels	All Items	2003	0.104	90.7
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2003	0.05	94.5
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2003	0.017	95.8
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2003	0.01	100
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2003	0.007	90.1
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2003	0.009	86.4
+CPI	Water Supply	Other Services Relating to the Dwelling	2003	0.004	85.1
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2003	0.005	87.6
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2003	0.028	82.7
+CPI	Electricity	Electricity, Gas & Other Fuels	2003	0.014	85.3
+CPI	Gas	Electricity, Gas & Other Fuels	2003	0.012	81.7
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2003	0.001	62.4
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2003	0.001	86.3
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2003	0.068	100.5
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2003	0.027	98.2
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2003	0.02	98.6
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2003	0.007	97.1
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2003	0.008	104.4
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2003	0.009	103.9
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2003	0.008	105.3
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2003	0.001	93
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2003	0.008	105.1
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2003	0.005	104.3
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2003	0.011	97.1
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2003	0.005	104.6
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2003	0.006	90.7
+CPI	Health	All Items	2003	0.023	95.5
+CPI	Medical Products Appliances & Equipment	Health	2003	0.01	100.6
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2003	0.004	101.7
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2003	0.006	100.1
+CPI	Out-Patient Services	Health	2003	0.005	94.8
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2003	0.003	97.2
+CPI	Dental Services	Out-Patient Services	2003	0.002	91.4
+CPI	Hospital Services	Health	2003	0.008	89.4
+CPI	Transport	All Items	2003	0.144	93
+CPI	Purchase of Vehicles	Transport	2003	0.052	100.9
+CPI	New Cars	Purchase of Vehicles	2003	0.031	96.1
+CPI	Second-Hand Cars	Purchase of Vehicles	2003	0.018	110
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2003	0.003	100.3
+CPI	Operation of Personal Transport Equipment	Transport	2003	0.062	88.5
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2003	0.005	96.8
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2003	0.027	87.1
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2003	0.023	87.7
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2003	0.007	91.9
+CPI	Transport Services	Transport	2003	0.03	90.5
+CPI	Passenger Transport by Railway	Transport Services	2003	0.008	92.5
+CPI	Passenger Transport by Road	Transport Services	2003	0.014	90.6
+CPI	Passenger Transport by Air	Transport Services	2003	0.007	99.2
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2003	0.001	111.7
+CPI	Communication	All Items	2003	0.025	103.1
+CPI	Postal Services	Communication	2003	0.001	93.4
+CPI	Telephone & Telefax Equipment & Services	Communication	2003	0.024	103.9
+CPI	Recreation & Culture	All Items	2003	0.163	102.8
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2003	0.031	126.2
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2003	0.007	128.8
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2003	0.005	135
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2003	0.007	157.9
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2003	0.011	110.8
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2003	0.001	90
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2003	0.008	95.7
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2003	0.008	95.7
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2003	0.035	104.4
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2003	0.017	107.8
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2003	0.005	110.2
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2003	0.006	101.3
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2003	0.007	96.2
+CPI	Recreational & Cultural Services	Recreation & Culture	2003	0.034	94.1
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2003	0.009	93
+CPI	Cultural Services	Recreational & Cultural Services	2003	0.025	94.6
+CPI	Newspapers Books & Stationery	Recreation & Culture	2003	0.02	97.2
+CPI	Books	Newspapers Books & Stationery	2003	0.005	97.3
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2003	0.008	94.6
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2003	0.007	100.5
+CPI	Package Holiday	Recreation & Culture	2003	0.035	98.8
+CPI	Education	All Items	2003	0.02	91
+CPI	Hotels, Cafes & Restaurants	All Items	2003	0.135	94
+CPI	Catering	Hotels, Cafes & Restaurants	2003	0.118	94.5
+CPI	Restaurants & Cafes	Catering	2003	0.107	94.6
+CPI	Canteens	Catering	2003	0.011	94
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2003	0.017	90.8
+CPI	Miscellaneous Goods & Services	All Items	2003	0.101	92.5
+CPI	Personal Care	Miscellaneous Goods & Services	2003	0.026	99.9
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2003	0.007	91.2
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2003	0.019	103.4
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2003	0.009	101.1
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2003	0.006	99.9
+CPI	Other Personal Effects	Personal Effects N.E.C.	2003	0.003	103.8
+CPI	Social Protection	Miscellaneous Goods & Services	2003	0.014	89.3
+CPI	Insurance	Miscellaneous Goods & Services	2003	0.006	97.6
+CPI	Insurance Connected with the Dwelling	Insurance	2003	0.001	99.7
+CPI	Insurance Connected with Health	Insurance	2003	0.002	91.7
+CPI	Insurance Connected with Transport	Insurance	2003	0.003	100.7
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2003	0.023	89.2
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2003	0.023	89.2
+CPI	Other Services Nec	Miscellaneous Goods & Services	2003	0.023	85.7
+CPI	All Items		2004	1	98
+CPI	Food & Non-Alcoholic Beverages	All Items	2004	0.106	98.5
+CPI	Food	Food & Non-Alcoholic Beverages	2004	0.094	98.3
+CPI	Bread & Cereals	Food	2004	0.016	98.7
+CPI	Meat	Food	2004	0.022	99.3
+CPI	Fish	Food	2004	0.004	98.4
+CPI	Milk, Cheese & Eggs	Food	2004	0.013	97.4
+CPI	Oils & Fats	Food	2004	0.002	102.2
+CPI	Fruit	Food	2004	0.008	98.8
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2004	0.015	97
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2004	0.012	97.3
+CPI	Food Products	Food	2004	0.002	100.5
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2004	0.012	100
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2004	0.003	99.9
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2004	0.009	100
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2004	0.046	97.8
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2004	0.019	100.8
+CPI	Spirits	Alcoholic Beverages	2004	0.005	100.8
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2004	0.009	99.2
+CPI	Beer	Alcoholic Beverages	2004	0.005	103.8
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2004	0.027	95.8
+CPI	Clothing & Footwear	All Items	2004	0.062	105.4
+CPI	Clothing	Clothing & Footwear	2004	0.054	105.5
+CPI	Garments	Clothing	2004	0.05	106
+CPI	Other Articles of Clothing & Accessories	Clothing	2004	0.003	100.1
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2004	0.001	95.4
+CPI	Footwear Including Repairs	Clothing & Footwear	2004	0.008	104.9
+CPI	Housing, Water & Fuels	All Items	2004	0.103	94.1
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2004	0.048	96.6
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2004	0.02	98
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2004	0.012	100
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2004	0.008	95.2
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2004	0.009	90.9
+CPI	Water Supply	Other Services Relating to the Dwelling	2004	0.004	89.6
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2004	0.005	92.3
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2004	0.026	88.4
+CPI	Electricity	Electricity, Gas & Other Fuels	2004	0.013	90.4
+CPI	Gas	Electricity, Gas & Other Fuels	2004	0.011	87.5
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2004	0.001	73.6
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2004	0.001	90.8
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2004	0.075	100.3
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2004	0.032	98.9
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2004	0.024	98.8
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2004	0.008	99.3
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2004	0.009	104.2
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2004	0.01	101.8
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2004	0.009	102.6
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2004	0.001	96.3
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2004	0.009	104.1
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2004	0.005	102.4
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2004	0.01	98
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2004	0.005	100.4
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2004	0.005	95.8
+CPI	Health	All Items	2004	0.022	97.2
+CPI	Medical Products Appliances & Equipment	Health	2004	0.01	100
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2004	0.004	100.5
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2004	0.006	99.9
+CPI	Out-Patient Services	Health	2004	0.004	95
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2004	0.002	94.4
+CPI	Dental Services	Out-Patient Services	2004	0.002	95.5
+CPI	Hospital Services	Health	2004	0.008	94.6
+CPI	Transport	All Items	2004	0.151	96.1
+CPI	Purchase of Vehicles	Transport	2004	0.055	101.1
+CPI	New Cars	Purchase of Vehicles	2004	0.032	98.3
+CPI	Second-Hand Cars	Purchase of Vehicles	2004	0.02	106
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2004	0.003	102.6
+CPI	Operation of Personal Transport Equipment	Transport	2004	0.065	93.4
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2004	0.005	98.2
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2004	0.026	92
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2004	0.027	93.7
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2004	0.007	95.5
+CPI	Transport Services	Transport	2004	0.031	93.9
+CPI	Passenger Transport by Railway	Transport Services	2004	0.007	96.3
+CPI	Passenger Transport by Road	Transport Services	2004	0.015	94.7
+CPI	Passenger Transport by Air	Transport Services	2004	0.007	94.8
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2004	0.002	108.1
+CPI	Communication	All Items	2004	0.026	102.3
+CPI	Postal Services	Communication	2004	0.002	96.3
+CPI	Telephone & Telefax Equipment & Services	Communication	2004	0.024	102.9
+CPI	Recreation & Culture	All Items	2004	0.15	101.2
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2004	0.026	113.1
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2004	0.006	114.4
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2004	0.004	123.2
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2004	0.006	125.4
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2004	0.009	104.3
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2004	0.001	94.6
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2004	0.008	98.8
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2004	0.008	98.8
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2004	0.033	101.9
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2004	0.016	103
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2004	0.004	106.2
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2004	0.006	101.3
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2004	0.007	97.2
+CPI	Recreational & Cultural Services	Recreation & Culture	2004	0.033	96.4
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2004	0.009	95.7
+CPI	Cultural Services	Recreational & Cultural Services	2004	0.024	96.7
+CPI	Newspapers Books & Stationery	Recreation & Culture	2004	0.019	99.3
+CPI	Books	Newspapers Books & Stationery	2004	0.005	99.1
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2004	0.008	98.5
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2004	0.006	100.5
+CPI	Package Holiday	Recreation & Culture	2004	0.031	98.5
+CPI	Education	All Items	2004	0.016	95.3
+CPI	Hotels, Cafes & Restaurants	All Items	2004	0.137	96.8
+CPI	Catering	Hotels, Cafes & Restaurants	2004	0.119	97.1
+CPI	Restaurants & Cafes	Catering	2004	0.107	97.1
+CPI	Canteens	Catering	2004	0.012	96.8
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2004	0.018	94.7
+CPI	Miscellaneous Goods & Services	All Items	2004	0.106	95.9
+CPI	Personal Care	Miscellaneous Goods & Services	2004	0.026	99.4
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2004	0.007	95.5
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2004	0.019	101
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2004	0.009	100.8
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2004	0.006	101.1
+CPI	Other Personal Effects	Personal Effects N.E.C.	2004	0.003	100.2
+CPI	Social Protection	Miscellaneous Goods & Services	2004	0.013	94.4
+CPI	Insurance	Miscellaneous Goods & Services	2004	0.007	100.3
+CPI	Insurance Connected with the Dwelling	Insurance	2004	0.001	102.2
+CPI	Insurance Connected with Health	Insurance	2004	0.003	96.3
+CPI	Insurance Connected with Transport	Insurance	2004	0.003	101.8
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2004	0.026	93
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2004	0.026	93
+CPI	Other Services Nec	Miscellaneous Goods & Services	2004	0.025	92.5
+CPI	All Items		2005	1	100
+CPI	Food & Non-Alcoholic Beverages	All Items	2005	0.106	100
+CPI	Food	Food & Non-Alcoholic Beverages	2005	0.093	100
+CPI	Bread & Cereals	Food	2005	0.015	100
+CPI	Meat	Food	2005	0.023	100
+CPI	Fish	Food	2005	0.004	100
+CPI	Milk, Cheese & Eggs	Food	2005	0.013	100
+CPI	Oils & Fats	Food	2005	0.002	100
+CPI	Fruit	Food	2005	0.008	100
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2005	0.014	100
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2005	0.012	100
+CPI	Food Products	Food	2005	0.002	100
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2005	0.013	100
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2005	0.003	100
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2005	0.01	100
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2005	0.046	100
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2005	0.02	100
+CPI	Spirits	Alcoholic Beverages	2005	0.005	100
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2005	0.01	100
+CPI	Beer	Alcoholic Beverages	2005	0.005	100
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2005	0.026	100
+CPI	Clothing & Footwear	All Items	2005	0.063	100
+CPI	Clothing	Clothing & Footwear	2005	0.054	100
+CPI	Garments	Clothing	2005	0.051	100
+CPI	Other Articles of Clothing & Accessories	Clothing	2005	0.002	100
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2005	0.001	100
+CPI	Footwear Including Repairs	Clothing & Footwear	2005	0.009	100
+CPI	Housing, Water & Fuels	All Items	2005	0.105	100
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2005	0.047	100
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2005	0.02	100
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2005	0.012	100
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2005	0.008	100
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2005	0.01	100
+CPI	Water Supply	Other Services Relating to the Dwelling	2005	0.005	100
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2005	0.005	100
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2005	0.028	100
+CPI	Electricity	Electricity, Gas & Other Fuels	2005	0.014	100
+CPI	Gas	Electricity, Gas & Other Fuels	2005	0.012	100
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2005	0.001	100
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2005	0.001	100
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2005	0.065	100
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2005	0.025	100
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2005	0.019	100
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2005	0.006	100
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2005	0.008	100
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2005	0.008	100
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2005	0.007	100
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2005	0.001	100
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2005	0.008	100
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2005	0.006	100
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2005	0.01	100
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2005	0.005	100
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2005	0.005	100
+CPI	Health	All Items	2005	0.024	100
+CPI	Medical Products Appliances & Equipment	Health	2005	0.012	100
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2005	0.006	100
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2005	0.006	100
+CPI	Out-Patient Services	Health	2005	0.004	100
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2005	0.002	100
+CPI	Dental Services	Out-Patient Services	2005	0.002	100
+CPI	Hospital Services	Health	2005	0.008	100
+CPI	Transport	All Items	2005	0.148	100
+CPI	Purchase of Vehicles	Transport	2005	0.053	100
+CPI	New Cars	Purchase of Vehicles	2005	0.033	100
+CPI	Second-Hand Cars	Purchase of Vehicles	2005	0.017	100
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2005	0.003	100
+CPI	Operation of Personal Transport Equipment	Transport	2005	0.063	100
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2005	0.006	100
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2005	0.027	100
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2005	0.024	100
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2005	0.006	100
+CPI	Transport Services	Transport	2005	0.032	100
+CPI	Passenger Transport by Railway	Transport Services	2005	0.008	100
+CPI	Passenger Transport by Road	Transport Services	2005	0.014	100
+CPI	Passenger Transport by Air	Transport Services	2005	0.008	100
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2005	0.002	100
+CPI	Communication	All Items	2005	0.025	100
+CPI	Postal Services	Communication	2005	0.002	100
+CPI	Telephone & Telefax Equipment & Services	Communication	2005	0.023	100
+CPI	Recreation & Culture	All Items	2005	0.151	100
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2005	0.025	100
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2005	0.006	100
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2005	0.004	100
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2005	0.005	100
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2005	0.009	100
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2005	0.001	100
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2005	0.009	100
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2005	0.009	100
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2005	0.037	100
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2005	0.02	100
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2005	0.004	100
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2005	0.006	100
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2005	0.007	100
+CPI	Recreational & Cultural Services	Recreation & Culture	2005	0.033	100
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2005	0.009	100
+CPI	Cultural Services	Recreational & Cultural Services	2005	0.024	100
+CPI	Newspapers Books & Stationery	Recreation & Culture	2005	0.018	100
+CPI	Books	Newspapers Books & Stationery	2005	0.005	100
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2005	0.007	100
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2005	0.006	100
+CPI	Package Holiday	Recreation & Culture	2005	0.029	100
+CPI	Education	All Items	2005	0.017	100
+CPI	Hotels, Cafes & Restaurants	All Items	2005	0.139	100
+CPI	Catering	Hotels, Cafes & Restaurants	2005	0.121	100
+CPI	Restaurants & Cafes	Catering	2005	0.108	100
+CPI	Canteens	Catering	2005	0.013	100
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2005	0.018	100
+CPI	Miscellaneous Goods & Services	All Items	2005	0.111	100
+CPI	Personal Care	Miscellaneous Goods & Services	2005	0.029	100
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2005	0.008	100
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2005	0.021	100
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2005	0.011	100
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2005	0.008	100
+CPI	Other Personal Effects	Personal Effects N.E.C.	2005	0.003	100
+CPI	Social Protection	Miscellaneous Goods & Services	2005	0.013	100
+CPI	Insurance	Miscellaneous Goods & Services	2005	0.008	100
+CPI	Insurance Connected with the Dwelling	Insurance	2005	0.001	100
+CPI	Insurance Connected with Health	Insurance	2005	0.002	100
+CPI	Insurance Connected with Transport	Insurance	2005	0.005	100
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2005	0.026	100
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2005	0.026	100
+CPI	Other Services Nec	Miscellaneous Goods & Services	2005	0.024	100
+CPI	All Items		2006	1	102.3
+CPI	Food & Non-Alcoholic Beverages	All Items	2006	0.102	102.5
+CPI	Food	Food & Non-Alcoholic Beverages	2006	0.09	102.3
+CPI	Bread & Cereals	Food	2006	0.015	101.9
+CPI	Meat	Food	2006	0.021	101.9
+CPI	Fish	Food	2006	0.004	107.9
+CPI	Milk, Cheese & Eggs	Food	2006	0.013	101.4
+CPI	Oils & Fats	Food	2006	0.002	105.1
+CPI	Fruit	Food	2006	0.008	100.8
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2006	0.014	102.2
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2006	0.011	103.7
+CPI	Food Products	Food	2006	0.002	99.2
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2006	0.012	103.9
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2006	0.003	105
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2006	0.009	103.5
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2006	0.044	102.7
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2006	0.018	100.4
+CPI	Spirits	Alcoholic Beverages	2006	0.005	99.5
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2006	0.009	101.2
+CPI	Beer	Alcoholic Beverages	2006	0.004	99.4
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2006	0.026	104.5
+CPI	Clothing & Footwear	All Items	2006	0.065	96
+CPI	Clothing	Clothing & Footwear	2006	0.056	96
+CPI	Garments	Clothing	2006	0.052	95.6
+CPI	Other Articles of Clothing & Accessories	Clothing	2006	0.003	100
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2006	0.001	104.2
+CPI	Footwear Including Repairs	Clothing & Footwear	2006	0.009	95.8
+CPI	Housing, Water & Fuels	All Items	2006	0.108	109.2
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2006	0.047	103.1
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2006	0.019	101.8
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2006	0.011	99.9
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2006	0.008	104.5
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2006	0.01	106.8
+CPI	Water Supply	Other Services Relating to the Dwelling	2006	0.005	107.5
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2006	0.005	106.2
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2006	0.032	124.8
+CPI	Electricity	Electricity, Gas & Other Fuels	2006	0.015	121.7
+CPI	Gas	Electricity, Gas & Other Fuels	2006	0.014	131.3
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2006	0.002	113.6
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2006	0.001	107.6
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2006	0.073	99.6
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2006	0.032	100.6
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2006	0.025	100.6
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2006	0.007	100.6
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2006	0.008	95.3
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2006	0.009	95.8
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2006	0.008	95.1
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2006	0.001	101.4
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2006	0.007	98.4
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2006	0.006	100.9
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2006	0.011	104
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2006	0.005	103.4
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2006	0.006	104.6
+CPI	Health	All Items	2006	0.024	102.8
+CPI	Medical Products Appliances & Equipment	Health	2006	0.011	99.5
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2006	0.005	100.1
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2006	0.006	99
+CPI	Out-Patient Services	Health	2006	0.004	104.5
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2006	0.002	103.6
+CPI	Dental Services	Out-Patient Services	2006	0.002	105.5
+CPI	Hospital Services	Health	2006	0.009	106.4
+CPI	Transport	All Items	2006	0.155	102.8
+CPI	Purchase of Vehicles	Transport	2006	0.052	99.5
+CPI	New Cars	Purchase of Vehicles	2006	0.031	100.9
+CPI	Second-Hand Cars	Purchase of Vehicles	2006	0.018	97.1
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2006	0.003	98.9
+CPI	Operation of Personal Transport Equipment	Transport	2006	0.071	105.5
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2006	0.006	102.7
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2006	0.035	105.5
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2006	0.024	106.2
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2006	0.006	104.3
+CPI	Transport Services	Transport	2006	0.032	102.3
+CPI	Passenger Transport by Railway	Transport Services	2006	0.008	104.2
+CPI	Passenger Transport by Road	Transport Services	2006	0.015	102.7
+CPI	Passenger Transport by Air	Transport Services	2006	0.007	95.7
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2006	0.002	107
+CPI	Communication	All Items	2006	0.025	100.2
+CPI	Postal Services	Communication	2006	0.001	108.3
+CPI	Telephone & Telefax Equipment & Services	Communication	2006	0.024	99.8
+CPI	Recreation & Culture	All Items	2006	0.147	98.8
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2006	0.027	89.4
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2006	0.006	86.6
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2006	0.005	76.1
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2006	0.005	87.1
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2006	0.01	97.2
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2006	0.001	103.6
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2006	0.009	100.2
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2006	0.009	100.2
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2006	0.039	98
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2006	0.023	95.9
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2006	0.004	97.8
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2006	0.005	99.6
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2006	0.007	103.3
+CPI	Recreational & Cultural Services	Recreation & Culture	2006	0.028	104.6
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2006	0.008	105
+CPI	Cultural Services	Recreational & Cultural Services	2006	0.02	104.4
+CPI	Newspapers Books & Stationery	Recreation & Culture	2006	0.017	103.4
+CPI	Books	Newspapers Books & Stationery	2006	0.005	102.5
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2006	0.007	106.3
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2006	0.005	100.2
+CPI	Package Holiday	Recreation & Culture	2006	0.027	99.2
+CPI	Education	All Items	2006	0.017	107.3
+CPI	Hotels, Cafes & Restaurants	All Items	2006	0.134	103.2
+CPI	Catering	Hotels, Cafes & Restaurants	2006	0.116	103
+CPI	Restaurants & Cafes	Catering	2006	0.103	103
+CPI	Canteens	Catering	2006	0.013	102.8
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2006	0.018	104.7
+CPI	Miscellaneous Goods & Services	All Items	2006	0.106	103.8
+CPI	Personal Care	Miscellaneous Goods & Services	2006	0.032	102
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2006	0.008	103.6
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2006	0.024	101.5
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2006	0.011	102.4
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2006	0.007	104.3
+CPI	Other Personal Effects	Personal Effects N.E.C.	2006	0.004	99.3
+CPI	Social Protection	Miscellaneous Goods & Services	2006	0.012	105.4
+CPI	Insurance	Miscellaneous Goods & Services	2006	0.009	101.6
+CPI	Insurance Connected with the Dwelling	Insurance	2006	0.002	100.6
+CPI	Insurance Connected with Health	Insurance	2006	0.002	107.1
+CPI	Insurance Connected with Transport	Insurance	2006	0.005	100
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2006	0.029	104.4
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2006	0.029	104.4
+CPI	Other Services Nec	Miscellaneous Goods & Services	2006	0.013	106.1
+CPI	All Items		2007	1	104.7
+CPI	Food & Non-Alcoholic Beverages	All Items	2007	0.103	107.1
+CPI	Food	Food & Non-Alcoholic Beverages	2007	0.09	107
+CPI	Bread & Cereals	Food	2007	0.015	106.2
+CPI	Meat	Food	2007	0.021	103.9
+CPI	Fish	Food	2007	0.004	117
+CPI	Milk, Cheese & Eggs	Food	2007	0.012	108.3
+CPI	Oils & Fats	Food	2007	0.002	111.9
+CPI	Fruit	Food	2007	0.009	102.2
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2007	0.014	111.2
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2007	0.011	107.4
+CPI	Food Products	Food	2007	0.002	100.7
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2007	0.013	108.1
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2007	0.003	108.9
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2007	0.01	107.7
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2007	0.043	106.3
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2007	0.018	101.3
+CPI	Spirits	Alcoholic Beverages	2007	0.005	100.8
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2007	0.009	102.1
+CPI	Beer	Alcoholic Beverages	2007	0.004	99.8
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2007	0.025	110
+CPI	Clothing & Footwear	All Items	2007	0.062	92.4
+CPI	Clothing	Clothing & Footwear	2007	0.054	92.1
+CPI	Garments	Clothing	2007	0.05	91.4
+CPI	Other Articles of Clothing & Accessories	Clothing	2007	0.003	99.4
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2007	0.001	108
+CPI	Footwear Including Repairs	Clothing & Footwear	2007	0.008	94.4
+CPI	Housing, Water & Fuels	All Items	2007	0.115	114.7
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2007	0.049	106.4
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2007	0.017	106.1
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2007	0.01	103.9
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2007	0.007	109.3
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2007	0.01	113.5
+CPI	Water Supply	Other Services Relating to the Dwelling	2007	0.005	114
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2007	0.005	113.1
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2007	0.039	133.8
+CPI	Electricity	Electricity, Gas & Other Fuels	2007	0.019	131.4
+CPI	Gas	Electricity, Gas & Other Fuels	2007	0.018	141.3
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2007	0.001	113.2
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2007	0.001	115.3
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2007	0.068	101.4
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2007	0.028	102.6
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2007	0.022	103.1
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2007	0.006	100.7
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2007	0.008	92.8
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2007	0.008	96.4
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2007	0.007	95.6
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2007	0.001	103.1
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2007	0.007	99.7
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2007	0.006	102.1
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2007	0.011	107.9
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2007	0.005	105.6
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2007	0.006	109.8
+CPI	Health	All Items	2007	0.024	106.2
+CPI	Medical Products Appliances & Equipment	Health	2007	0.01	100.6
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2007	0.005	101.3
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2007	0.005	100.1
+CPI	Out-Patient Services	Health	2007	0.005	108.4
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2007	0.003	105.8
+CPI	Dental Services	Out-Patient Services	2007	0.002	111.3
+CPI	Hospital Services	Health	2007	0.009	112.6
+CPI	Transport	All Items	2007	0.152	105.8
+CPI	Purchase of Vehicles	Transport	2007	0.049	99.5
+CPI	New Cars	Purchase of Vehicles	2007	0.027	102.4
+CPI	Second-Hand Cars	Purchase of Vehicles	2007	0.019	94.5
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2007	0.003	99.3
+CPI	Operation of Personal Transport Equipment	Transport	2007	0.072	109.4
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2007	0.006	103.1
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2007	0.036	108.6
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2007	0.024	111.5
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2007	0.006	109.5
+CPI	Transport Services	Transport	2007	0.031	108.3
+CPI	Passenger Transport by Railway	Transport Services	2007	0.008	109.4
+CPI	Passenger Transport by Road	Transport Services	2007	0.014	107.5
+CPI	Passenger Transport by Air	Transport Services	2007	0.007	97.9
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2007	0.002	121.1
+CPI	Communication	All Items	2007	0.024	96.9
+CPI	Postal Services	Communication	2007	0.001	119.7
+CPI	Telephone & Telefax Equipment & Services	Communication	2007	0.023	95.9
+CPI	Recreation & Culture	All Items	2007	0.153	97.8
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2007	0.029	79.8
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2007	0.006	76.2
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2007	0.004	58.2
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2007	0.007	70.4
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2007	0.011	96.5
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2007	0.001	107.6
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2007	0.009	100.9
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2007	0.009	100.9
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2007	0.037	97.2
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2007	0.021	93.4
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2007	0.004	98.3
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2007	0.005	100.6
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2007	0.007	106.2
+CPI	Recreational & Cultural Services	Recreation & Culture	2007	0.032	108.8
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2007	0.01	109.9
+CPI	Cultural Services	Recreational & Cultural Services	2007	0.022	108.4
+CPI	Newspapers Books & Stationery	Recreation & Culture	2007	0.017	105.5
+CPI	Books	Newspapers Books & Stationery	2007	0.005	105.3
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2007	0.007	110.1
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2007	0.005	98.8
+CPI	Package Holiday	Recreation & Culture	2007	0.029	100.3
+CPI	Education	All Items	2007	0.018	122
+CPI	Hotels, Cafes & Restaurants	All Items	2007	0.138	106.8
+CPI	Catering	Hotels, Cafes & Restaurants	2007	0.119	106.7
+CPI	Restaurants & Cafes	Catering	2007	0.106	106.5
+CPI	Canteens	Catering	2007	0.013	107.7
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2007	0.019	108
+CPI	Miscellaneous Goods & Services	All Items	2007	0.1	106
+CPI	Personal Care	Miscellaneous Goods & Services	2007	0.031	104.6
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2007	0.008	107.4
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2007	0.023	103.6
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2007	0.01	105.4
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2007	0.007	107.9
+CPI	Other Personal Effects	Personal Effects N.E.C.	2007	0.003	101.1
+CPI	Social Protection	Miscellaneous Goods & Services	2007	0.012	111.3
+CPI	Insurance	Miscellaneous Goods & Services	2007	0.008	105.6
+CPI	Insurance Connected with the Dwelling	Insurance	2007	0.002	103.2
+CPI	Insurance Connected with Health	Insurance	2007	0.002	114.8
+CPI	Insurance Connected with Transport	Insurance	2007	0.004	103.2
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2007	0.028	103.1
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2007	0.028	103.1
+CPI	Other Services Nec	Miscellaneous Goods & Services	2007	0.011	110.1
+CPI	All Items		2008	1	108.5
+CPI	Food & Non-Alcoholic Beverages	All Items	2008	0.109	116.8
+CPI	Food	Food & Non-Alcoholic Beverages	2008	0.095	117.7
+CPI	Bread & Cereals	Food	2008	0.016	118.5
+CPI	Meat	Food	2008	0.021	114.9
+CPI	Fish	Food	2008	0.005	122.8
+CPI	Milk, Cheese & Eggs	Food	2008	0.014	124.7
+CPI	Oils & Fats	Food	2008	0.002	131.1
+CPI	Fruit	Food	2008	0.009	109
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2008	0.015	120.8
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2008	0.011	115.1
+CPI	Food Products	Food	2008	0.002	106.3
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2008	0.014	110.9
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2008	0.003	114.7
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2008	0.011	109.7
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2008	0.042	110.5
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2008	0.018	104.5
+CPI	Spirits	Alcoholic Beverages	2008	0.005	106.2
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2008	0.009	105.4
+CPI	Beer	Alcoholic Beverages	2008	0.004	100.2
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2008	0.024	114.8
+CPI	Clothing & Footwear	All Items	2008	0.063	86.3
+CPI	Clothing	Clothing & Footwear	2008	0.055	85.6
+CPI	Garments	Clothing	2008	0.051	84.5
+CPI	Other Articles of Clothing & Accessories	Clothing	2008	0.003	97.7
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2008	0.001	111.5
+CPI	Footwear Including Repairs	Clothing & Footwear	2008	0.008	91
+CPI	Housing, Water & Fuels	All Items	2008	0.115	124.5
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2008	0.051	109.9
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2008	0.018	111.6
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2008	0.01	109.9
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2008	0.008	114.2
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2008	0.011	121
+CPI	Water Supply	Other Services Relating to the Dwelling	2008	0.005	120.6
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2008	0.006	121.2
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2008	0.035	158.5
+CPI	Electricity	Electricity, Gas & Other Fuels	2008	0.017	151.9
+CPI	Gas	Electricity, Gas & Other Fuels	2008	0.015	168.7
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2008	0.002	169
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2008	0.001	137.2
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2008	0.067	103.4
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2008	0.028	106
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2008	0.022	106
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2008	0.006	105.9
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2008	0.008	90.9
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2008	0.009	96.8
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2008	0.008	95.4
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2008	0.001	108.4
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2008	0.007	101
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2008	0.005	103
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2008	0.01	112.1
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2008	0.005	109.1
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2008	0.005	114.6
+CPI	Health	All Items	2008	0.022	109.5
+CPI	Medical Products Appliances & Equipment	Health	2008	0.01	101.4
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2008	0.005	102
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2008	0.005	101.2
+CPI	Out-Patient Services	Health	2008	0.004	111.8
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2008	0.002	109
+CPI	Dental Services	Out-Patient Services	2008	0.002	114.9
+CPI	Hospital Services	Health	2008	0.008	119.1
+CPI	Transport	All Items	2008	0.152	111.8
+CPI	Purchase of Vehicles	Transport	2008	0.048	97.4
+CPI	New Cars	Purchase of Vehicles	2008	0.026	103.7
+CPI	Second-Hand Cars	Purchase of Vehicles	2008	0.019	87.6
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2008	0.003	101.4
+CPI	Operation of Personal Transport Equipment	Transport	2008	0.072	120
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2008	0.005	105.5
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2008	0.038	124.7
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2008	0.023	117.5
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2008	0.006	112.2
+CPI	Transport Services	Transport	2008	0.032	116.7
+CPI	Passenger Transport by Railway	Transport Services	2008	0.008	114.2
+CPI	Passenger Transport by Road	Transport Services	2008	0.014	112.7
+CPI	Passenger Transport by Air	Transport Services	2008	0.008	110.9
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2008	0.002	124.6
+CPI	Communication	All Items	2008	0.023	94.3
+CPI	Postal Services	Communication	2008	0.001	127.6
+CPI	Telephone & Telefax Equipment & Services	Communication	2008	0.022	93
+CPI	Recreation & Culture	All Items	2008	0.152	97.3
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2008	0.027	69
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2008	0.006	65.5
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2008	0.004	44.2
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2008	0.005	54
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2008	0.011	90.6
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2008	0.001	111.2
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2008	0.009	102.9
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2008	0.009	102.9
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2008	0.038	96.8
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2008	0.022	90.6
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2008	0.004	98.6
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2008	0.005	103.1
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2008	0.007	111.8
+CPI	Recreational & Cultural Services	Recreation & Culture	2008	0.032	112.1
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2008	0.011	115.5
+CPI	Cultural Services	Recreational & Cultural Services	2008	0.021	110.5
+CPI	Newspapers Books & Stationery	Recreation & Culture	2008	0.017	110.3
+CPI	Books	Newspapers Books & Stationery	2008	0.005	112.4
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2008	0.007	115.5
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2008	0.005	100.7
+CPI	Package Holiday	Recreation & Culture	2008	0.029	104.2
+CPI	Education	All Items	2008	0.019	136.3
+CPI	Hotels, Cafes & Restaurants	All Items	2008	0.137	110.9
+CPI	Catering	Hotels, Cafes & Restaurants	2008	0.118	111.1
+CPI	Restaurants & Cafes	Catering	2008	0.106	111
+CPI	Canteens	Catering	2008	0.012	111.3
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2008	0.019	110.2
+CPI	Miscellaneous Goods & Services	All Items	2008	0.099	108.6
+CPI	Personal Care	Miscellaneous Goods & Services	2008	0.03	106.9
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2008	0.008	111.4
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2008	0.022	105.3
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2008	0.01	109.8
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2008	0.007	113.9
+CPI	Other Personal Effects	Personal Effects N.E.C.	2008	0.003	102.2
+CPI	Social Protection	Miscellaneous Goods & Services	2008	0.012	116.7
+CPI	Insurance	Miscellaneous Goods & Services	2008	0.008	108.3
+CPI	Insurance Connected with the Dwelling	Insurance	2008	0.002	103.4
+CPI	Insurance Connected with Health	Insurance	2008	0.002	121.9
+CPI	Insurance Connected with Transport	Insurance	2008	0.004	105
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2008	0.028	103.4
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2008	0.028	103.4
+CPI	Other Services Nec	Miscellaneous Goods & Services	2008	0.011	115.6
+CPI	All Items		2009	1	110.8
+CPI	Food & Non-Alcoholic Beverages	All Items	2009	0.118	123.2
+CPI	Food	Food & Non-Alcoholic Beverages	2009	0.104	124.3
+CPI	Bread & Cereals	Food	2009	0.017	124.1
+CPI	Meat	Food	2009	0.023	122.4
+CPI	Fish	Food	2009	0.005	127.3
+CPI	Milk, Cheese & Eggs	Food	2009	0.015	129.9
+CPI	Oils & Fats	Food	2009	0.002	131.3
+CPI	Fruit	Food	2009	0.01	114.2
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2009	0.016	128.5
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2009	0.013	123.2
+CPI	Food Products	Food	2009	0.003	114.9
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2009	0.014	115.8
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2009	0.004	125.8
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2009	0.01	112.8
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2009	0.044	115.3
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2009	0.021	109.2
+CPI	Spirits	Alcoholic Beverages	2009	0.006	109.8
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2009	0.01	111.2
+CPI	Beer	Alcoholic Beverages	2009	0.005	103.9
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2009	0.023	119.4
+CPI	Clothing & Footwear	All Items	2009	0.057	79.6
+CPI	Clothing	Clothing & Footwear	2009	0.048	78.4
+CPI	Garments	Clothing	2009	0.044	76.8
+CPI	Other Articles of Clothing & Accessories	Clothing	2009	0.003	96.6
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2009	0.001	114.6
+CPI	Footwear Including Repairs	Clothing & Footwear	2009	0.009	87.8
+CPI	Housing, Water & Fuels	All Items	2009	0.126	129.9
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2009	0.051	111.9
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2009	0.018	116.4
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2009	0.01	117.8
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2009	0.008	115
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2009	0.011	127.2
+CPI	Water Supply	Other Services Relating to the Dwelling	2009	0.005	126.3
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2009	0.006	127.9
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2009	0.046	169.6
+CPI	Electricity	Electricity, Gas & Other Fuels	2009	0.02	158.9
+CPI	Gas	Electricity, Gas & Other Fuels	2009	0.023	191.4
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2009	0.002	119
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2009	0.001	161.5
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2009	0.066	106.7
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2009	0.028	108.9
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2009	0.021	108.8
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2009	0.007	108.6
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2009	0.007	91
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2009	0.009	102.2
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2009	0.008	101.2
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2009	0.001	109.9
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2009	0.005	103.4
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2009	0.006	105.2
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2009	0.011	117.6
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2009	0.006	117.1
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2009	0.005	117
+CPI	Health	All Items	2009	0.022	112.5
+CPI	Medical Products Appliances & Equipment	Health	2009	0.01	102.7
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2009	0.006	103.9
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2009	0.004	101.5
+CPI	Out-Patient Services	Health	2009	0.004	114.3
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2009	0.002	110.8
+CPI	Dental Services	Out-Patient Services	2009	0.002	118.1
+CPI	Hospital Services	Health	2009	0.008	124.7
+CPI	Transport	All Items	2009	0.151	112.7
+CPI	Purchase of Vehicles	Transport	2009	0.047	98.7
+CPI	New Cars	Purchase of Vehicles	2009	0.026	105
+CPI	Second-Hand Cars	Purchase of Vehicles	2009	0.018	86.8
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2009	0.003	113.1
+CPI	Operation of Personal Transport Equipment	Transport	2009	0.069	116.9
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2009	0.005	109.2
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2009	0.034	114.9
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2009	0.023	121.1
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2009	0.007	114.6
+CPI	Transport Services	Transport	2009	0.035	125
+CPI	Passenger Transport by Railway	Transport Services	2009	0.009	120.6
+CPI	Passenger Transport by Road	Transport Services	2009	0.014	116.9
+CPI	Passenger Transport by Air	Transport Services	2009	0.009	110.6
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2009	0.003	141.3
+CPI	Communication	All Items	2009	0.023	95.2
+CPI	Postal Services	Communication	2009	0.001	139.2
+CPI	Telephone & Telefax Equipment & Services	Communication	2009	0.022	93.5
+CPI	Recreation & Culture	All Items	2009	0.145	98.5
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2009	0.023	61.4
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2009	0.006	61
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2009	0.004	34.7
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2009	0.005	46.7
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2009	0.007	79.9
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2009	0.001	112
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2009	0.009	106.5
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2009	0.009	106.5
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2009	0.037	98.5
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2009	0.02	91.3
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2009	0.004	99.9
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2009	0.005	104.5
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2009	0.008	117.6
+CPI	Recreational & Cultural Services	Recreation & Culture	2009	0.032	116.4
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2009	0.011	119.5
+CPI	Cultural Services	Recreational & Cultural Services	2009	0.021	115.1
+CPI	Newspapers Books & Stationery	Recreation & Culture	2009	0.017	113.8
+CPI	Books	Newspapers Books & Stationery	2009	0.005	111.4
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2009	0.006	120.7
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2009	0.006	105.8
+CPI	Package Holiday	Recreation & Culture	2009	0.027	111.1
+CPI	Education	All Items	2009	0.021	146.7
+CPI	Hotels, Cafes & Restaurants	All Items	2009	0.128	113.6
+CPI	Catering	Hotels, Cafes & Restaurants	2009	0.111	114.2
+CPI	Restaurants & Cafes	Catering	2009	0.1	114.3
+CPI	Canteens	Catering	2009	0.011	113.1
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2009	0.017	109.6
+CPI	Miscellaneous Goods & Services	All Items	2009	0.099	111
+CPI	Personal Care	Miscellaneous Goods & Services	2009	0.031	109.4
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2009	0.008	113
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2009	0.023	108.1
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2009	0.011	114.3
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2009	0.008	120.1
+CPI	Other Personal Effects	Personal Effects N.E.C.	2009	0.003	102.8
+CPI	Social Protection	Miscellaneous Goods & Services	2009	0.011	122.1
+CPI	Insurance	Miscellaneous Goods & Services	2009	0.007	116
+CPI	Insurance Connected with the Dwelling	Insurance	2009	0.002	106.4
+CPI	Insurance Connected with Health	Insurance	2009	0.002	128.6
+CPI	Insurance Connected with Transport	Insurance	2009	0.003	115.8
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2009	0.028	103.1
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2009	0.028	103.1
+CPI	Other Services Nec	Miscellaneous Goods & Services	2009	0.011	115.8
+CPI	All Items		2010	1	114.5
+CPI	Food & Non-Alcoholic Beverages	All Items	2010	0.108	127.4
+CPI	Food	Food & Non-Alcoholic Beverages	2010	0.096	128.1
+CPI	Bread & Cereals	Food	2010	0.016	126.7
+CPI	Meat	Food	2010	0.022	123.6
+CPI	Fish	Food	2010	0.004	135.7
+CPI	Milk, Cheese & Eggs	Food	2010	0.014	130.2
+CPI	Oils & Fats	Food	2010	0.002	140.1
+CPI	Fruit	Food	2010	0.009	123.2
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2010	0.015	132.2
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2010	0.011	130.1
+CPI	Food Products	Food	2010	0.003	115.7
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2010	0.012	122.9
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2010	0.003	133.4
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2010	0.009	119.7
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2010	0.04	121.7
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2010	0.018	112.7
+CPI	Spirits	Alcoholic Beverages	2010	0.005	115.2
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2010	0.009	115
+CPI	Beer	Alcoholic Beverages	2010	0.004	104.6
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2010	0.022	128.5
+CPI	Clothing & Footwear	All Items	2010	0.056	78.8
+CPI	Clothing	Clothing & Footwear	2010	0.047	77.5
+CPI	Garments	Clothing	2010	0.043	75.7
+CPI	Other Articles of Clothing & Accessories	Clothing	2010	0.003	97.2
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2010	0.001	117
+CPI	Footwear Including Repairs	Clothing & Footwear	2010	0.009	87.2
+CPI	Housing, Water & Fuels	All Items	2010	0.129	130.3
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2010	0.054	113.5
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2010	0.017	122.3
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2010	0.01	127.2
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2010	0.007	116.4
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2010	0.011	128.6
+CPI	Water Supply	Other Services Relating to the Dwelling	2010	0.005	129.7
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2010	0.006	127.5
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2010	0.047	164.9
+CPI	Electricity	Electricity, Gas & Other Fuels	2010	0.019	154.9
+CPI	Gas	Electricity, Gas & Other Fuels	2010	0.025	180.8
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2010	0.002	154.6
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2010	0.001	161.5
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2010	0.064	110
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2010	0.025	112.1
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2010	0.019	111.7
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2010	0.006	112.4
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2010	0.008	92.1
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2010	0.009	106.3
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2010	0.008	105.4
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2010	0.001	112.9
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2010	0.006	107.6
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2010	0.007	108.7
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2010	0.009	120.8
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2010	0.005	120.9
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2010	0.004	119.3
+CPI	Health	All Items	2010	0.022	115.7
+CPI	Medical Products Appliances & Equipment	Health	2010	0.01	103.3
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2010	0.006	104.2
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2010	0.004	102.6
+CPI	Out-Patient Services	Health	2010	0.004	116.1
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2010	0.002	112.6
+CPI	Dental Services	Out-Patient Services	2010	0.002	120.1
+CPI	Hospital Services	Health	2010	0.008	132.8
+CPI	Transport	All Items	2010	0.164	122.1
+CPI	Purchase of Vehicles	Transport	2010	0.049	103
+CPI	New Cars	Purchase of Vehicles	2010	0.023	108.6
+CPI	Second-Hand Cars	Purchase of Vehicles	2010	0.023	92.1
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2010	0.003	116
+CPI	Operation of Personal Transport Equipment	Transport	2010	0.079	129.1
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2010	0.005	113.6
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2010	0.041	134.1
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2010	0.025	126
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2010	0.008	117.9
+CPI	Transport Services	Transport	2010	0.036	135.9
+CPI	Passenger Transport by Railway	Transport Services	2010	0.009	130.5
+CPI	Passenger Transport by Road	Transport Services	2010	0.014	120.5
+CPI	Passenger Transport by Air	Transport Services	2010	0.01	124.8
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2010	0.003	142.7
+CPI	Communication	All Items	2010	0.025	99.9
+CPI	Postal Services	Communication	2010	0.001	147.4
+CPI	Telephone & Telefax Equipment & Services	Communication	2010	0.024	98
+CPI	Recreation & Culture	All Items	2010	0.15	100.4
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2010	0.023	58.1
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2010	0.007	56.5
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2010	0.003	29.4
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2010	0.006	44.9
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2010	0.006	78.7
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2010	0.001	114.9
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2010	0.009	111.4
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2010	0.009	111.4
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2010	0.04	99.5
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2010	0.024	90.7
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2010	0.004	99.5
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2010	0.005	110.4
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2010	0.007	122.4
+CPI	Recreational & Cultural Services	Recreation & Culture	2010	0.031	120.9
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2010	0.01	123.2
+CPI	Cultural Services	Recreational & Cultural Services	2010	0.021	119.9
+CPI	Newspapers Books & Stationery	Recreation & Culture	2010	0.017	118
+CPI	Books	Newspapers Books & Stationery	2010	0.004	115.7
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2010	0.006	123.7
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2010	0.007	111.6
+CPI	Package Holiday	Recreation & Culture	2010	0.03	116.7
+CPI	Education	All Items	2010	0.019	154.5
+CPI	Hotels, Cafes & Restaurants	All Items	2010	0.126	116.9
+CPI	Catering	Hotels, Cafes & Restaurants	2010	0.109	117.8
+CPI	Restaurants & Cafes	Catering	2010	0.098	118
+CPI	Canteens	Catering	2010	0.011	116
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2010	0.017	111
+CPI	Miscellaneous Goods & Services	All Items	2010	0.097	113.7
+CPI	Personal Care	Miscellaneous Goods & Services	2010	0.029	112.2
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2010	0.007	116.1
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2010	0.022	110.8
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2010	0.01	118.9
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2010	0.007	127.9
+CPI	Other Personal Effects	Personal Effects N.E.C.	2010	0.003	101
+CPI	Social Protection	Miscellaneous Goods & Services	2010	0.011	126
+CPI	Insurance	Miscellaneous Goods & Services	2010	0.008	136.9
+CPI	Insurance Connected with the Dwelling	Insurance	2010	0.002	111.4
+CPI	Insurance Connected with Health	Insurance	2010	0.002	140.9
+CPI	Insurance Connected with Transport	Insurance	2010	0.004	151.5
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2010	0.028	99.4
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2010	0.028	99.4
+CPI	Other Services Nec	Miscellaneous Goods & Services	2010	0.011	120.3
+CPI	All Items		2011	1	119.6
+CPI	Food & Non-Alcoholic Beverages	All Items	2011	0.118	134.3
+CPI	Food	Food & Non-Alcoholic Beverages	2011	0.103	134.5
+CPI	Bread & Cereals	Food	2011	0.017	134.9
+CPI	Meat	Food	2011	0.022	130.2
+CPI	Fish	Food	2011	0.004	148.2
+CPI	Milk, Cheese & Eggs	Food	2011	0.015	133.6
+CPI	Oils & Fats	Food	2011	0.002	156.6
+CPI	Fruit	Food	2011	0.012	127.8
+CPI	Vegetables Including Potatoes & Other Tubers	Food	2011	0.016	136.7
+CPI	Sugar, Jam, Honey, Syrups, Chocolate & Confectionery	Food	2011	0.012	139.9
+CPI	Food Products	Food	2011	0.003	119.4
+CPI	Non-Alcoholic Beverages	Food & Non-Alcoholic Beverages	2011	0.015	133.7
+CPI	Coffee, Tea, Cocoa	Non-Alcoholic Beverages	2011	0.004	146
+CPI	Mineral Waters, Soft Drinks & Juices	Non-Alcoholic Beverages	2011	0.011	129.9
+CPI	Alcoholic Beverages,Tobacco & Narcotics	All Items	2011	0.042	132.3
+CPI	Alcoholic Beverages	Alcoholic Beverages,Tobacco & Narcotics	2011	0.019	119.2
+CPI	Spirits	Alcoholic Beverages	2011	0.005	121.9
+CPI	Wine (Inc Perry)	Alcoholic Beverages	2011	0.009	121.7
+CPI	Beer	Alcoholic Beverages	2011	0.005	110.4
+CPI	Tobacco	Alcoholic Beverages,Tobacco & Narcotics	2011	0.023	142.7
+CPI	Clothing & Footwear	All Items	2011	0.062	80.6
+CPI	Clothing	Clothing & Footwear	2011	0.054	80
+CPI	Garments	Clothing	2011	0.049	78.3
+CPI	Other Articles of Clothing & Accessories	Clothing	2011	0.004	98.4
+CPI	Dry-Cleaning, Repair & Hire of Clothing	Clothing	2011	0.001	122
+CPI	Footwear Including Repairs	Clothing & Footwear	2011	0.008	84.5
+CPI	Housing, Water & Fuels	All Items	2011	0.129	137.5
+CPI	Actual Rents for Housing	Housing, Water & Fuels	2011	0.057	116.3
+CPI	Regular Maintenance & Repair of the Dwelling	Housing, Water & Fuels	2011	0.018	129
+CPI	Products for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2011	0.011	137.4
+CPI	Services for the Regular Repair of Dwelling	Regular Maintenance & Repair of the Dwelling	2011	0.007	118.3
+CPI	Other Services Relating to the Dwelling	Housing, Water & Fuels	2011	0.01	132.9
+CPI	Water Supply	Other Services Relating to the Dwelling	2011	0.005	134.9
+CPI	Sewerage Collection	Other Services Relating to the Dwelling	2011	0.005	131.1
+CPI	Electricity, Gas & Other Fuels	Housing, Water & Fuels	2011	0.044	181.2
+CPI	Electricity	Electricity, Gas & Other Fuels	2011	0.019	166.1
+CPI	Gas	Electricity, Gas & Other Fuels	2011	0.022	200.4
+CPI	Liquid Fuels	Electricity, Gas & Other Fuels	2011	0.002	195.8
+CPI	Solid Fuels	Electricity, Gas & Other Fuels	2011	0.001	169.4
+CPI	Furn, Hh Equip & Routine Repair of House	All Items	2011	0.061	115.2
+CPI	Furniture, Furnishings, Carpets & Other Floor Coverings	Furn, Hh Equip & Routine Repair of House	2011	0.023	115.9
+CPI	Furniture, Furnishings	Furniture, Furnishings, Carpets & Other Floor Coverings	2011	0.018	115
+CPI	Carpets & Other Floor Coverings	Furniture, Furnishings, Carpets & Other Floor Coverings	2011	0.005	117.7
+CPI	Household Textiles	Furn, Hh Equip & Routine Repair of House	2011	0.008	97.3
+CPI	Major Household Appliances Incl Fittings & Repairs	Furn, Hh Equip & Routine Repair of House	2011	0.009	108.7
+CPI	Major Hh Appliances & Small Electrical Hh Appliances	Major Household Appliances Incl Fittings & Repairs	2011	0.008	107.8
+CPI	Repair of Household Appliances	Major Household Appliances Incl Fittings & Repairs	2011	0.001	115.5
+CPI	Glassware, Tableware & Household Utensils	Furn, Hh Equip & Routine Repair of House	2011	0.005	112.9
+CPI	Tools & Equipment for House & Garden	Furn, Hh Equip & Routine Repair of House	2011	0.006	121.9
+CPI	Goods & Services for Routine Household Maintenance	Furn, Hh Equip & Routine Repair of House	2011	0.01	126.1
+CPI	Non-Durable Household Goods	Goods & Services for Routine Household Maintenance	2011	0.006	128.6
+CPI	Domestic Services & Home Care Services	Goods & Services for Routine Household Maintenance	2011	0.004	121.3
+CPI	Health	All Items	2011	0.024	119.7
+CPI	Medical Products Appliances & Equipment	Health	2011	0.011	105
+CPI	Pharmaceutical Products	Medical Products Appliances & Equipment	2011	0.006	106.9
+CPI	Other Medical & Therapeutic Equipment	Medical Products Appliances & Equipment	2011	0.005	103.1
+CPI	Out-Patient Services	Health	2011	0.004	118.9
+CPI	Medical Services & Paramedical Services	Out-Patient Services	2011	0.002	115
+CPI	Dental Services	Out-Patient Services	2011	0.002	123.3
+CPI	Hospital Services	Health	2011	0.009	140.6
+CPI	Transport	All Items	2011	0.159	131.7
+CPI	Purchase of Vehicles	Transport	2011	0.044	103.8
+CPI	New Cars	Purchase of Vehicles	2011	0.025	112.2
+CPI	Second-Hand Cars	Purchase of Vehicles	2011	0.016	89.9
+CPI	Motor Cycles & Bicycles	Purchase of Vehicles	2011	0.003	119.4
+CPI	Operation of Personal Transport Equipment	Transport	2011	0.081	141.7
+CPI	Spare Parts & Accessories	Operation of Personal Transport Equipment	2011	0.006	118.1
+CPI	Fuels & Lubricants	Operation of Personal Transport Equipment	2011	0.043	153.8
+CPI	Maintenance & Repairs	Operation of Personal Transport Equipment	2011	0.024	131.8
+CPI	Other Services for Personal Transport Equipment	Operation of Personal Transport Equipment	2011	0.008	122.5
+CPI	Transport Services	Transport	2011	0.034	151.5
+CPI	Passenger Transport by Railway	Transport Services	2011	0.009	139.3
+CPI	Passenger Transport by Road	Transport Services	2011	0.013	126.8
+CPI	Passenger Transport by Air	Transport Services	2011	0.009	139.2
+CPI	Passenger Transport by Sea & Inland Waterway	Transport Services	2011	0.003	151.1
+CPI	Communication	All Items	2011	0.026	103.9
+CPI	Postal Services	Communication	2011	0.002	160.8
+CPI	Telephone & Telefax Equipment & Services	Communication	2011	0.024	101.6
+CPI	Recreation & Culture	All Items	2011	0.147	100.4
+CPI	Audio-Visual Photographic & Data Processing Equip	Recreation & Culture	2011	0.027	52.4
+CPI	Equipment for Sound & Picture	Audio-Visual Photographic & Data Processing Equip	2011	0.006	51.4
+CPI	Photographic, Cinematographic & Optical Equipment	Audio-Visual Photographic & Data Processing Equip	2011	0.005	23.4
+CPI	Information Processing Equipment	Audio-Visual Photographic & Data Processing Equip	2011	0.007	38.7
+CPI	Recording Media	Audio-Visual Photographic & Data Processing Equip	2011	0.008	77.1
+CPI	Repair of Audio-Visual, Photo & Data Processing Equip.	Audio-Visual Photographic & Data Processing Equip	2011	0.001	117.2
+CPI	Other Major Durables for Recreation & Culture	Recreation & Culture	2011	0.01	115.9
+CPI	Major Durables for In/Outdoor Recreation	Other Major Durables for Recreation & Culture	2011	0.01	115.9
+CPI	Other Recreational Items & Equipment Gardens & Pets	Recreation & Culture	2011	0.038	98.6
+CPI	Games Toys & Hobbies	Other Recreational Items & Equipment Gardens & Pets	2011	0.022	86.9
+CPI	Equipment for Sport Camping & Open-Air Recreation	Other Recreational Items & Equipment Gardens & Pets	2011	0.003	99.8
+CPI	Garden Plants & Flowers	Other Recreational Items & Equipment Gardens & Pets	2011	0.005	114.3
+CPI	Pets & Related Products	Other Recreational Items & Equipment Gardens & Pets	2011	0.008	129
+CPI	Recreational & Cultural Services	Recreation & Culture	2011	0.03	126.9
+CPI	Recreational & Sporting Services	Recreational & Cultural Services	2011	0.008	129
+CPI	Cultural Services	Recreational & Cultural Services	2011	0.022	125.8
+CPI	Newspapers Books & Stationery	Recreation & Culture	2011	0.015	122.1
+CPI	Books	Newspapers Books & Stationery	2011	0.004	117.9
+CPI	Newspapers & Periodicals	Newspapers Books & Stationery	2011	0.005	128
+CPI	Misc. Printed Matter Stationery & Drawing Materials	Newspapers Books & Stationery	2011	0.006	116.4
+CPI	Package Holiday	Recreation & Culture	2011	0.027	119.5
+CPI	Education	All Items	2011	0.018	162.5
+CPI	Hotels, Cafes & Restaurants	All Items	2011	0.12	122.1
+CPI	Catering	Hotels, Cafes & Restaurants	2011	0.103	123.3
+CPI	Restaurants & Cafes	Catering	2011	0.093	123.6
+CPI	Canteens	Catering	2011	0.01	120.5
+CPI	Accommodation Services	Hotels, Cafes & Restaurants	2011	0.017	114.6
+CPI	Miscellaneous Goods & Services	All Items	2011	0.094	116.5
+CPI	Personal Care	Miscellaneous Goods & Services	2011	0.028	115.5
+CPI	Hairdressing Salons & Personal Grooming Estabs	Personal Care	2011	0.007	120.2
+CPI	Appliances, Articles & Products for Personal Care	Personal Care	2011	0.021	113.8
+CPI	Personal Effects N.E.C.	Miscellaneous Goods & Services	2011	0.01	125
+CPI	Jewellery Clocks & Watches	Personal Effects N.E.C.	2011	0.007	137.5
+CPI	Other Personal Effects	Personal Effects N.E.C.	2011	0.003	100.9
+CPI	Social Protection	Miscellaneous Goods & Services	2011	0.011	129.7
+CPI	Insurance	Miscellaneous Goods & Services	2011	0.008	155.8
+CPI	Insurance Connected with the Dwelling	Insurance	2011	0.002	112.1
+CPI	Insurance Connected with Health	Insurance	2011	0.002	150.5
+CPI	Insurance Connected with Transport	Insurance	2011	0.004	186.8
+CPI	Financial Services N.E.C.	Miscellaneous Goods & Services	2011	0.026	96.3
+CPI	Financial Services N.E.C.	Financial Services N.E.C.	2011	0.026	96.3
+CPI	Other Services Nec	Miscellaneous Goods & Services	2011	0.011	125.1

@@ -83,7 +83,7 @@
 window.onload = function () {
 	var style = {}, layout = {};
 	$.getJSON('data/HotTree.json', function (data) {
-		data[0][2] = "0~parentName";
+		data.meta[0].parentName = data.meta[0].function;
 		HotTree(data, style, layout);
 	}).error(JSONerror);
 };
