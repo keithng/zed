@@ -42,6 +42,24 @@
 		text-decoration:underline;
 	}
 
+	a {
+		color:#FFF;
+		text-decoration:none;
+	}
+	a:hover {
+		text-decoration:underline;
+	}
+
+	.breadcrumb {
+		font:0.8em sans-serif;
+	}
+	.breadcrumb a {
+		color:#366;
+	}
+	.breadcrumb a:hover {
+		color:#399;
+	}
+
 	.ui-state-focus,
 	.ui-widget-content .ui-state-focus,
 	.ui-widget-header .ui-state-focus {
@@ -81,15 +99,11 @@
 </style>
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
-	var style = {}, layout = {};
+	var style = {
+			valFormat:{prefix:"$", mode:"abbreviate", multiply:1000, dp:1}
+		}, layout = {};
 	$.getJSON('data/HotTree.json', function (data) {
 		data.meta[0].parentName = data.meta[0].function;
-		var i, j, val = data.data.val;
-		for (i = 0; i < val.length; i++) {
-			for (j = 0; j < val[i].length; j++) {
-				val[i][j] *= 1000;
-			};
-		};
 		HotTree(data, style, layout);
 	}).error(JSONerror);
 };
@@ -98,7 +112,7 @@ window.onload = function () {
 <body>
 	<div id=menubar>
 		<ul>
-			<li><input id=searchBox value=Search... onclick=this.value='' onblur=this.value='Search...'></li>
+			<li><input id=searchBox value=Find... onclick=this.value='' onblur=this.value='Search...'></li>
 			<li id=credit><a href="http://www.chewydata.com">Created by Keith Ng</a></li>
 		</ul>
 	</div>
