@@ -9,98 +9,17 @@
 <script src="./lib/HotTree.js" type="text/javascript" charset="utf-8"></script>
 <script src="./lib/jquery-ui-1.10.3.custom.min.js"></script>
 <link href="./css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
-<style type="text/css" charset="utf-8">
-	#menubar {
-		background:#222;
-		font:0.8em sans-serif;
-		margin:-12px 0 -12px 0;
-	}
-	#menubar ul {
-		padding:6px 0;
-	}
-	#menubar li {
-		border-right:1px solid #666;
-		display:inline;
-		padding-left:12px;
-		padding-right:12px;
-	}
-	#menubar input {
-		padding-right:25px;
-		padding-left:8px;
-	}
-	#menubar a {
-		color:#FFFFFF;
-		text-decoration:none;
-	}
-	#menubar #credit {
-		font-size:0.8em;
-		float:right;
-		padding:6px 6px;
-	}
-	#menubar a:hover,
-	#menubar .active {
-		text-decoration:underline;
-	}
-
-	a {
-		color:#FFF;
-		text-decoration:none;
-	}
-	a:hover {
-		text-decoration:underline;
-	}
-
-	.breadcrumb {
-		font:0.8em sans-serif;
-	}
-	.breadcrumb a {
-		color:#366;
-	}
-	.breadcrumb a:hover {
-		color:#399;
-	}
-
-	.ui-state-focus,
-	.ui-widget-content .ui-state-focus,
-	.ui-widget-header .ui-state-focus {
-		border:1px solid #b8b8bf;
-		background:#e8e8ef;
-		color:#000;
-	}
-
-	#narrator {
-		font:sans-serif;
-		position:relative;
-	}
-	#narrator #nav {
-		font-weight:bold;
-	}
-	#narrator #nav a {
-		color:#336;
-		text-decoration:none;
-	}
-	#narrator #nav a:hover {
-		text-decoration:underline;
-	}
-	#narrator #nav #prev {
-		margin-top:0.5em;
-		float:left;
-	}
-	#narrator #nav #next {
-		margin-top:0.5em;
-		float:right;
-	}
-	#narrator #nav #middle {
-		text-align:center;
-	}
-	.sideBarDescription {
-		font:0.8em sans-serif;
-	}
-</style>
+<link href="./css/chewydata.css" rel="stylesheet">
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
 	var style = {
-			valFormat:{prefix:"$", mode:"abbreviate", multiply:1000, dp:1}
+			valFormat:{prefix:"$", mode:"abbreviate", multiply:1000, dp:1},
+			dAxis:{
+// 				title:"Budget",
+				axisTitle:{
+					margin:40
+				}
+			}
 		}, layout = {};
 	$.getJSON('data/HotTree.json', function (data) {
 		data.meta[0].parentName = data.meta[0].function;
@@ -112,7 +31,7 @@ window.onload = function () {
 <body>
 	<div id=menubar>
 		<ul>
-			<li><input id=searchBox value=Find... onclick=this.value='' onblur=this.value='Search...'></li>
+			<li><input id=searchBox value=Search... onclick=this.value='' onblur=this.value='Search...'></li>
 			<li id=credit><a href="http://www.chewydata.com">Created by Keith Ng</a></li>
 		</ul>
 	</div>
