@@ -1,54 +1,54 @@
-a {
-	text-decoration:none;
-}
-a:hover {
-	text-decoration:underline;
-}
-
 div {
-	font-family:sans-serif;
 	color:#333;
+	font-family:sans-serif;
 	font-size:0.9em;
 }
-div a {
-	color:#366;
-}
-div a:hover {
-	color:#399;
-}
 
+/* Menu bar */
 #menubar {
-	background:#000;
+	margin-top:-0.9em; /* Minimal space above menubar */
+	margin-bottom:-1em; /* No space below menubar */
+	background:#888;
+	color:#FFF;
 	font:0.8em sans-serif;
-	margin-top:-12px;
-	margin-bottom:-12px;
 }
 #menubar a {
-	color:#FFF;
+	text-decoration:none;
+	color:#FFF; /* Override default link colours */
+}
+#menubar .active {
+	text-decoration:underline;
+	font-weight:bold;
 }
 #menubar ul {
-	padding-top:6px;
-	padding-bottom:6px;
+	padding-top:0.5em;
+	padding-bottom:0.5em;
+	padding-left:0.5em;
 }
 #menubar li {
 	display:inline;
+	border-right:1px solid #000;
+	padding-left:1em;
+	padding-right:1em;
 }
-#menubar img {
-	margin-right:40px;
-	margin-bottom:-8px;
+#searchBox {
+	width:20em;
+	padding-left:1em;
 }
-#menubar input {
-	padding-right:25px;
-	padding-left:8px;
-	margin-bottom:6px;
-}
-#menubar a {
-	font-size:0.8em;
+#chewy {
 	float:right;
-	padding-top:10px;
-	padding-right:10px;
+	color:#333;
+	font-size:0.8em;
+	padding-top:0.6em;
+}
+#chewy img {
+	width:2.8em;
+	height:2.8em;
+	margin-top:-0.9em;
+	margin-bottom:-0.9em;
 }
 
+/* Search box */
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
@@ -57,6 +57,51 @@ div a:hover {
 	color:#000;
 }
 
-.hoverText {font-family:sans-serif; font-size:1em}
-.hoverTitle {font-family:sans-serif; font-size:1.8em}
-.hoverSubtitle {font-family:sans-serif; font-size:1em; font-weight:bold}
+/* Tooltip */
+#tooltip {
+	z-index:9999;
+	border:solid 1px rgba(210,220,220,0.9);
+	border-radius:4px;
+	background-color:rgba(220,230,230,0.9);
+	font-size:1em;
+}
+
+/* Narrator */
+#narrator {
+	z-index:9998;
+	border:solid 1px rgba(220,230,230,0.9);
+	border-radius:4px;
+	background-color:rgba(230,240,240,0.9);
+	font-size:1em;
+}
+#narrator #nav {
+	font-weight:bold;
+}
+#narrator #nav a {
+	color:#336;
+	text-decoration:none;
+}
+#narrator #nav a:hover {
+	text-decoration:underline;
+}
+#narrator #nav #prev {
+	margin-top:0.5em;
+	float:left;
+}
+#narrator #nav #next {
+	margin-top:0.5em;
+	float:right;
+}
+#narrator #nav #middle {
+	text-align:center;
+}
+
+/* Breadcrumb */
+#breadcrumb a {
+	text-decoration:none;
+	color:#333;
+}
+#breadcrumb a:hover {
+	text-decoration:underline;
+	color:#333;
+}
