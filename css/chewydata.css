@@ -1,60 +1,68 @@
 div {
 	color:#333;
 	font-family:sans-serif;
-	font-size:0.9em;
+}
+
+/* Everything inside SVG canvas */
+#Raphael {
+	font-size:0.8em;
 }
 
 /* Menu bar */
 #menubar {
-	margin-top:-0.9em; /* Minimal space above menubar */
-	margin-bottom:-1em; /* No space below menubar */
+	height:3em;
+	margin-top:-8px; /* No space above menubar */
 	background:#888;
 	color:#FFF;
-	font:0.8em sans-serif;
-}
-#menubar a {
-	text-decoration:none;
-	color:#FFF; /* Override default link colours */
-}
-#menubar .active {
-	text-decoration:underline;
-	font-weight:bold;
+	font-size:0.8em;
 }
 #menubar ul {
-	padding-top:0.5em;
-	padding-bottom:0.5em;
-	padding-left:0.5em;
+	margin:0;
+	height:2em;
+	padding:0.5em;
 }
 #menubar li {
 	display:inline;
-	border-right:1px solid #000;
+	border-right:1px solid #AAA;
 	padding-left:1em;
 	padding-right:1em;
 }
-#searchBox {
+#menubar input { /* Search box */
 	width:20em;
-	padding-left:1em;
+	padding-left:0.5em;
 }
-#chewy {
-	float:right;
-	color:#333;
-	font-size:0.8em;
-	padding-top:0.6em;
-}
-#chewy img {
-	width:2.8em;
-	height:2.8em;
-	margin-top:-0.9em;
-	margin-bottom:-0.9em;
-}
-
-/* Search box */
-.ui-state-focus,
+.ui-state-focus, /* Search box */
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
 	border:1px solid #b8b8bf;
 	background:#e8e8ef;
 	color:#000;
+}
+#menubar a { /* Override default link colour and style */
+	text-decoration:none;
+	color:#FFF;
+}
+#menubar .active {
+	text-decoration:underline;
+	font-weight:bold;
+}
+#menubar img {
+	border:none;
+}
+#menubar #title {
+	font-size:1.3em;
+	margin-left:1em;
+}
+
+/* Chewybox */
+#chewy {
+	float:right;
+	margin-top:-6px;
+	font-size:0.8em;
+}
+#chewy img {
+	width:2.8em;
+	height:2.8em;
 }
 
 /* Tooltip */

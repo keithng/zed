@@ -3,13 +3,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9">
 <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 <title>HotTree: HotTree Visualisation</title>
-<script src="./lib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lib/raphael-min.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lib/zed.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lib/HotTree.js" type="text/javascript" charset="utf-8"></script>
-<script src="./lib/jquery-ui-1.10.3.custom.min.js"></script>
-<link href="./css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
-<link href="./css/chewydata.css" rel="stylesheet">
+<script src="lib/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/raphael-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/zed.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/HotTree.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery-ui-1.10.3.custom.min.js"></script>
+<link href="css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+<link href="css/chewydata.css" rel="stylesheet">
 <script type="text/javascript" charset="utf-8">
 window.onload = function () {
 	var style = {
@@ -32,7 +32,15 @@ window.onload = function () {
 	<div id=menubar>
 		<ul>
 			<li><input id=searchBox value=Search... onclick=this.value='' onblur=this.value='Search...'></li>
-			<li id=chewy><a href="http://www.chewydata.com"><img src="css/ChewyData-logo-small.png"></img>  Powered by ChewyData</a></li>
+			<table id=chewy>
+				<tbody>
+					<tr>
+						<td id=chewylogo rowspan=2><a href=http://www.chewydata.com><img src="css/chewydata.png"></img></a></td>
+						<td id=powerby rowspan=2><a href=http://www.chewydata.com>Powered by ChewyData</a></td>
+					</tr>
+					<tr></tr>
+				</tbody>
+			</table>
 		</ul>
 	</div>
 	<div id="Raphael"></div>
