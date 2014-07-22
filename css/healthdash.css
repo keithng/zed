@@ -1,12 +1,26 @@
 .allDHB {
 	font-weight:bold;
+/* 	background:red; */
 }
+
 .list {
 	font-size:0.9em;
 }
+.list .dhbname {
+	width:120px;
+}
+
+.list .measure {
+	width:50px;
+}
+
+.list .count {
+	font-size:0.9em;
+	width:50px;
+}
+
 
 .xLabels {
-	background:"#900";
 	text-align:center;
 }
 
@@ -14,3 +28,10 @@
 
 }
 
+.title {
+	font-weight:bold;
+}
+
+.subtitle {
+/* 	font-weight:bold; */
+}
