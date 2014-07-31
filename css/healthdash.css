@@ -1,37 +1,54 @@
-.allDHB {
-	font-weight:bold;
-/* 	background:red; */
-}
-
-.list {
-	font-size:0.9em;
-}
-.list .dhbname {
-	width:120px;
-}
-
-.list .measure {
-	width:50px;
-}
-
-.list .count {
-	font-size:0.9em;
-	width:50px;
-}
-
-
-.xLabels {
-	text-align:center;
-}
-
-.yLabels {
-
+div {
+	font-family: 'Open Sans', sans-serif;
 }
 
 .title {
+	font-size:1.1em;
 	font-weight:bold;
 }
-
 .subtitle {
-/* 	font-weight:bold; */
+	font-size:0.9em;
+	font-style:italic;
+}
+
+.allDHB {
+	font-weight:bold;
+}
+.list .dhbname {
+	width:120px;
+	font-size:0.9em;
+}
+.list .measure {
+	width:50px;
+	font-size:0.9em;
+}
+.list .count {
+	width:50px;
+	font-size:0.8em;
+}
+
+.val {
+	font-weight:300;
+}
+.xLabels {
+	font-size:1.1em;
+}
+.yLabels {
+	font-size:1.1em;
+}
+.xLabels .name {
+	width:80px;
+	text-align:center;
+}
+.xLabels .val {
+	width:80px;
+	text-align:center;
+}
+.yLabels .name {
+	width:110px;
+	text-align:left;
+}
+.yLabels .val {
+	width:40px;
+	text-align:right;
 }
