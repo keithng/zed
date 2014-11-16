@@ -1,6 +1,6 @@
 div {
 	color:#333;
-	font-family:sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 /* Everything inside SVG canvas */
@@ -112,4 +112,21 @@ div {
 #breadcrumb a:hover {
 	text-decoration:underline;
 	color:#333;
+
+/* Slider */
+}	#slider {
+	position:fixed;
+}
+#slider .label {
+	position:absolute;
+	/* 		left:100%; */
+	right:100%;
+}
+#slider .label div {
+	position:relative;
+	padding:10px;
+	top:50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
 }
