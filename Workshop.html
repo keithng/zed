@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<title>Miniard: Dynamic Reordering</title>
+<script src="common/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="common/d3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="common/zed.js" type="text/javascript" charset="utf-8"></script>
+<script src="common/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="common/jquery-ui.min.css" rel="stylesheet">
+<link href="common/chewydata.css" rel="stylesheet">
+<style>
+#area {
+	fill-opacity:0.2;
+}
+#lines {
+	fill:none;
+	stroke-width:4px;
+}
+.import {
+	stroke:darkblue;
+}
+.export {
+	stroke:maroon;
+}
+
+</style>
+
+<script type="text/javascript" charset="utf-8">
+window.onload = function () {
+	logger("Miniard(): Initialising.")
+	// Layout
+	var L = zt.getMaxLayout(800, 680, 0)
+	// Style
+
+	// Data
+	logger("Miniard(): Collating and crunching data.")
+	var dc = new zDataCube(2, {
+		meta:[
+			{
+				name:["Import","Export","Balance","zero"],
+				layout:[
+					new zLayout({
+						width:L.width / 2, height:L.height / 2,
+						yAlign:"bottom", padding:60
+					}),
+					new zLayout({
+						width:L.width / 2, height:L.height / 2,
+						yAlign:"bottom", padding:60
+					})
+				]
+			},
+			{name:["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014"]},
+		],
+		data:{
+			val:[
+				[1.9245,2.2074,2.5906,2.8479,3.3761,4.0334,4.9642,5.5866,6.4437,6.0657,6.7621,7.4388,7.7135,8.2601,8.6788],
+				[0.9296,1.3493,1.4301,1.3764,1.7454,1.5655,1.8749,1.9533,2.5336,3.6275,4.8262,5.887,6.8595,9.9652,9.9862],
+				[-0.9949,-0.858,-1.1606,-1.4715,-1.6307,-2.4679,-3.0893,-3.6333,-3.9102,-2.4381,-1.9359,-1.5518,-0.854,1.7051,1.3074],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+			]
+		}
+	})
+	CANVAS = new zCanvas(L)
+
+	var options = ""
+	var i
+	for (i = 0; i < 5; i++) {
+		options += "<option value=" + i + ">" + i + "</option>"
+	}
+
+	$("#mode")
+		.html(options)
+		.change(function (a) {
+			var mode = parseInt($("#mode")[0].value)
+			swarm.setMode(mode, 800)
+		})
+
+
+	var swarm = new zSwarm({
+		dc:dc, s:[[0,1], "all"],
+		getPoint:function (s, l) {
+			var val = dc.getData("val", {s:s})
+			return l.getPoint(
+				s[1] / (dc.getSize(1) - 1),
+				val / 10,
+				true
+			)
+		},
+		getLine:function (p, l) {
+			var S = this
+			var i, out = []
+			for (i = 0; i < dc.getSize(1); i++) {
+				out.push(S.getPoint([p, i], l))
+			}
+			return out
+		},
+		setMode:function (mode, t) {
+			var S = this
+			var anchor, l = S.dc.meta[0].layout
+			S.mode = mode
+			if (mode == 0) {
+				anchor = [
+					{
+						x:L.centre.x - l[0].width / 2,
+						y:L.centre.y
+					}, {
+						x:L.centre.x - l[0].width / 2,
+						y:L.centre.y + l[0].height
+					}
+				]
+			} else if (mode == 1) {
+				anchor = [
+					{
+						x:L.centre.x - l[0].width,
+						y:L.centre.y + l[0].height / 2
+					}, {
+						x:L.centre.x,
+						y:L.centre.y + l[0].height / 2
+					}
+				]
+			} else if (mode == 2 || mode == 3) {
+				anchor = [
+					{
+						x:L.centre.x - l[0].width / 2,
+						y:L.centre.y + l[0].height / 2
+					}, {
+						x:L.centre.x - l[0].width / 2,
+						y:L.centre.y + l[0].height / 2
+					}
+				]
+			} else if (mode == 4) {
+				anchor = [
+					{
+						x:L.centre.x - l[0].width / 2,
+						y:L.centre.y
+					}, {
+						x:L.centre.x - l[0].width / 2,
+						y:L.centre.y
+					}
+				]
+			}
+			l[0].set({anchor:anchor[0]})
+			l[1].set({anchor:anchor[1]})
+			S.refresh("all", t)
+		},
+		onInit:function () {
+			this.setMode(0)
+		},
+		plan:{
+			area:{
+				type:"zShape", mask:["all", "all"],
+				curr:function (S, D) {
+					var l = dc.getMeta("layout", {d:0, p:0})
+					var p = (S.mode == 4) ? 3 : 0
+					var points = S.getLine(p, l)
+					p =
+						(S.mode == 3) ? 1 :
+						(S.mode == 4) ? 2 :
+						0
+					return {points:points.concat(S.getLine(p, l).reverse())}
+				}
+			},
+			lines:{
+				type:"zShape", mask:["mask", "all"],
+				curr:function (S, D) {
+					var p = (S.mode == 4) ? 3 : D.s[0]
+					var l = dc.getMeta("layout", {d:0, s:D.s})
+					return {
+						objClass:(D.s[0]) ? "export" : "import",
+						points:S.getLine(p, l)
+					}
+				}
+			}
+		}
+	})
+	logger("Miniard(): Done.")
+}
+</script>
+</head>
+<body>
+	<div id=menubar>
+		<ul>
+			<li>Mode: <select id="mode"></select></li>
+			<table id=chewylogo>
+				<tbody>
+					<tr>
+						<td id=chewylogo rowspan=2><a href=http://www.chewydata.com><img src="common/chewydata.png"></img></a></td>
+						<td id=powerby rowspan=2><a href=http://www.chewydata.com>Powered by ChewyData</a></td>
+					</tr>
+					<tr></tr>
+				</tbody>
+			</table>
+		</ul>
+	</div>
+	<svg id=chewy></svg>
+</body>
+</html>

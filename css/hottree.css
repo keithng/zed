@@ -1,0 +1,55 @@
+#tooltip div {
+	width:240px;
+	padding:6px;
+	text-align:center;
+}
+/* Swarm */
+#treemap {
+ 	stroke:#666;
+	stroke-width:0.5px;
+	opacity:0.8;
+}
+	#treemap .fade {opacity:0.2;}
+	#treemap .highlight {stroke-width:2px;}
+
+/* x and y axes are actually underneath sidebar's background, so increase darkness to compensate */
+#xAxis .tick, #yAxis .tick {
+	fill:#000;
+}
+
+/* Sidebar */
+#background {
+	fill:#e8e8ef;
+	opacity:0.5;
+	stroke-opacity:0.1;
+}
+#title {
+	fill:#333;
+	font-size:1.2em;
+	font-weight:bold;
+}
+#scale {
+	fill:#666;
+}
+#branch {
+	stroke:#999;
+	shape-rendering:crispEdges;
+}
+
+#line path {
+	fill:none;
+	stroke:#667;
+	stroke-width:2;
+}
+#linePoints {
+	stroke:#666;
+	stroke-width:1;
+	opacity:0.8;
+	fill:white;
+}
+#lineLabel, #scaleLabel {
+	text-align:center;
+	fill:#333;
+	font-size:0.9em;
+	font-weight:normal;
+}

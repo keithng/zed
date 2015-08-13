@@ -1,0 +1,219 @@
+body {
+	color:#333;
+	font-size:0.8em;
+	font-family:'Open Sans', sans-serif;
+}
+
+svg {
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+/* Make all HTML and text elements unselectable */
+html, text {
+	cursor:default;
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+
+/* Menu bar */
+#menubar {
+	height:2.9em; /* = 3em * 0.9em * 0.8em */
+	margin-top:-8px; /* No space above menubar */
+	background:#888;
+	color:#FFF;
+	font-size:0.9em;
+}
+#menubar ul {
+	margin:0;
+	height:2em;
+	padding:0.5em;
+}
+#menubar li {
+	display:inline;
+	border-right:1px solid #AAA;
+	padding-left:1em;
+	padding-right:1em;
+}
+#menubar input { /* Search box */
+	width:20em;
+	padding-left:0.5em;
+}
+.ui-state-focus, /* Search box */
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	border:1px solid #b8b8bf;
+	background:#e8e8ef;
+	color:#000;
+}
+#menubar a { /* Override default link colour and style */
+	text-decoration:none;
+	color:#FFF;
+}
+#menubar .active {
+	text-decoration:underline;
+	font-weight:bold;
+}
+#menubar img {
+	border:none;
+}
+#menubar #title {
+	font-size:1.3em;
+	margin-left:1em;
+}
+
+/* Chewy logo */
+#chewylogo {
+	float:right;
+	margin-top:-6px;
+	font-size:0.8em;
+}
+#chewylogo img {
+	width:2.8em;
+	height:2.8em;
+}
+
+/* Core function styles */
+._hide {
+	opacity:0 !important; /* NOTE: This is required for .hide() functions to work properly */
+}
+
+._htmlcontainer {
+	padding:0 !important; /* NOTE: HTML containers should never have padding */
+}
+
+._clickable, ._clickable text {
+	cursor:pointer;
+}
+#background ._clickable {
+	cursor:default; /* Background should never show a hand pointer */
+}
+
+/* Tooltip - note #tooltip refers to the foreignobject container, the div object inside is the real tooltip*/
+#tooltip div {
+	z-index:9999;
+	border:solid 1px rgba(210,220,220,0.9);
+	border-radius:4px;
+	background-color:rgba(220,230,230,0.9);
+	font-size:1em;
+	padding:12px;
+}
+
+/* Slider (not zSlideAxis) */
+#slider {
+	position:fixed;
+}
+#slider .label {
+	position:absolute;
+	right:100%;
+}
+#slider .label div {
+	position:relative;
+	padding:10px;
+	top:50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+/* Axis (zAxis and zSlideAxis) */
+.zAxis line, .zAxis path,
+.zSlideAxis line {
+	fill:none;
+	stroke:#666;
+	stroke-opacity:0.5;
+	shape-rendering:crispEdges;
+}
+/* NOTE: Careful about using part type as styles - if that drone is a simple drone,
+the part's type will be overriden by the drone's type. */
+.tick {
+	font-size:0.9em;
+	fill:#666;
+}
+.tick line {
+	stroke:#666;
+}
+.domain {
+	display:none;
+}
+/* zSlideAxis */
+.zSlideAxis {fill:#682;}
+	.zSlideAxis #foreground {opacity:1;}
+	.zSlideAxis #background {opacity:0.6;}
+
+/* Axis titles are not part of the axis group */
+#titleObj {
+	font-size:0.8em;
+	fill:#666;
+}
+
+#zoomOutTab {
+	opacity:0.5;
+	font-size:40px;
+	fill:#333;
+	font-weight:bold;
+	transition:0.3s;
+}
+	#zoomOutTab path#background {
+		fill:#ccc;
+		opacity:0.6;
+	}
+	#zoomOutTab .highlight path#background {
+		opacity:1;
+	}
+
+/* Narrator */
+#narrator > div {
+	z-index:9998;
+	border:solid 1px rgba(220,230,230,0.9);
+	border-radius:4px;
+	background-color:rgba(230,240,240,0.9);
+	font-size:1em;
+}
+	#narrator #nav {
+		font-weight:bold;
+	}
+	#narrator #nav a {
+		color:#336;
+		text-decoration:none;
+	}
+	#narrator #nav a:hover {
+		text-decoration:underline;
+	}
+	#narrator #nav #prev {
+		margin-top:0.5em;
+		float:left;
+	}
+	#narrator #nav #next {
+		margin-top:0.5em;
+		float:right;
+	}
+	#narrator #nav #middle {
+		text-align:center;
+	}
+
+/* Breadcrumb */
+#breadcrumb a {
+	text-decoration:none;
+	color:#333;
+}
+#breadcrumb a:hover {
+	text-decoration:underline;
+	color:#333;
+}
+
+/* Gladwrap */
+.zGladwrap {
+	fill:magenta;
+	opacity:0;
+}
+
+.debug {
+	stroke:#f00 !important;
+	stroke-width:5px;
+	color:#f00 !important;
+	fill:#f00 !important;
+}

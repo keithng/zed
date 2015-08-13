@@ -1,0 +1,96 @@
+.fill0 {fill:#8EA62F; background-color:#8EA62F;} /* Went down the right path */
+.fill1 {fill:#AF2D03; background-color:#AF2D03;} /* Went down the wrong path */
+.fill2 {fill:#006699; background-color:#006699;} /* Went back */
+.fill3 {fill:#EEB425; background-color:#EEB425;} /* 'Nominated as correct answer' */
+.fill4 {fill:#AAAAAA; background-color:#AAAAAA;} /* Skipped question */
+
+.fill5 {fill:#AF2D03; background-color:#AF2D03;} /* Above average */
+.fill6 {fill:#AAAAAA; background-color:#AAAAAA;} /* Average */
+.fill7 {fill:#006699; background-color:#006699;} /* Below average */
+
+.fill8 {fill:#A9C638; background-color:#A9C638;} /* Correct path */
+.fill9 {fill:#CCCCCC; background-color:#CCCCCC;} /* Incorrect path */
+
+/* Nodes */
+.empty {display:none;} /* Hide empty nodes */
+
+#lineToParent {
+	stroke:#A9C638;
+}
+#lineToParent .incorrect {
+	stroke:#DDD;
+}
+
+#outline {
+	fill:none;
+	stroke-width:4;
+}
+#outline #outer {
+	stroke:#A9C638;
+}
+#outline #inner {
+	stroke:#FFF;
+}
+#outline .incorrect #outer {
+	display:none;
+}
+
+#label {
+	fill:#666;
+	font-size:14px;
+}
+#label .answer {
+	font-size:16px;
+	font-weight:bold;
+}
+
+h3 {
+	margin:0px;
+	font-size:18px;
+	font-weight:normal;
+}
+h4 {
+	font-size:11px;
+	font-weight:normal;
+}
+.item {
+	margin-top:6px;
+}
+.item > * {
+	display:inline-block;
+	vertical-align:middle;
+}
+.block {
+	padding:7px;
+	margin-right:7px;
+}
+
+/* Legend */
+#legend > * > div {
+	margin:30px;
+	background-color:#eee;
+	border-radius:6px;
+	padding:20px;
+	width:220px;
+	font-size:14px;
+	color:#666;
+}
+#legend h3 {
+	color:#222;
+}
+
+/* Floater */
+#floater > * > div {
+	background-color:rgba(0, 0, 0, 0.8);
+	border-radius:6px;
+	padding:20px;
+	width:300px;
+	font-size:14px;
+	color:#fff;
+}
+#floater .label {
+	width:180px;
+}
+#floater .value {
+	margin-left:10px;
+}

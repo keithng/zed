@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<title>Test platform</title>
+<script src="common/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="common/d3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="common/zed.js" type="text/javascript" charset="utf-8"></script>
+<script src="common/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<link href="common/jquery-ui.min.css" rel="stylesheet">
+<link href="common/chewydata.css" rel="stylesheet">
+<style>
+
+._slow {
+	-webkit-transition:2.4s ease-in;
+	transition:2.4s ease-in;
+}
+#droneA {
+	fill:#4a4;
+/* 	transition:2.4s; */
+/* 		transition:1.4s ease-in; */
+	transition: 1.2s;
+}
+	#droneA .red {fill:#a44;}
+	#droneA .blue {
+		fill:#44a;
+		transition: 1.1s;
+/* 		ms-transition-duration:1.4s; */
+/* 		transition:1.4s ease-in; */
+	}
+
+#droneB {
+	fill:#a22;
+}
+#droneC {
+	fill:#2a2;
+}
+#droneD {
+	fill:#22a;
+}
+
+text {
+	fill:#000;
+}
+
+#tooltip {
+	height:400px;
+	padding:20px;
+	opacity:0.4;
+}
+
+#chewy {
+	padding:40px;
+	top:40px;
+}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+window.onload = function () {
+	// Animation test
+	CANVAS = new zCanvas({width:1200, height:800});
+	var x, y, z, t = 800,
+		text = "This string is false.",
+		G = new zGuide(),
+		L = new zLayout({x:100, y:500, width:600, height:400, padding:50, align:"leftBottom"});
+	switch ("html") {
+		case "html":
+// 			CANVAS.nofo = true
+			var x = new zHTML({
+				id:"tooltip", text:"Hello this is a string.",
+				layout:{
+					x:100, y:100,
+				}
+			});
+			zDebug.show({x:100, y:100})
+
+			var y = new zCircle({
+				centre:{x:100, y:100}, radius:8, fill:"green"
+			})
+
+			x.click(function () {
+// 				x.attr({
+// // 					layout:{x:200, y:300}
+// 					text:"what if it's a much longer string kinda like this<br>with some more stuff"
+// 				}, 1000);
+				x.hide(400, function () {x.show(400)})
+
+			});
+			console.log(x.$.width());
+			console.log(x.$.outerWidth());
+			console.log(x.$.outerWidth(true));
+
+
+			return;
+		case "events":
+//			var tooltipBox = new zHTML({text:text, layout:L.centre});
+			var a = new zRectangle({layout:L, fill:"red"});
+			var tooltipBox = new zTextBox({text:text, background:{fill:"blue"}, layout:L.centre});
+			// Can events survive hide/show?
+			tooltipBox.hover(function () {
+				console.log("hoverin");
+				tooltipBox.show(100);
+			}, function () {
+				tooltipBox.hide(100);
+			});
+			tooltipBox.click(function () {
+				console.log("click 1");
+			});
+			tooltipBox.click(function () {
+				console.log("click 2");
+			});
+
+			a.hover(function () {
+				tooltipBox.show(100);
+			}, function () {
+				tooltipBox.hide(100);
+			});
+
+
+			// Can it handle multiple events?
+			a.click(function () {
+				console.log("click 1");
+				var e = $._data(tooltipBox.el, "events");
+				console.log(e.click[1].handler);
+
+				// Does mouseEventsOff() work?
+				//tooltipBox.mouseEventsOff();
+			});
+			a.click(function () {
+				console.log("click 2");
+			});
+			return;
+		case "layers":
+			var rowSize = 5;
+			var swarm = new zSwarm({
+				dc:new zDataCube(1, za.fill(0, 10, 1)),
+				plan:{
+					droneA:{
+						type:"zDrone", mask:"mask", layer:1,
+						onAdd:function (S, D, mode) {
+							D.click(function () {looper(D.A[0])});
+						},
+						curr:function (S, D, mode) {
+							var d = D.A[0],
+								row = Math.floor(d / rowSize),
+								col = d - row * rowSize,
+								anchor = {x:(1 + col) * 100, y:(1 + row) * 100};
+							return {
+								label:{
+									type:"text", text:d, layer:2,
+									layout:{anchor:anchor, align:"centre"}
+								},
+								dot:{
+									type:"circle", radius:40, layer:1,
+									centre:anchor
+								}
+							};
+						}
+					},
+					droneB:{
+						type:"zDrone", mask:"mask", layer:0,
+						curr:function (S, D, mode) {
+							var d = D.A[0],
+								row = Math.floor(d / rowSize),
+								col = d - row * rowSize;
+								anchor = {x:(1 + col) * 100, y:(1 + row) * 100};
+							return {
+								dot:{
+									type:"circle", radius:55, layer:3,
+									centre:anchor
+								}
+							};
+						}
+					}
+				}
+			});
+			var state = 0, drones = swarm.get("all");
+			var looper = function (i) {
+				if (i >= drones.length) {
+					state = (state) ? 0 : 1;
+					return;
+				};
+				var b = function () {
+					looper(i + 2);
+				};
+				if (state == 0) {
+// 					drones[i].style({fill:"blue"}, 300, b);
+					drones[i].addClass("blue", 300, b);
+				} else {
+					drones[i].removeClass("blue", 300, b);
+				};
+			};
+			return;
+		// zDrone test pattern
+		case "pattern":
+			L = new zLayout({x:300, y:300, width:200, height:200});
+			var gridLayout = [L];
+			gridLayout.push(L.clone({anchor:{x:L.left, y:L.top}, align:"rightBottom"}));
+			gridLayout.push(L.clone({anchor:{x:L.centre.x, y:L.top}, align:"centreBottom"}));
+			gridLayout.push(L.clone({anchor:{x:L.right, y:L.top}, align:"leftBottom"}));
+			gridLayout.push(L.clone({anchor:{x:L.right, y:L.centre.y}, align:"leftCentre"}));
+			gridLayout.push(L.clone({anchor:{x:L.right, y:L.bottom}, align:"leftTop"}));
+			gridLayout.push(L.clone({anchor:{x:L.centre.x, y:L.bottom}, align:"centreTop"}));
+			gridLayout.push(L.clone({anchor:{x:L.left, y:L.bottom}, align:"rightTop"}));
+			gridLayout.push(L.clone({anchor:{x:L.left, y:L.centre.y}, align:"rightCentre"}));
+			for (var i = 0; i < gridLayout.length; i++) {
+				new zRectangle({layout:gridLayout[i], fill:"none", stroke:"#aaa"})
+			};
+			return;
+
+
+
+
+			var swarm = new zSwarm({
+				dc:new zDataCube(1, za.fill(0, 10, 1)),
+				plan:{
+					droneA:{
+						type:"zDrone", mask:"mask", layer:1,
+						onAdd:function (S, D, mode) {
+							D.click(function () {looper(D.A[0])});
+						},
+						curr:function (S, D, mode) {
+							var d = D.A[0],
+								row = Math.floor(d / rowSize),
+								col = d - row * rowSize,
+								anchor = {x:(1 + col) * 100, y:(1 + row) * 100};
+							return {
+								label:{
+									type:"text", text:d, layer:2,
+									layout:{anchor:anchor, align:"centre"}
+								},
+								dot:{
+									type:"circle", radius:40, layer:1,
+									centre:anchor
+								}
+							};
+						}
+					},
+					droneB:{
+						type:"zDrone", mask:"mask", layer:0,
+						curr:function (S, D, mode) {
+							var d = D.A[0],
+								row = Math.floor(d / rowSize),
+								col = d - row * rowSize;
+								anchor = {x:(1 + col) * 100, y:(1 + row) * 100};
+							return {
+								dot:{
+									type:"circle", radius:55, layer:3,
+									centre:anchor
+								}
+							};
+						}
+					}
+				}
+			});
+
+
+
+
+			x.redraw({layout:L}, t);
+			y.redraw({
+				directRect:{x:x.L.right, y:x.L.bottom},
+				shape:{points:[x.L.getPoint(0,0), x.L.getPoint(0,1), x.L.getPoint(1,1)]},
+				line:{points:[x.L.getPoint(1,0), x.L.getPoint(0,1)]},
+				arc:{centre:x.L.centre, degStart:-45, degEnd:45, outerRadius:x.L.width / 2},
+				circle:{centre:x.L.centre},
+			}, t);
+			x.hoverHighlight(t);
+			y.hoverHighlight(t);
+// 			x.toFront();
+// 			y.toBack();
+
+			L = new zLayout({x:400, y:100, width:200, height:120, padding:10, align:"centre"});
+			x = [
+				new zRectangle({layout:L, fill:"red", opacity:0.3}),
+				new zRectangle({layout:L, rounded:50, fill:"red", opacity:0.3}),
+				new zRectangle({x:L.right, y:L.bottom, width:50, height:50, fill:"blue", opacity:0.3, highlight:{opacity:1}}),
+				new zShape({points:[L.getPoint(0,0), L.getPoint(0,1), L.getPoint(1,1)], fill:"blue", opacity:0.3}),
+				new zLine({points:[L.getPoint(1,0), L.getPoint(0,1)], fill:"blue", opacity:0.3}),
+				new zArc({centre:L.centre, degStart:-zp.atan(0.6), degEnd:zp.atan(0.6), innerRadius:0, outerRadius:L.width / 2, fill:"blue", opacity:0.3}),
+				new zCircle({centre:L.centre, radius:25, fill:"blue", opacity:0.3}),
+				new zText({layout:{x:L.right, y:L.bottom, align:"rightBottom", padding:10}, "font-size":40, text:"Hello", textXAlign:"right", textYAlign:"bottom"})
+			];
+			L.set({x:600, y:300, width:200, height:200});
+			x[0].redraw({layout:L}, t);
+			x[1].redraw({layout:L}, t);
+			x[2].redraw({x:L.right, y:L.bottom}, t);
+			x[3].redraw({points:[L.getPoint(0,0), L.getPoint(0,1), L.getPoint(1,1)]}, t);
+			x[4].redraw({points:[L.getPoint(1,0), L.getPoint(0,1)]}, t);
+			x[5].redraw({centre:L.centre, degStart:-45, degEnd:45}, t);
+			x[6].redraw({centre:L.centre}, t);
+			x[7].redraw({layout:{x:L.right, y:L.bottom}}, t);
+			return;
+		case "axis":
+			var margin = {top: 100, right: 100, bottom: 100, left: 100},
+					width = 960 - margin.left - margin.right,
+					height = 500 - margin.top - margin.bottom;
+			var x = new zAxis({
+				layout:L, align:"top",
+				role:"axis",
+				extend:null,
+				domain:[0, 80],
+// 				dc:new zDataCube(1, "abcdefg".split("")), d:0,
+				ticks:10,
+				titlePadding:40,
+// 				innerTickSize:-L.width + 200,
+				innerTickSize:-L.height + 200,
+				outerTickSize:0,
+// 				tickFormat:null,
+				title:"Original Scale",
+			});
+			x.setDomain([0,60], 1000);
+			return;
+		// Speed test for calculation functions
+		case "speed":
+			var times = [], startTime, i, j;
+			var test = function () {
+				var out = 1;
+				out == "1";
+// 				return out;
+			};
+			for (i = 0; i < 3; i++) {
+				startTime = $.now();
+				for (j = 0; j < 50000000; j++) test();
+				times[i] = $.now() - startTime;
+				console.log(times[i]);
+			};
+			console.log("Average:", za.mean(times));
+			return;
+// 		case "swarm":
+	};
+};
+</script>
+</head>
+<body>
+	<svg id="chewy"></svg>
+</body>
+</html>
