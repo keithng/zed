@@ -1270,7 +1270,7 @@ var zTools = zt = {
 	shorten:function (s, l) {
 		if (s == null) return ""
 		if (s.length <= l) return s
-		return s.substr(0, l) + "..."
+		return s.substr(0, l).trim() + "..."
 	},
 	// Wrap text
 	wrap:function (s, l) {
