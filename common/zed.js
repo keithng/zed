@@ -2673,6 +2673,8 @@ function zCanvas (layout, id) {
 	}
 	C.isiPad = navigator.userAgent.match(/iPad/i) != null
 	C.nofo = !document.implementation.hasFeature("www.http://w3.org/TR/SVG11/feature#Extensibility","1.1")
+// 	C.nofo = true
+	if (C.nofo) console.log("SVG foreignObjects are NOT supported.")
 	// Set up handlers for self
 	C.el = C.$.get()[0]
 	C.d3 = d3.select(id)
@@ -3573,9 +3575,9 @@ function zHTML (O, t, b) {
 				}
 				// NOTE: This is a total bullshit workaround because divs inside foreignObjects behave as if width = 0px
 				if (P.L.autoWidth || P.L.autoHeight) {
-					var el = P.$.clone() // Fake element that will be placed outside DOM to calculate size
+					var fake = P.$.clone() // Fake element that will be placed outside DOM to calculate size
 					// Apply calculated CSS styles because the fake element will lose its CSS context
-					el.css({
+					fake.css({
 						position:"absolute",
 						"font-size":P.d3.style("font-size"),
 						"font-weight":P.d3.style("font-weight")
@@ -3585,30 +3587,34 @@ function zHTML (O, t, b) {
 						width:20000,
 						height:20000
 					})
-					CANVAS.parent.$.append(el) // Place element outside foreignObject so it becomes a normal div
+					CANVAS.parent.$.append(fake) // Place element outside foreignObject so it becomes a normal div
 					// Set layout by DOM element
 					if (P.L.autoWidth) {
-						P.d3.style("width", 1 + el.outerWidth() + "px") // Set element width
+						fake.css("width", "auto") // Make sure the fake element hasn't inherited the old width
+						P.d3.style("width", fake.outerWidth() + "px") // Set element width
 						P.L.set({width:P.$.outerWidth()}) // Put element new width (including padding and borders) into layout
 					}
 					if (P.L.autoHeight) {
 						P.L.set({height:P.$.outerHeight()}) // Change layout to match
 					}
-					el.remove() // Remove fake element
+					fake.remove() // Remove fake element
 				}
+				var canvas = D._canvas.$
+				padding = {
+					left:parseInt(canvas.css("padding-left")),
+					top:parseInt(canvas.css("padding-top"))
+				}
+				// Set parent div
 				if (D._canvas.nofo){
-					// Set foreignObject
-					var canvas = D._canvas.$
 					var offset = canvas.offset()
-					offset.left += parseInt(canvas.css("padding-left"))
-					offset.top += parseInt(canvas.css("padding-top"))
 					$(P.el).css({
 						position:"absolute",
-						left:offset.left + P.L.left + "px",
-						top:offset.top + P.L.top + "px"
+						left:Math.round(offset.left + padding.left + P.L.left) + "px",
+						top:Math.round(offset.top + padding.top + P.L.left) + "px"
 					})
+				// Set foreignObject to fit around div
+				// NOTE: Firefox 40+ takes SVG padding into account, but Chrome doesn't
 				} else {
-					// Set foreignObject to fit around div
 					$(P.el).attr({
 						x:Math.round(P.L.left),
 						y:Math.round(P.L.top),

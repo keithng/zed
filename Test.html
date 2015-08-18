@@ -43,8 +43,8 @@ text {
 	fill:#000;
 }
 
-#tooltip {
-	height:400px;
+#tooltip div {
+/* 	height:400px; */
 	padding:20px;
 	opacity:0.4;
 }
@@ -79,11 +79,11 @@ window.onload = function () {
 			})
 
 			x.click(function () {
-// 				x.attr({
-// // 					layout:{x:200, y:300}
-// 					text:"what if it's a much longer string kinda like this<br>with some more stuff"
-// 				}, 1000);
-				x.hide(400, function () {x.show(400)})
+				x.attr({
+// 					layout:{x:200, y:300}
+					text:"what if it's a much longer string kinda like this<br>with some more stuff"
+				}, 1000);
+// 				x.hide(400, function () {x.show(400)})
 
 			});
 // 			console.log(x.$.width());
