@@ -3577,6 +3577,7 @@ function zHTML (O, t, b) {
 					// Apply calculated CSS styles because the fake element will lose its CSS context
 					fake.css({
 						position:"absolute",
+						"padding":P.d3.style("padding"),
 						"font-size":P.d3.style("font-size"),
 						"font-weight":P.d3.style("font-weight")
 					})
@@ -3608,7 +3609,7 @@ function zHTML (O, t, b) {
 					$(P.el).css({
 						position:"absolute",
 						left:Math.round(offset.left + padding.left + P.L.left) + "px",
-						top:Math.round(offset.top + padding.top + P.L.left) + "px"
+						top:Math.round(offset.top + padding.top + P.L.top) + "px"
 					})
 				// Set foreignObject to fit around div
 				// NOTE: Firefox 40+ takes SVG padding into account, but Chrome doesn't
