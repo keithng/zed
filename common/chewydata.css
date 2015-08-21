@@ -81,8 +81,16 @@ html, text {
 	opacity:0 !important; /* NOTE: This is required for .hide() functions to work properly */
 }
 
+/* HTML containers should never have padding */
 ._htmlcontainer {
-	padding:0 !important; /* NOTE: HTML containers should never have padding */
+	padding:0 !important;
+}
+
+/* Element used to check whether foreignObjects render correctly */
+._marginCheck div {
+  width:120px;
+  height:20px;
+  margin:7px;
 }
 
 ._clickable, ._clickable text {

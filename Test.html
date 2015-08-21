@@ -45,12 +45,14 @@ text {
 
 #tooltip div {
 /* 	height:400px; */
-	padding:20px;
+ 	padding:4px;
+	margin:12px;
 	opacity:0.4;
 }
 
 #chewy {
-	padding:40px;
+	padding:23px;
+    margin:59px;
 	top:40px;
 }
 </style>
@@ -66,23 +68,26 @@ window.onload = function () {
 	switch ("html") {
 		case "html":
 // 			CANVAS.nofo = true
-			var x = new zHTML({
+//             CANVAS.topMarginFail = true
+            var x = new zHTML({
 				id:"tooltip", text:"Hello this is a string.",
 				layout:{
 					x:100, y:100,
+                    autoWidth:true
 				}
 			});
-			zDebug.show({x:100, y:100})
 
 			var y = new zCircle({
-				centre:{x:100, y:100}, radius:8, fill:"green"
+				centre:{x:112, y:112}, radius:5, fill:"green"
 			})
 
 			x.click(function () {
-				x.attr({
-// 					layout:{x:200, y:300}
-					text:"what if it's a much longer string kinda like this<br>with some more stuff"
-				}, 1000);
+               console.log(x.$.offset().top - CANVAS.$.offset().top - parseInt(CANVAS.$.css("margin-top")) - parseInt(CANVAS.$.css("padding-top")))
+
+// 				x.attr({
+// // 					layout:{x:200, y:300}
+// 					text:"what if it's a much longer string kinda like this<br>with some more stuff"
+// 				}, 1000);
 // 				x.hide(400, function () {x.show(400)})
 
 			});
