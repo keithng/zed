@@ -3579,20 +3579,20 @@ function zHTML (O, t, b) {
 			// Calculate text position (must be done in the right sequence)
 			if (O.content || P.L.changed) {
 				if (O.content) P.d3.html(zo.r(O, "content")) // Don't pass any further - quote marks in orders.content gum up .attr() for unknown reasons
-				if (P.L.padding) P.d3.style("padding", P.L.padding + "px") // Padding first - nothing affects padding, and padding affects outerWidth/outerHeight
+				if (P.L.padding) P.$.css("padding", P.L.padding + "px") // Padding first - nothing affects padding, and padding affects outerWidth/outerHeight
 				// Width is manually defined (do first)
 				if (!P.L.autoWidth && P.L.innerWidth) {
 					padding =
-						parseInt(P.d3.style("padding-left")) +
-						parseInt(P.d3.style("padding-right"))
-					P.d3.style("width", P.L.width - padding + "px")
+						parseInt(P.$.css("padding-left") || 0) +
+						parseInt(P.$.css("padding-right") || 0)
+					P.$.css("width", P.L.width - padding + "px")
 				}
 				// Height is manually defined (do first)
 				if (!P.L.autoHeight && P.L.innerHeight) {
 					padding =
-						parseInt(P.d3.style("padding-top")) +
-						parseInt(P.d3.style("padding-bottom"))
-					P.d3.style("height", P.L.height - padding + "px")
+						parseInt(P.$.css("padding-top") || 0) +
+						parseInt(P.$.css("padding-bottom") || 0)
+					P.$.css("height", P.L.height - padding + "px")
 				}
 				// NOTE: This is a total bullshit workaround because divs inside foreignObjects behave as if width = 0px
 				if (P.L.autoWidth || P.L.autoHeight) {
@@ -3600,8 +3600,8 @@ function zHTML (O, t, b) {
 					// Apply calculated CSS styles because the fake element will lose its CSS context
 					fake.css({
 						position:"absolute",
-						"font-size":P.d3.style("font-size"),
-						"font-weight":P.d3.style("font-weight")
+						"font-size":P.$.css("font-size"),
+						"font-weight":P.$.css("font-weight")
 					})
 					// Max out foreignObject so P.$.outerWidth/outerHeight will calculate properly in Firefox
 					$(P.el).attr({
@@ -3612,7 +3612,7 @@ function zHTML (O, t, b) {
 					// Set layout by DOM element
 					if (P.L.autoWidth) {
 						fake.css("width", "auto") // Make sure the fake element hasn't inherited the old width
-						P.d3.style("width", fake.outerWidth() + "px") // Set element width
+						P.$.css("width", fake.outerWidth() + "px") // Set element width
 						P.L.set({width:P.$.outerWidth()}) // Put element new width (including padding and borders) into layout
 					}
 					if (P.L.autoHeight) {
@@ -3627,27 +3627,35 @@ function zHTML (O, t, b) {
           width:P.$.outerWidth(),
           height:P.$.outerHeight()
         }
+        var cPadding = {
+          left:parseInt(canvas.$.css("padding-left") || 0),
+          top:parseInt(canvas.$.css("padding-top") || 0)
+        }
+        var eMargin = {
+          left:parseInt(P.$.css("margin-left") || 0),
+          top:parseInt(P.$.css("margin-top") || 0)
+        }
 				// Set parent div
 				if (canvas.nofo){
 					var offset = canvas.$.offset()
-          // Add SVG padding to offset
-          l.left += parseInt(canvas.$.css("padding-left"))
-          l.top += parseInt(canvas.$.css("padding-top"))
+          // Add SVG padding and canvas offset
+          l.left += cPadding.left + offset.left
+          l.top += cPadding.top + offset.top
           $(P.el).css({
 						position:"absolute",
-						left:Math.round(offset.left + l.left) + "px",
-						top:Math.round(offset.top + l.top) + "px"
+						left:Math.round(l.left) + "px",
+						top:Math.round(l.top) + "px"
 					})
 				// Fit foreignObjects around div
 				} else {
           // foreignObjects need to be expanded to include margins
-          l.width += parseInt(P.$.css("margin-left"))
-          l.height += parseInt(P.$.css("margin-top"))
+          l.width += eMargin.left
+          l.height += eMargin.top
           // Chrome foreignObjects don't take SVG padding or element margin-top into account
           if (canvas.foPlacementFail) {
-            l.left += parseInt(canvas.$.css("padding-left"))
-            l.top += parseInt(canvas.$.css("padding-top"))
-            l.top += parseInt(P.$.css("margin-top"))
+            l.left += cPadding.left
+            l.top += cPadding.top
+            l.top += eMargin.top
           }
           $(P.el).attr({
 						x:Math.round(l.left),
