@@ -1511,8 +1511,6 @@ function zLayout (layout, parent) {
 	L.innerHeight = 0
 	L.parent = parent
 	L.set(layout)
-	if (!L.innerWidth) L.autoWidth = true
-	if (!L.innerHeight) L.autoHeight = true
 }
 
 /////////////////////
