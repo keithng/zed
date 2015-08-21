@@ -1511,6 +1511,8 @@ function zLayout (layout, parent) {
 	L.innerHeight = 0
 	L.parent = parent
 	L.set(layout)
+  if (!L.innerWidth && layout.autoWidth != false) L.autoWidth = true
+  if (!L.innerHeight && layout.autoHeight != false) L.autoHeight = true
 }
 
 /////////////////////
@@ -2663,25 +2665,7 @@ Layering
 function zCanvas (layout, id) {
 	id = id || "#chewy"
 	var C = this
-	C._canvas = this
-	C.$ = $(id)
-	// Check environment
-	if (!C.$.is("svg")) {
-		throw id + " is not an SVG object."
-	}
-	C.isiPad = navigator.userAgent.match(/iPad/i) != null
-	C.nofo = !document.implementation.hasFeature("www.http://w3.org/TR/SVG11/feature#Extensibility","1.1")
-// 	C.nofo = true
-	if (C.nofo) console.log("SVG foreignObjects are NOT supported.")
-	// Set up handlers for self
-	C.el = C.$.get()[0]
-	C.d3 = d3.select(id)
-		.style("position", "relative") // foreignObject rendering errors without this - dunno why
-	// Set up handlers for parent (i.e. Parent of the SVG canvas, so things can be attached outside the canvas)
-	C.parent = {d3:d3.select("body")}
-	C.parent.el = C.parent.d3.node()
-	C.parent.$ = $(C.parent.el)
-	// Resize canvas to fit layout
+  // Resize canvas to fit layout
 	C.setSize = function (layout) {
 		layout = layout || zt.getMaxLayout()
 		C.d3.attr({
@@ -2690,6 +2674,45 @@ function zCanvas (layout, id) {
 		})
 		return C
 	}
+  // Check whether the browser is aware of margins when positioning foreignObjects
+  C.foMarginCheck = function () {
+    CANVAS = C
+    var e = new zHTML({
+      text:"zCanvas.foMarginCheck()",
+      objClass:"_marginCheck", // _marginTest provides a margin of 7px
+      layout:{x:0, y:0}
+    })
+    if (parseInt(e.$.css("margin-top")) == 0) {
+      throw "zCanvas(): ._marginTest style not found in CSS. Is chewydata.css loaded?"
+    } else {
+      var cTop = C.$.offset().top + parseInt(C.$.css("padding-top"))
+      var eTop = e.$.offset().top - cTop
+      if (eTop == 0) C.foPlacementFail = true
+      else C.foPlacementFail = false
+    }
+    e.remove()
+  }
+
+  C._canvas = this
+	C.$ = $(id)
+	// Check environment
+	if (!C.$.is("svg")) {
+		throw id + " is not an SVG object."
+	}
+	// Set up handlers for self
+	C.el = C.$.get()[0]
+	C.d3 = d3.select(id)
+		.style("position", "relative") // foreignObject rendering errors without this - dunno why
+	// Set up handlers for parent (i.e. Parent of the SVG canvas, so things can be attached outside the canvas)
+	C.parent = {d3:d3.select("body")}
+	C.parent.el = C.parent.d3.node()
+	C.parent.$ = $(C.parent.el)
+	// Check compatibility
+  C.isiPad = navigator.userAgent.match(/iPad/i) != null
+	C.nofo = !document.implementation.hasFeature("www.http://w3.org/TR/SVG11/feature#Extensibility","1.1")
+	if (C.nofo) console.log("SVG foreignObjects are NOT supported.")
+  else C.foMarginCheck()
+  // Initialise
 	C.setSize(layout)
 	return C
 }
@@ -3577,7 +3600,6 @@ function zHTML (O, t, b) {
 					// Apply calculated CSS styles because the fake element will lose its CSS context
 					fake.css({
 						position:"absolute",
-						"padding":P.d3.style("padding"),
 						"font-size":P.d3.style("font-size"),
 						"font-weight":P.d3.style("font-weight")
 					})
@@ -3598,27 +3620,40 @@ function zHTML (O, t, b) {
 					}
 					fake.remove() // Remove fake element
 				}
-				var canvas = D._canvas.$
-				padding = {
-					left:parseInt(canvas.css("padding-left")),
-					top:parseInt(canvas.css("padding-top"))
-				}
+				var canvas = D._canvas
+        var l = {
+          left:P.L.left,
+          top:P.L.top,
+          width:P.$.outerWidth(),
+          height:P.$.outerHeight()
+        }
 				// Set parent div
-				if (D._canvas.nofo){
-					var offset = canvas.offset()
-					$(P.el).css({
+				if (canvas.nofo){
+					var offset = canvas.$.offset()
+          // Add SVG padding to offset
+          l.left += parseInt(canvas.$.css("padding-left"))
+          l.top += parseInt(canvas.$.css("padding-top"))
+          $(P.el).css({
 						position:"absolute",
-						left:Math.round(offset.left + padding.left + P.L.left) + "px",
-						top:Math.round(offset.top + padding.top + P.L.top) + "px"
+						left:Math.round(offset.left + l.left) + "px",
+						top:Math.round(offset.top + l.top) + "px"
 					})
-				// Set foreignObject to fit around div
-				// NOTE: Firefox 40+ takes SVG padding into account, but Chrome doesn't
+				// Fit foreignObjects around div
 				} else {
-					$(P.el).attr({
-						x:Math.round(P.L.left),
-						y:Math.round(P.L.top),
-						width:P.$.outerWidth(),
-						height:P.$.outerHeight()
+          // foreignObjects need to be expanded to include margins
+          l.width += parseInt(P.$.css("margin-left"))
+          l.height += parseInt(P.$.css("margin-top"))
+          // Chrome foreignObjects don't take SVG padding or element margin-top into account
+          if (canvas.foPlacementFail) {
+            l.left += parseInt(canvas.$.css("padding-left"))
+            l.top += parseInt(canvas.$.css("padding-top"))
+            l.top += parseInt(P.$.css("margin-top"))
+          }
+          $(P.el).attr({
+						x:Math.round(l.left),
+						y:Math.round(l.top),
+						width:Math.round(l.width),
+						height:Math.round(l.height)
 					})
 				}
 				if (P.L != D.L) P.L.changed = false // If P.L is independent, reset changed flag
