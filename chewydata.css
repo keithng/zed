@@ -96,6 +96,11 @@ html, text {
 ._clickable, ._clickable text {
 	cursor:pointer;
 }
+
+._instantDraw {
+  transition:none !important;
+}
+
 #background ._clickable {
 	cursor:default; /* Background should never show a hand pointer */
 }

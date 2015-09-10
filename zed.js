@@ -3612,7 +3612,9 @@ function zHTML (O, t, b) {
 					// Set layout by DOM element
 					if (P.L.autoWidth) {
 						fake.css("width", "auto") // Make sure the fake element hasn't inherited the old width
-						P.$.css("width", fake.outerWidth() + "px") // Set element width
+						P.$.addClass("_instantDraw")
+            P.$.css("width", fake.outerWidth() + "px") // Set element width
+						P.$.removeClass("_instantDraw")
 						P.L.set({width:P.$.outerWidth()}) // Put element new width (including padding and borders) into layout
 					}
 					if (P.L.autoHeight) {
