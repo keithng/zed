@@ -3669,18 +3669,29 @@ function zHTML (O, t, b) {
 			return O
 		},
 		make:function (O, D) {
-			O.type += " _htmlcontainer" // Special style overrides padding, which would screw up positioning
+			var P, htmlObj
+      O.type += " _htmlcontainer" // Special style overrides padding, which would screw up positioning
 			if (D._canvas.nofo) { // No foreignObject support
-				var P = D._makePart("div", O) // Divs are automatically placed outside the canvas, or in their role containers (which are placed outside the canvas)
-				P.d3 = P.d3.append("div") // Append to foreignobject container
+				P = D._makePart("div", O) // Divs are automatically placed outside the canvas, or in their role containers (which are placed outside the canvas)
+				htmlObj = P.d3.append("div") // Append to container
 			} else {
-				// NOTE: .el points to the foreignobject container (because that's what gets attached/detached)
-				// ..but the d3 and $ handles point to the HTML object (because that's what gets animated)
-				var P = D._makePart("foreignObject", O) // Use a foreignobject container so HTML can live inside a SVG
-				P.d3 = P.d3.append("xhtml:div") // Append to foreignobject container
+				P = D._makePart("foreignObject", O) // Use a foreignobject container so HTML can live inside a SVG
+				htmlObj = P.d3.append("xhtml:div") // Append to foreignobject container
 			}
-			P.$ = $(P.d3.node())
-			P.L = D._parseLayout(O, true)
+      P.htmlObj = {
+        el:htmlObj.node(),
+        $:$(htmlObj.node()),
+        d3:htmlObj
+      }
+      P.containerObj = {
+        el:P.el,
+        $:P.$,
+        d3:P.d3
+      }
+      P.el = P.containerObj.el // .el points to the foreignobject container (because that's what gets attached/detached)
+      P.$ = P.htmlObj.$ // ..but the d3 and $ handles point to the HTML object (because that's what gets animated)
+      P.d3 = P.htmlObj.d3
+      P.L = D._parseLayout(O, true)
 			return P
 		}
 	}
