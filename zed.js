@@ -3614,8 +3614,8 @@ function zHTML (O, t, b) {
 						fake.css("width", "auto") // Make sure the fake element hasn't inherited the old width
 						P.$.addClass("_instantDraw")
             P.$.css("width", fake.outerWidth() + "px") // Set element width
-						P.$.removeClass("_instantDraw")
 						P.L.set({width:P.$.outerWidth()}) // Put element new width (including padding and borders) into layout
+						P.$.removeClass("_instantDraw") // In some Firefoxes, having this run one line above results in set element width happening *AFTER* _instantDraw is removed - I don't even
 					}
 					if (P.L.autoHeight) {
 						P.L.set({height:P.$.outerHeight()}) // Change layout to match
