@@ -1509,6 +1509,7 @@ function zLayout (layout, parent) {
 	L.innerHeight = 0
 	L.parent = parent
 	L.set(layout)
+  layout = layout || {}
   if (!L.innerWidth && layout.autoWidth != false) L.autoWidth = true
   if (!L.innerHeight && layout.autoHeight != false) L.autoHeight = true
 }
@@ -3176,9 +3177,9 @@ zDrone.prototype.tooltip = function (text, ttBox, layout) {
 	D.mousemove(function (e) {ttBox.showAt(e, layout)})
 	D.hover(function (e) {
 		ttBox.attr({text:text || D.tooltipText})
-		ttBox.showAt(e, layout, 100)
+		ttBox.showAt(e, layout, 0) // Instant-draw because foreignObject divs in Chrome <=45 don't respect browser zooms if opacity < 1
 	}, function () {
-		ttBox.hide(100)
+		ttBox.hide(0)
 	})
 }
 
@@ -3562,6 +3563,7 @@ function zText (O, t, b) {
 	return new zDrone(O, t, b)
 }
 // HTML object, uses jQuery - NOTE: NOT PART OF THE SVG
+// WIERD BUG: Divs in foreignObjects do not respect browser zooms in Chrome <=45 **when opacity < 1**. To fix, don't use opacity
 function zHTML (O, t, b) {
 	O.type = O.type || "zHTML"
 	// zHTML sits outside of the SVG canvas, which means it's always on top of the SVG
