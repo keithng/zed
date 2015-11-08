@@ -724,10 +724,8 @@ var zArray = za = {
 
 	// Defaults to ascending order
 	rank:function (a, reverseOrder) {
-		var i, out = []
 		a = za.sortObjects(za.index(a), "val", reverseOrder) // Create indexes, then sort array
-		for (i = 0; i < a.length; i++) out[a[i].id] = i // Return the positions
-		return out
+		return za.extract(a, "id") // Extract indexes
 	},
 	// As decimal of the sum of the array
 	dec:function (a) {
@@ -1666,7 +1664,7 @@ zLayout.prototype.readOrders = function (O) {
 /////////////////////
 // Clones itself with additional properties using the set function (optional - set() will ignore if it's empty)
 zLayout.prototype.clone = function (layout) {
-	return new zLayout(this.getVitals(layout))
+	return new zLayout(this.getVitals()).set(layout)
 }
 // Return the minimum set of values required to fully reconstruct this layout
 zLayout.prototype.getVitals = function (layout) {
