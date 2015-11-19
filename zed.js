@@ -2703,9 +2703,10 @@ function zCanvas (layout, id) {
 	C.d3 = d3.select(id)
 		.style("position", "relative") // foreignObject rendering errors without this - dunno why
 	// Set up handlers for parent (i.e. Parent of the SVG canvas, so things can be attached outside the canvas)
-	C.parent = {d3:d3.select("body")}
-	C.parent.el = C.parent.d3.node()
-	C.parent.$ = $(C.parent.el)
+  C.parent = {}
+  C.parent.$ = C.$.parent()
+	C.parent.el = C.parent.$[0]
+	C.parent.d3 = d3.select(C.parent.el)
 	// Check compatibility
   C.isiPad = navigator.userAgent.match(/iPad/i) != null
 	C.nofo = !document.implementation.hasFeature("www.http://w3.org/TR/SVG11/feature#Extensibility","1.1")
@@ -3174,12 +3175,13 @@ zDrone.prototype.showAt = function (event, layout, t) {
 // Show tooltip when hovered, hide tooltip when unhovered
 zDrone.prototype.tooltip = function (text, ttBox, layout) {
 	var D = this
+  var t = 0
 	D.mousemove(function (e) {ttBox.showAt(e, layout)})
 	D.hover(function (e) {
+		ttBox.showAt(e, layout, t) // Instant-draw because foreignObject divs in Chrome <=45 don't respect browser zooms if opacity < 1
 		ttBox.attr({text:text || D.tooltipText})
-		ttBox.showAt(e, layout, 0) // Instant-draw because foreignObject divs in Chrome <=45 don't respect browser zooms if opacity < 1
 	}, function () {
-		ttBox.hide(0)
+		ttBox.hide(t)
 	})
 }
 
@@ -3626,8 +3628,8 @@ function zHTML (O, t, b) {
         var l = {
           left:P.L.left,
           top:P.L.top,
-          width:P.$.outerWidth(),
-          height:P.$.outerHeight()
+          width:P.L.width,
+          height:P.L.height
         }
         var cPadding = {
           left:parseInt(canvas.$.css("padding-left") || 0),
@@ -3639,10 +3641,10 @@ function zHTML (O, t, b) {
         }
 				// Set parent div
 				if (canvas.nofo){
-					var offset = canvas.$.offset()
+					var pos = canvas.$.position()
           // Add SVG padding and canvas offset
-          l.left += cPadding.left + offset.left
-          l.top += cPadding.top + offset.top
+          l.left += cPadding.left + pos.left
+          l.top += cPadding.top + pos.top
           $(P.el).css({
 						position:"absolute",
 						left:Math.round(l.left) + "px",

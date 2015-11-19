@@ -106,7 +106,7 @@ html, text {
 }
 
 /* Tooltip - note #tooltip refers to the foreignobject container, the div object inside is the real tooltip*/
-#tooltip div {
+#tooltip>div {
 	z-index:9999;
 	border:solid 1px rgba(210,220,220,0.9);
 	border-radius:4px;
