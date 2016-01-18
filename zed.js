@@ -1,4 +1,4 @@
-// Zed Data Visualisation Toolkit. Keith Ng, 2015-08-21.
+// Zed Data Visualisation Toolkit. Keith Ng, 2015-11-25.
 // Depends on jQuery and d3
 
 var DEBUG_MODE = false
@@ -2661,8 +2661,7 @@ Layering
 
 */
 
-function zCanvas (layout, id) {
-	id = id || "#chewy"
+function zCanvas (layout, svg) {
 	var C = this
   // Resize canvas to fit layout
 	C.setSize = function (layout) {
@@ -2693,14 +2692,14 @@ function zCanvas (layout, id) {
   }
 
   C._canvas = this
-	C.$ = $(id)
+	C.$ = $(svg || "#chewy")
 	// Check environment
 	if (!C.$.is("svg")) {
-		throw id + " is not an SVG object."
+		throw svg + " is not an SVG object."
 	}
 	// Set up handlers for self
 	C.el = C.$.get()[0]
-	C.d3 = d3.select(id)
+	C.d3 = d3.select(C.$[0])
 		.style("position", "relative") // foreignObject rendering errors without this - dunno why
 	// Set up handlers for parent (i.e. Parent of the SVG canvas, so things can be attached outside the canvas)
   C.parent = {}
@@ -2810,9 +2809,9 @@ Valid part-level orders
 */
 
 function zDrone (O, t, b) {
-	this._canvas = CANVAS // Save reference to CANVAS on creation
-	this.add(O, t, b) // .add() won't run if order is empty, so this can be used as a blank slate
-	return this
+  var D = this
+  D.add(O, t, b) // .add() won't run if order is empty, so this can be used as a blank slate
+	return D
 }
 // Extracts layout from orders (using drone-level layout if O.layout is empty)
 // Works for both drones and parts
@@ -2866,7 +2865,7 @@ zDrone.prototype._makePart = function (tag, O) {
 		namespace = (tag == "div") ? // zHTML role containers and zHTML objects themselves will both have tag == "div"
 			"http://www.w3.org/1999/xhtml" :
 			"http://www.w3.org/2000/svg",
-		el = document.createElementNS(namespace, tag)
+		el = document.createElementNS(namespace, tag),
 		layer = zo.r(O, "layer"),
 		id = zo.r(O, "id"),
 		role = zo.r(O, "role"),
@@ -2906,7 +2905,8 @@ zDrone.prototype.add = function (O, t, b) {
 	if (!O) return
 	O = zo.initOrders(O)
 	var D = this, keys, tag, o, p
-	D.parent = zo.r(O, "parent") || D._canvas
+  D.parent = (O && O.parent) ? O.parent : CANVAS
+  D._canvas = D.parent._canvas
 	D.L = D._parseLayout(O) // Parse and save layout
 	// Create parts
 	D.parts = zo.getAll(O, "type", null, "!=") // Set up .parts - .parseOrders() relies on .parts to work
@@ -3610,7 +3610,7 @@ function zHTML (O, t, b) {
 						width:20000,
 						height:20000
 					})
-					CANVAS.parent.$.append(fake) // Place element outside foreignObject so it becomes a normal div
+					D._canvas.parent.$.append(fake) // Place element outside foreignObject so it becomes a normal div
 					// Set layout by DOM element
 					if (P.L.autoWidth) {
 						fake.css("width", "auto") // Make sure the fake element hasn't inherited the old width
@@ -3624,7 +3624,6 @@ function zHTML (O, t, b) {
 					}
 					fake.remove() // Remove fake element
 				}
-				var canvas = D._canvas
         var l = {
           left:P.L.left,
           top:P.L.top,
@@ -3632,16 +3631,16 @@ function zHTML (O, t, b) {
           height:P.L.height
         }
         var cPadding = {
-          left:parseInt(canvas.$.css("padding-left") || 0),
-          top:parseInt(canvas.$.css("padding-top") || 0)
+          left:parseInt(D._canvas.$.css("padding-left") || 0),
+          top:parseInt(D._canvas.$.css("padding-top") || 0)
         }
         var eMargin = {
           left:parseInt(P.$.css("margin-left") || 0),
           top:parseInt(P.$.css("margin-top") || 0)
         }
 				// Set parent div
-				if (canvas.nofo){
-					var pos = canvas.$.position()
+				if (D._canvas.nofo){
+					var pos = D._canvas.$.position()
           // Add SVG padding and canvas offset
           l.left += cPadding.left + pos.left
           l.top += cPadding.top + pos.top
@@ -3656,7 +3655,7 @@ function zHTML (O, t, b) {
           l.width += eMargin.left
           l.height += eMargin.top
           // Chrome foreignObjects don't take SVG padding or element margin-top into account
-          if (canvas.foPlacementFail) {
+          if (D._canvas.foPlacementFail) {
             l.left += cPadding.left
             l.top += cPadding.top
             l.top += eMargin.top
@@ -4073,9 +4072,8 @@ Filters
 */
 
 // Guide - a timer/scripter for zSwarm
-function zGuide () {
+function zGuide (O) {
 	var G = this
-	G._canvas = CANVAS // Save reference to CANVAS on creation
 	// Run a timer for t duration, running f on each frame
 	G.redraw = function (f, t, b) {
 		if (G.scripting) return // A scripting redraw is already running - don't change the state of the guide
@@ -4123,18 +4121,23 @@ function zGuide () {
 		if (action) action(t) // All the callback actions will be logged first, before the script to run is added
 		G.scripting = false
 	}
+
+  G.parent = (O && O.parent) ? O.parent : CANVAS
+  G._canvas = G.parent.canvas
 	return G
 }
 
 
 // Blank slate for creating a swarm - use plans from zPlanLibrary or create your own
 function zSwarm (O, t, b) {
-	var S = this, p, plan, parent
-	S._canvas = CANVAS // Save reference to CANVAS on creation
-	S.drones = [], S.axes = {}, S.highlighted = []
-	// Create and attach container element
-	S.container = new zContainer({id:O.id, type:"zSwarm"})
-	S.parent = S.container.parent // Parent must be canvas
+	var S = this, p
+	S.drones = []
+  S.axes = {}
+  S.highlighted = []
+  S.parent = O.parent || CANVAS // Parent is assumed to be global variable CANVAS unless otherwise specified
+	S._canvas = S.parent._canvas
+  // Create and attach container element
+	S.container = new zContainer({id:O.id, type:"zSwarm", parent:S.parent})
 	S.el = S.container.el
 	S.$ = S.container.$
 	S.d3 = S.container.d3
