@@ -2905,7 +2905,7 @@ zDrone.prototype.add = function (O, t, b) {
 	if (!O) return
 	O = zo.initOrders(O)
 	var D = this, keys, tag, o, p
-  D.parent = (O && O.parent) ? O.parent : CANVAS
+  D.parent = (O && O.parent) ? zo.r(O, "parent") : CANVAS
   D._canvas = D.parent._canvas
 	D.L = D._parseLayout(O) // Parse and save layout
 	// Create parts
@@ -3122,8 +3122,16 @@ zDrone.prototype.clearMouseEvents = function (eventType) {
 	this.$.unbind(eventType) // Clears all events if eventType is null
 }
 zDrone.prototype.getEventPos = function (e) {
-	var offset = this._canvas.$.offset()
-	return {x:e.pageX - offset.left, y:e.pageY - offset.top}
+	var canvas  = this._canvas.$
+  var offset  = canvas.offset() // Top left of the canvas
+  var padding = {
+    left : canvas.css("padding-left").replace("px", "") * 1,
+    top  : canvas.css("padding-top").replace("px", "") * 1
+  }
+  return {
+    x : e.pageX - offset.left - padding.left,
+    y : e.pageY - offset.top - padding.top
+  }
 }
 // Basic events - use jQuery event control because they can handle multiple listeners for each event
 zDrone.prototype.click = function (f) {
@@ -3834,17 +3842,24 @@ function zGladwrap (O) {
 	var D = new zRectangle(O)
 	D.Y = D.Y || {}
 	D.Y.snap = 20 // Default snap-to value
-	// Convert a pair of spaces into points
-	D._getLine = function (s) {
+	// Convert spaces into points
+	D._getPoints = function (s) {
 		var S = D.parent
-		return [S.getPoint(s[0]), S.getPoint(s[1])]
+    var out = []
+    for (var i = 0; i < s.length; i++) {
+      out[i] = S.getPoint(s[i])
+      if (out[i].x == null) {
+        throw "swarm.getPoint() is not returning a point!"
+      }
+    }
+    return out
 	}
 	// Search every point in x for the segment closest to event
 	// Parent must have .getPoint() to function
 	D.getClosestSegment = function (event, x, xAxis, noFilter) {
 		var S = D.parent,
 			range, domain, p,
-			s, line, dist
+			s, line, dist,
 			dc = S.dc, d = xAxis.d,
 			out = {s:null, dist:D.Y.snap}, // If nothing is closer than snap-to, return null
 			mousePos = D.getEventPos(event)
@@ -3853,7 +3868,7 @@ function zGladwrap (O) {
 			range = xAxis.scale.range()
 			domain = xAxis.scale.domain()
 			p = za.find(range, mousePos.x, "closest") // Find mouse position relative to range
-			p = zt.forceBetween(p, 1, range.length - 1) // Force it at least one notch from the edge
+      p = zt.forceBetween(p, 1, range.length - 3) // Force it at least one notch from the edge
 			p = [p - 1, p, p + 1] // Include pair before and pair after (to account for steep slopes)
 			p = za.map(domain, p) // Convert to real pos
 			x.s = dc.addSpaces(x.s, {d:d, p:p}) // Overwrite on iterating dimension
@@ -3861,7 +3876,7 @@ function zGladwrap (O) {
 		// Find the distance from each segment to the mouse position
 		dc.forSpaces(x, function (x) {
 			s = [x.s, dc.nextSpace(x.s, d)]
-			line = D._getLine(s)
+			line = D._getPoints(s)
 			dist = zp.distToLine(mousePos, line) // Find distance between mouse position and segment
 			if (dist < out.dist) out = {s:s, dist:dist} // If this segment is closer, make it the new target
 		})
@@ -3875,7 +3890,7 @@ function zGladwrap (O) {
 			s = D.getClosestSegment(event, x, xAxis).s
 		// Calculate distance to each end of the segment
 		if (s) {
-			line = D._getLine(s) // Find position of segment
+			line = D._getPoints(s) // Find position of segment
 			dist = [
 				zp.dist(line[0], mousePos), // Start to mouse
 				zp.dist(line[1], mousePos) // End to mouse
