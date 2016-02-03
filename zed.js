@@ -2,6 +2,7 @@
 // Depends on jQuery and d3
 
 var DEBUG_MODE = false
+var CANVAS
 
 // Stick in a placeholder for stupid goddamn browsers which don't support console
 window.console = window.console || {
@@ -1221,7 +1222,7 @@ var zTools = zt = {
 	},
 	getPalette:function (palette, size, mode) {
 		return za.getRandom(palette || [
-			"#8DD3C7","#FFFFB3","#BEBADA","#FB8072","#80B1D3","#FDB462",
+			"#8DD3C7","#BEBADA","#FB8072","#80B1D3","#FDB462",//"#FFFFB3",
 			"#B3DE69","#FCCDE5","#D9D9D9","#BC80BD","#CCEBC5","#FFED6F"
 		], size, mode)
 	},
@@ -2697,6 +2698,13 @@ function zCanvas (layout, svg) {
 	if (!C.$.is("svg")) {
 		throw svg + " is not an SVG object."
 	}
+  var padding = _.map(["left", "right", "top", "bottom"], function (d) {
+    if (C.$.css("padding-" + d) != "0px") {
+      console.log(C.$.css("padding-" + d), "padding-" + d)
+      console.error("Canvas has padding! You're going to have a bad time because padding is visible in Chrome but NOT in Firefox. Just don't have padding on your SVG.")
+    }
+  })
+
 	// Set up handlers for self
 	C.el = C.$.get()[0]
 	C.d3 = d3.select(C.$[0])
@@ -3341,11 +3349,12 @@ zDrone.prototype._presetParts = {
 					if (typeof O.format == "string") O.format = d3.format(O.format)
 					else if (typeof O.format == "object") O.format = zt.format(O.format)
 					if (typeof O.format != "function") throw zt.asString(O.format) + " is not a valid format type."
+          P.format = zo.r(O, "format")
 				}
-				za.forEach(["textXAlign", "textYAlign", "format", "text"], function (v) {
+				za.forEach(["textXAlign", "textYAlign", "text"], function (v) {
 					if (O[v] != null) P.O[v] = zo.r(O, v)
 				})
-				P.d3.text((P.O.format) ? P.O.format(P.O.text) : P.O.text)
+				P.d3.text((P.format) ? P.format(P.O.text) : P.O.text)
 				// Recalculate bounding box
 				P.d3.attr({ // Temporarily implement text style
 					fontSize:O.fontSize,
@@ -3841,7 +3850,7 @@ function zGladwrap (O) {
 	})
 	var D = new zRectangle(O)
 	D.Y = D.Y || {}
-	D.Y.snap = 20 // Default snap-to value
+	D.Y.snap = O.snap || D.Y.snap || 20 // Default snap-to value
 	// Convert spaces into points
 	D._getPoints = function (s) {
 		var S = D.parent
@@ -4145,26 +4154,18 @@ function zGuide (O) {
 
 // Blank slate for creating a swarm - use plans from zPlanLibrary or create your own
 function zSwarm (O, t, b) {
-	var S = this, p
-	S.drones = []
-  S.axes = {}
+	var S = this, p, plan
+	S.drones      = []
+  S.axes        = {}
   S.highlighted = []
-  S.parent = O.parent || CANVAS // Parent is assumed to be global variable CANVAS unless otherwise specified
-	S._canvas = S.parent._canvas
-  // Create and attach container element
-	S.container = new zContainer({id:O.id, type:"zSwarm", parent:S.parent})
-	S.el = S.container.el
-	S.$ = S.container.$
-	S.d3 = S.container.d3
-	S.attach = S.container.attach
-	S.toFront = S.container.toFront
-	S._makeTransition = S.container._makeTransition
+
 	// Aliases (so that custom highlight/select functions can be written without overwriting base functions)
-	S._highlight = S.highlight
-	S._select = S.select
-	S._deselect = S.deselect
-	S._show = S.show
-	S._hide = S.hide
+	S._highlight  = S.highlight
+	S._select     = S.select
+	S._deselect   = S.deselect
+	S._show       = S.show
+	S._hide       = S.hide
+
 	// Parse orders
 	O = zo.initOrders(O)
 	for (p in O) S[p] = O[p] // Allocate resources to object - can't use extend() because it'll try to deep extend the big objects, which might have recursive references
@@ -4172,20 +4173,35 @@ function zSwarm (O, t, b) {
 	if (S.dc) S.s = S.dc.asSpace(S.s)
 	S.Y = zo.parseStyle(S.Y || S.style || {})
 	S.L = S.layout = new zLayout(S.L || S.layout, S) // Make new layout object if the original is not a zLayout object
-	// Parse plans
-	S.P = S.plan
+
+  // Create and attach container element
+  S.parent    = O.parent || CANVAS // Parent is assumed to be global variable CANVAS unless otherwise specified
+	S._canvas   = S.parent._canvas
+	S.container = new zContainer({id:O.id, type:"zSwarm", parent:S.parent})
+	S.el        = S.container.el
+	S.$         = S.container.$
+	S.d3        = S.container.d3
+	S.attach    = S.container.attach
+	S.toFront   = S.container.toFront
+	S._makeTransition = S.container._makeTransition
+
+  // Parse plans
+	S.P     = S.plan
 	S.roles = {}
 	for (p in S.plan) {
 		plan = S.plan[p]
-		if (plan) {
+    if (!plan) delete S.plan[p] // Delete null plans
+		else {
 			plan.name = p // Name plans
-			if (plan.mask == null) plan.mask = "fixed" // Parse masks
-			else if (plan.mask != "fixed") plan.mask = S.dc.parseSpace(plan.mask) // Parse masks
+      plan.mask =   // Parse masks
+          (plan.mask == null)    ? "fixed" :
+          (plan.mask == "fixed") ? "fixed" :
+          S.dc.parseSpace(plan.mask)
 			S.roles[p] = new zContainer({id:p, type:plan.type, parent:S, layer:plan.layer}) // Create container for this role
-		} else delete S.plan[p] // Delete null plans
+		}
 	}
 	// Create guide
-	S.G = new zGuide()
+	S.G = new zGuide({ parent : S.parent })
 	S.currDec = 1
 	// Report to all axes
 	for (p in S.axes) if (S.axes[p].swarms) { // Some axes can control swarms, some cannot
@@ -4415,6 +4431,7 @@ zSwarm.prototype.frameRedraw = function (x, dec) {
 		if (D.noChange) return
 		D.currOrders = zo.mid(D.oldOrders, D.newOrders, dec)
 // 		D.currOrders = D.interpolator(dec)
+    if (!D.currOrders) return
 		D.attr(zo.clone(D.currOrders)) // WATCH OUT! If currOrders is changed, oldOrders will be changed, and then it may not match with newOrders and then it'll all fuck the fuck up
 	})
 	S.frames++ // Count frame
