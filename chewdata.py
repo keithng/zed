@@ -1,8 +1,10 @@
 USAGE = """
+Usage: chewdata.py [input CSV] [output JSON] [OPTIONS]...
 
-Usage: chewdata.py [input CSV] [output JSON] [OPTION]...
+  Generates a JSON data cube/dictionary from a CSV. -h for help.
+"""
 
-  Generates a JSON data cube from a CSV.
+HELP = USAGE + """
 
   For example, an input CSV of:
     "0~name", "1~name", "val"
@@ -11,14 +13,14 @@ Usage: chewdata.py [input CSV] [output JSON] [OPTION]...
     "2001", "Location B", "hi"
     "2002", "Location A", 3
 
-  ..will result in a JSON of:
+  ...will result in a JSON of:
     {
-      meta:[
-        {name:["2001", "2002]},
-        {name:{"Location A", "Location B"}
+      meta : [
+        { name : ["2001", "2002] },
+        { name : ["Location A", "Location B"] }
       ],
-      data:{
-        val:[
+      data : {
+        val : [
           [1, "hi"],
           [3, null]
         ]
@@ -27,8 +29,8 @@ Usage: chewdata.py [input CSV] [output JSON] [OPTION]...
 
   -s, --sum-duplicates
     Rows with identical meta values are considered duplicates.
-    With the -d option, the value for ["2001", "Location A"] -> 6
-    Without the -d option, the value for ["2001", "Location A"] -> 1
+    With the -s option, the value for ["2001", "Location A"] -> 6
+    Without the -s option, the value for ["2001", "Location A"] -> 1
 
   -n, --accept-nonnumeric
     Data values are generally expected to be numeric.
@@ -36,17 +38,19 @@ Usage: chewdata.py [input CSV] [output JSON] [OPTION]...
     Without the -n option, the value for ["2001", "Location B"] -> null
 
   -d --dict
+    Parses CSV into a data dictionary instead of a data cube.
+
     Data cubes (nested arrays) are generally more space-efficient unless it's full
     of holes (i.e. Where data does not exist for a given combination of meta).
 
-    Data cube: [
+    Data cube : [
       [1, "hi"],
       [3, null]
     ]
-    Dictionary: {
-      "0,0":1,
-      "0,1":"hi",
-      "1,0":3
+    Dictionary : {
+      "0,0" : 1,
+      "0,1" : "hi",
+      "1,0" : 3
     }
 
     Data cubes are also faster when the read follows the data structure.
@@ -58,8 +62,11 @@ Usage: chewdata.py [input CSV] [output JSON] [OPTION]...
 # Must be tab delimited csv files
 import csv, sys, json, time, re
 
-if any(arg == '--help' or arg == '-h' for arg in sys.argv):
+if len(sys.argv) == 1:
 	print(USAGE)
+	exit()
+if any(arg == '--help' or arg == '-h' for arg in sys.argv):
+	print(HELP)
 	exit()
 
 if any(arg == '--sum-duplicates' or arg == '-s' for arg in sys.argv):

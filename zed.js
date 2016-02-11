@@ -2700,10 +2700,22 @@ function zCanvas (layout, svg) {
 	}
   var padding = _.map(["left", "right", "top", "bottom"], function (d) {
     if (C.$.css("padding-" + d) != "0px") {
-      console.log(C.$.css("padding-" + d), "padding-" + d)
-      console.error("Canvas has padding! You're going to have a bad time because padding is visible in Chrome but NOT in Firefox. Just don't have padding on your SVG.")
+      console.warn(C.$.css("padding-" + d), "padding-" + d)
+      console.warn("Canvas has padding! You're going to have a bad time because padding is visible in Chrome but NOT in Firefox. Just don't have padding on your SVG.")
     }
   })
+
+  var viewport = $('meta[name=viewport]').attr("content")
+  if (viewport) {
+    _.each(viewport.split(","), function (d) {
+      d = d.trim().split("=")
+      if (d[0] == "initial-scale" && d[1] != 1) {
+        console.warn(viewport)
+        console.warn("Viewport has been set with an initial scale != 1. You might have a bad time because mobile devices scale some stuff, but not SVGs.")
+      }
+    })
+  }
+
 
 	// Set up handlers for self
 	C.el = C.$.get()[0]
@@ -3857,9 +3869,7 @@ function zGladwrap (O) {
     var out = []
     for (var i = 0; i < s.length; i++) {
       out[i] = S.getPoint(s[i])
-      if (out[i].x == null) {
-        throw "swarm.getPoint() is not returning a point!"
-      }
+      if (out[i] == null || out[i].x == null) return null // Invalid point, quit
     }
     return out
 	}
@@ -3867,46 +3877,48 @@ function zGladwrap (O) {
 	// Parent must have .getPoint() to function
 	D.getClosestSegment = function (event, x, xAxis, noFilter) {
 		var S = D.parent,
-			range, domain, p,
-			s, line, dist,
-			dc = S.dc, d = xAxis.d,
-			out = {s:null, dist:D.Y.snap}, // If nothing is closer than snap-to, return null
-			mousePos = D.getEventPos(event)
+        range, domain, p,
+        s, line, dist,
+        dc       = S.dc,
+        d        = xAxis.d,
+        out      = {s:null, dist:D.Y.snap}, // If nothing is closer than snap-to, return null
+        mousePos = D.getEventPos(event)
 		// Filter points - only do the ones near the mouse (faster)
 		if (!noFilter) {
-			range = xAxis.scale.range()
+			range  = xAxis.scale.range()
 			domain = xAxis.scale.domain()
-			p = za.find(range, mousePos.x, "closest") // Find mouse position relative to range
-      p = zt.forceBetween(p, 1, range.length - 3) // Force it at least one notch from the edge
-			p = [p - 1, p, p + 1] // Include pair before and pair after (to account for steep slopes)
-			p = za.map(domain, p) // Convert to real pos
-			x.s = dc.addSpaces(x.s, {d:d, p:p}) // Overwrite on iterating dimension
+			p      = za.find(range, mousePos.x, "closest") // Find mouse position relative to range
+      p      = zt.forceBetween(p, 1, range.length - 3) // Force it at least one notch from the edge
+			p      = [p - 1, p, p + 1] // Include pair before and pair after (to account for steep slopes)
+			p      = za.map(domain, p) // Convert to real pos
+			x.s    = dc.addSpaces(x.s, {d:d, p:p}) // Overwrite on iterating dimension
 		}
 		// Find the distance from each segment to the mouse position
 		dc.forSpaces(x, function (x) {
-			s = [x.s, dc.nextSpace(x.s, d)]
+			s    = [x.s, dc.nextSpace(x.s, d)]
 			line = D._getPoints(s)
-			dist = zp.distToLine(mousePos, line) // Find distance between mouse position and segment
-			if (dist < out.dist) out = {s:s, dist:dist} // If this segment is closer, make it the new target
+      if (line) {
+        dist = zp.distToLine(mousePos, line) // Find distance between mouse position and segment
+        if (dist < out.dist) {
+          out = {s:s, dist:dist, points:line} // If this segment is closer, make it the new target
+        }
+      }
 		})
-		return out
+		return (out.s) ? out : null
 	}
 	// Find the closest segment, then get the closest point
 	// Parent must have .getPoint() to function
 	D.getClosestPoint = function (event, x, xAxis) {
-		var line, dist,
-			mousePos = D.getEventPos(event),
-			s = D.getClosestSegment(event, x, xAxis).s
+		var dist,
+        seg      = D.getClosestSegment(event, x, xAxis),
+        mousePos = D.getEventPos(event)
 		// Calculate distance to each end of the segment
-		if (s) {
-			line = D._getPoints(s) // Find position of segment
-			dist = [
-				zp.dist(line[0], mousePos), // Start to mouse
-				zp.dist(line[1], mousePos) // End to mouse
-			]
-			s = (dist[0] <= dist[1]) ? s[0] : s[1] // Use space of the closer end
-		}
-		return s
+		if (!seg) return null
+    dist = [
+      zp.dist(seg.points[0], mousePos), // Start to mouse
+      zp.dist(seg.points[1], mousePos)  // End to mouse
+    ]
+    return (dist[0] <= dist[1]) ? seg.s[0] : seg.s[1] // Use space of the closer end
 	}
 	return D
 }
